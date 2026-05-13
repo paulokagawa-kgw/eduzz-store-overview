@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oportunidades — Eduzz Store Ads</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #F7F4EE; display: flex; min-height: 100vh; color: #0D1B3E; }
+
+  .sidebar { width: 200px; min-width: 200px; background: #0D1B3E; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; }
+  .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 20px 16px 18px; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .logo-icon { width: 36px; height: 36px; background: #F5B800; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #0D1B3E; flex-shrink: 0; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text span:first-child { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .logo-text span:last-child { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .5px; }
+  .sidebar-nav { flex: 1; padding: 12px 0; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 16px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; transition: background .15s, color .15s; }
+  .nav-item:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.85); }
+  .nav-item.active { background: rgba(245,184,0,.12); color: #F5B800; }
+  .nav-item svg { flex-shrink: 0; opacity: .7; }
+  .nav-item.active svg { opacity: 1; }
+  .sidebar-footer { padding: 14px 16px; border-top: 1px solid rgba(255,255,255,.07); display: flex; flex-direction: column; gap: 10px; }
+  .user-row { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 30px; height: 30px; background: #F5B800; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #0D1B3E; flex-shrink: 0; }
+  .user-info { display: flex; flex-direction: column; }
+  .user-info span:first-child { font-size: 12px; font-weight: 600; color: #fff; }
+  .user-info span:last-child { font-size: 10px; color: rgba(255,255,255,.45); }
+  .store-link { font-size: 11px; color: rgba(255,255,255,.4); text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color .15s; }
+  .store-link:hover { color: #F5B800; }
+
+  .main { margin-left: 200px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+  .page-header { background: #fff; border-bottom: 1px solid rgba(13,27,62,.08); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+  .header-left h1 { font-size: 20px; font-weight: 700; }
+  .header-left p { font-size: 13px; color: #6B7280; margin-top: 2px; }
+  .header-right .credits-badge { background: rgba(245,184,0,.12); border: 1px solid rgba(245,184,0,.3); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 600; }
+
+  .page-body { padding: 28px 32px; flex: 1; }
+
+  /* STAT CARDS */
+  .stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 24px; }
+  .stat-card { background: #fff; border: 1px solid rgba(13,27,62,.08); border-radius: 12px; padding: 16px 18px; }
+  .stat-emoji { font-size: 20px; margin-bottom: 8px; }
+  .stat-value { font-size: 24px; font-weight: 700; color: #0D1B3E; line-height: 1; }
+  .stat-label { font-size: 11px; color: #6B7280; margin-top: 4px; }
+
+  /* FILTERS */
+  .filter-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .search-input { font-family: 'Inter', sans-serif; font-size: 13px; padding: 9px 13px; border: 1.5px solid rgba(13,27,62,.12); border-radius: 8px; background: #fff; color: #0D1B3E; outline: none; min-width: 200px; }
+  .search-input:focus { border-color: #0D1B3E; }
+  .filter-select { font-family: 'Inter', sans-serif; font-size: 13px; padding: 9px 12px; border: 1.5px solid rgba(13,27,62,.12); border-radius: 8px; background: #fff; color: #0D1B3E; outline: none; cursor: pointer; }
+  .filter-select:focus { border-color: #0D1B3E; }
+  .results-count { font-size: 13px; font-weight: 600; color: #0D1B3E; margin-bottom: 16px; }
+
+  /* OPPORTUNITY GRID */
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .opp-card {
+    background: #fff; border: 1px solid rgba(13,27,62,.08); border-radius: 12px;
+    padding: 20px; display: flex; flex-direction: column; gap: 12px;
+    transition: box-shadow .15s;
+  }
+  .opp-card:hover { box-shadow: 0 4px 16px rgba(13,27,62,.08); }
+  .opp-header { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+  .urg-badge { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 10px; flex-shrink: 0; }
+  .urg-urgente { background: rgba(239,68,68,.1); color: #dc2626; }
+  .urg-media { background: rgba(245,184,0,.15); color: #b88a00; }
+  .urg-baixa { background: rgba(107,114,128,.1); color: #6B7280; }
+  .cat-badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 10px; background: rgba(13,27,62,.07); color: #0D1B3E; flex-shrink: 0; }
+  .opp-title { font-size: 14px; font-weight: 600; color: #0D1B3E; line-height: 1.4; }
+  .opp-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .meta-item { font-size: 12px; color: #6B7280; }
+  .meta-item strong { color: #0D1B3E; }
+  .opp-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+  .status-badge { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 10px; }
+  .status-open { background: rgba(59,130,246,.1); color: #2563eb; }
+  .status-dev { background: rgba(245,184,0,.15); color: #b88a00; }
+  .status-done { background: rgba(16,185,129,.1); color: #059669; }
+  .dev-by { font-size: 11px; color: #9CA3AF; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">E</div>
+    <div class="logo-text"><span>Eduzz</span><span>Store Ads</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a href="campaigns.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Campanhas
+    </a>
+    <a href="analytics.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Analytics
+    </a>
+    <a href="billing.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      Billing
+    </a>
+    <a href="eligibility.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0112 0v1"/></svg>
+      Elegibilidade
+    </a>
+    <a href="opportunities.html" class="nav-item active">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Oportunidades
+    </a>
+    <a href="devhub.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      DevHub
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="user-row">
+      <div class="avatar">D</div>
+      <div class="user-info"><span>Demo Builder</span><span>Faixa Green</span></div>
+    </div>
+    <a href="store.html" class="store-link">🏪 Eduzz Store</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div class="header-left">
+      <h1>Painel de Oportunidades</h1>
+      <p>Dores reais da base de infoprodutores Eduzz</p>
+    </div>
+    <div class="header-right">
+      <div class="credits-badge">R$ 1.500,00 em créditos</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <!-- STATS -->
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-emoji">🎙️</div>
+        <div class="stat-value">6.683</div>
+        <div class="stat-label">Infoprodutores ouvidos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-emoji">🔴</div>
+        <div class="stat-value">8</div>
+        <div class="stat-label">Dores em aberto</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-emoji">⚙️</div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Em desenvolvimento</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-emoji">✅</div>
+        <div class="stat-value">2</div>
+        <div class="stat-label">Resolvidas</div>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filter-row">
+      <input type="text" class="search-input" placeholder="Buscar oportunidade...">
+      <select class="filter-select">
+        <option>Todas categorias</option>
+        <option>CRM</option>
+        <option>Checkout</option>
+        <option>Analytics</option>
+        <option>Email</option>
+      </select>
+      <select class="filter-select">
+        <option>Todas urgências</option>
+        <option>Urgente</option>
+        <option>Média</option>
+        <option>Baixa</option>
+      </select>
+      <select class="filter-select">
+        <option>Todos status</option>
+        <option>Aberta</option>
+        <option>Em desenvolvimento</option>
+        <option>Resolvida</option>
+      </select>
+    </div>
+
+    <div class="results-count">10 oportunidades encontradas</div>
+
+    <!-- OPP GRID -->
+    <div class="opp-grid">
+
+      <div class="opp-card">
+        <div class="opp-header">
+          <span class="urg-badge urg-urgente">URGENTE</span>
+          <span class="cat-badge">CRM</span>
+        </div>
+        <div class="opp-title">Integração nativa entre Eduzz e ferramentas de CRM</div>
+        <div class="opp-meta">
+          <div class="meta-item"><strong>892</strong> relataram</div>
+          <div class="meta-item"><strong>47</strong> votos</div>
+          <div class="meta-item">Mercado <strong>R$2.4M</strong></div>
+        </div>
+        <div class="opp-footer">
+          <span class="status-badge status-open">Aberta</span>
+          <span class="dev-by"></span>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-header">
+          <span class="urg-badge urg-urgente">URGENTE</span>
+          <span class="cat-badge">Checkout</span>
+        </div>
+        <div class="opp-title">Recuperação de carrinho com múltiplos canais</div>
+        <div class="opp-meta">
+          <div class="meta-item"><strong>1.205</strong> relataram</div>
+          <div class="meta-item"><strong>93</strong> votos</div>
+          <div class="meta-item">Mercado <strong>R$4.1M</strong></div>
+        </div>
+        <div class="opp-footer">
+          <span class="status-badge status-dev">Em desenvolvimento</span>
+          <span class="dev-by">CRM Tools Inc</span>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-header">
+          <span class="urg-badge urg-media">MÉDIA</span>
+          <span class="cat-badge">Analytics</span>
+        </div>
+        <div class="opp-title">Dashboard unificado de métricas para infoprodutores</div>
+        <div class="opp-meta">
+          <div class="meta-item"><strong>567</strong> relataram</div>
+          <div class="meta-item"><strong>38</strong> votos</div>
+          <div class="meta-item">Mercado <strong>R$980k</strong></div>
+        </div>
+        <div class="opp-footer">
+          <span class="status-badge status-open">Aberta</span>
+          <span class="dev-by"></span>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-header">
+          <span class="urg-badge urg-media">MÉDIA</span>
+          <span class="cat-badge">Afiliados</span>
+        </div>
+        <div class="opp-title">Gestão avançada de comissões de afiliados</div>
+        <div class="opp-meta">
+          <div class="meta-item"><strong>445</strong> relataram</div>
+          <div class="meta-item"><strong>29</strong> votos</div>
+          <div class="meta-item">Mercado <strong>R$1.8M</strong></div>
+        </div>
+        <div class="opp-footer">
+          <span class="status-badge status-open">Aberta</span>
+          <span class="dev-by"></span>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-header">
+          <span class="urg-badge urg-media">MÉDIA</span>
+          <span class="cat-badge">Email</span>
+        </div>
+        <div class="opp-title">Automação de email marketing com segmentação</div>
+        <div class="opp-meta">
+          <div class="meta-item"><strong>334</strong> relataram</div>
+          <div class="meta-item"><strong>21</strong> votos</div>
+          <div class="meta-item">Mercado <strong>R$1.2M</strong></div>
+        </div>
+        <div class="opp-footer">
+          <span class="status-badge status-done">Resolvida</span>
+          <span class="dev-by">EmailFlow AI</span>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-header">
+          <span class="urg-badge urg-baixa">BAIXA</span>
+          <span class="cat-badge">Área de Membros</span>
+        </div>
+        <div class="opp-title">Proteção de conteúdo com verificação biométrica</div>
+        <div class="opp-meta">
+          <div class="meta-item"><strong>112</strong> relataram</div>
+          <div class="meta-item"><strong>8</strong> votos</div>
+          <div class="meta-item">Mercado <strong>R$320k</strong></div>
+        </div>
+        <div class="opp-footer">
+          <span class="status-badge status-open">Aberta</span>
+          <span class="dev-by"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+</body>
+</html>

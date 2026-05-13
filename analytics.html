@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics — Eduzz Store Ads</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #F7F4EE; display: flex; min-height: 100vh; color: #0D1B3E; }
+
+  .sidebar { width: 200px; min-width: 200px; background: #0D1B3E; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; }
+  .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 20px 16px 18px; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .logo-icon { width: 36px; height: 36px; background: #F5B800; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #0D1B3E; flex-shrink: 0; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text span:first-child { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .logo-text span:last-child { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .5px; }
+  .sidebar-nav { flex: 1; padding: 12px 0; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 16px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; transition: background .15s, color .15s; }
+  .nav-item:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.85); }
+  .nav-item.active { background: rgba(245,184,0,.12); color: #F5B800; }
+  .nav-item svg { flex-shrink: 0; opacity: .7; }
+  .nav-item.active svg { opacity: 1; }
+  .sidebar-footer { padding: 14px 16px; border-top: 1px solid rgba(255,255,255,.07); display: flex; flex-direction: column; gap: 10px; }
+  .user-row { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 30px; height: 30px; background: #F5B800; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #0D1B3E; flex-shrink: 0; }
+  .user-info { display: flex; flex-direction: column; }
+  .user-info span:first-child { font-size: 12px; font-weight: 600; color: #fff; }
+  .user-info span:last-child { font-size: 10px; color: rgba(255,255,255,.45); }
+  .store-link { font-size: 11px; color: rgba(255,255,255,.4); text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color .15s; }
+  .store-link:hover { color: #F5B800; }
+
+  .main { margin-left: 200px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+  .page-header { background: #fff; border-bottom: 1px solid rgba(13,27,62,.08); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+  .header-left h1 { font-size: 20px; font-weight: 700; }
+  .header-left p { font-size: 13px; color: #6B7280; margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  .credits-badge { background: rgba(245,184,0,.12); border: 1px solid rgba(245,184,0,.3); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 600; }
+
+  .page-body { padding: 28px 32px; flex: 1; }
+
+  /* SELECTOR ROW */
+  .selector-row { display: flex; gap: 12px; margin-bottom: 24px; align-items: flex-end; flex-wrap: wrap; }
+  .field-group { display: flex; flex-direction: column; gap: 4px; }
+  .field-group label { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: .5px; }
+  .field-group select, .field-group input {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    padding: 9px 12px; border: 1.5px solid rgba(13,27,62,.12); border-radius: 8px;
+    background: #fff; color: #0D1B3E; outline: none; min-width: 160px;
+  }
+  .field-group select:focus, .field-group input:focus { border-color: #0D1B3E; }
+
+  /* TOP METRICS */
+  .top-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .metric-card { background: #fff; border: 1px solid rgba(13,27,62,.08); border-radius: 12px; padding: 18px 20px; }
+  .metric-label { font-size: 12px; color: #6B7280; margin-bottom: 6px; }
+  .metric-value { font-size: 24px; font-weight: 700; color: #0D1B3E; }
+
+  /* SECTIONS */
+  .section { background: #fff; border: 1px solid rgba(13,27,62,.08); border-radius: 12px; padding: 22px; margin-bottom: 20px; }
+  .section-title { font-size: 14px; font-weight: 600; margin-bottom: 18px; }
+
+  /* LINE CHART SVG */
+  .line-chart-wrap { position: relative; }
+  .day-labels { display: flex; justify-content: space-between; padding: 0 4px; margin-top: 6px; }
+  .day-labels span { font-size: 10px; color: #9CA3AF; }
+
+  /* TOP CAMPAIGNS */
+  .camp-rank { display: flex; flex-direction: column; gap: 14px; }
+  .rank-item { display: flex; align-items: center; gap: 14px; }
+  .rank-num { font-size: 16px; font-weight: 700; color: rgba(13,27,62,.2); width: 24px; flex-shrink: 0; }
+  .rank-info { flex: 1; }
+  .rank-name { font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+  .rank-bar-bg { background: rgba(13,27,62,.06); border-radius: 4px; height: 8px; overflow: hidden; }
+  .rank-bar-fill { height: 100%; border-radius: 4px; background: #0D1B3E; }
+  .rank-val { font-size: 13px; font-weight: 600; color: #0D1B3E; white-space: nowrap; }
+
+  /* FORMAT CARDS */
+  .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .format-card { border: 1px solid rgba(13,27,62,.08); border-radius: 10px; padding: 18px; }
+  .format-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .format-ctr { font-size: 22px; font-weight: 700; color: #0D1B3E; margin-bottom: 2px; }
+  .format-label { font-size: 11px; color: #6B7280; }
+  .format-icon { font-size: 22px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">E</div>
+    <div class="logo-text"><span>Eduzz</span><span>Store Ads</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a href="campaigns.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Campanhas
+    </a>
+    <a href="analytics.html" class="nav-item active">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Analytics
+    </a>
+    <a href="billing.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      Billing
+    </a>
+    <a href="eligibility.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0112 0v1"/></svg>
+      Elegibilidade
+    </a>
+    <a href="opportunities.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Oportunidades
+    </a>
+    <a href="devhub.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      DevHub
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="user-row">
+      <div class="avatar">D</div>
+      <div class="user-info"><span>Demo Builder</span><span>Faixa Green</span></div>
+    </div>
+    <a href="store.html" class="store-link">🏪 Eduzz Store</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div class="header-left">
+      <h1>Analytics</h1>
+      <p>Performance detalhada das campanhas</p>
+    </div>
+    <div class="header-right">
+      <div class="credits-badge">R$ 1.500,00 em créditos</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <!-- SELECTORS -->
+    <div class="selector-row">
+      <div class="field-group">
+        <label>Campanha</label>
+        <select>
+          <option>Todas as campanhas</option>
+          <option>WhatsApp Checkout — Q2</option>
+          <option>CRM Connect — Awareness</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Data início</label>
+        <input type="date" value="2026-04-30">
+      </div>
+      <div class="field-group">
+        <label>Data fim</label>
+        <input type="date" value="2026-05-13">
+      </div>
+    </div>
+
+    <!-- TOP METRICS -->
+    <div class="top-metrics">
+      <div class="metric-card">
+        <div class="metric-label">Impressões</div>
+        <div class="metric-value">45.2k</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Cliques</div>
+        <div class="metric-value">1.8k</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Instalações</div>
+        <div class="metric-value">310</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Receita</div>
+        <div class="metric-value">R$4.525</div>
+      </div>
+    </div>
+
+    <!-- LINE CHART -->
+    <div class="section">
+      <div class="section-title">Performance por Dia</div>
+      <div class="line-chart-wrap">
+        <svg width="100%" height="140" viewBox="0 0 700 140" preserveAspectRatio="none" style="display:block;">
+          <!-- Grid lines -->
+          <line x1="0" y1="20" x2="700" y2="20" stroke="rgba(13,27,62,.05)" stroke-width="1"/>
+          <line x1="0" y1="60" x2="700" y2="60" stroke="rgba(13,27,62,.05)" stroke-width="1"/>
+          <line x1="0" y1="100" x2="700" y2="100" stroke="rgba(13,27,62,.05)" stroke-width="1"/>
+          <!-- Area fill -->
+          <path d="M0,110 L50,95 L100,85 L150,80 L200,70 L250,75 L300,55 L350,65 L400,45 L450,50 L500,35 L550,42 L600,28 L650,20 L700,30 L700,140 L0,140 Z"
+            fill="rgba(245,184,0,.12)" />
+          <!-- Line -->
+          <path d="M0,110 L50,95 L100,85 L150,80 L200,70 L250,75 L300,55 L350,65 L400,45 L450,50 L500,35 L550,42 L600,28 L650,20 L700,30"
+            fill="none" stroke="#F5B800" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- Dots -->
+          <circle cx="0" cy="110" r="4" fill="#F5B800"/>
+          <circle cx="50" cy="95" r="4" fill="#F5B800"/>
+          <circle cx="100" cy="85" r="4" fill="#F5B800"/>
+          <circle cx="150" cy="80" r="4" fill="#F5B800"/>
+          <circle cx="200" cy="70" r="4" fill="#F5B800"/>
+          <circle cx="250" cy="75" r="4" fill="#F5B800"/>
+          <circle cx="300" cy="55" r="4" fill="#F5B800"/>
+          <circle cx="350" cy="65" r="4" fill="#F5B800"/>
+          <circle cx="400" cy="45" r="4" fill="#F5B800"/>
+          <circle cx="450" cy="50" r="4" fill="#F5B800"/>
+          <circle cx="500" cy="35" r="4" fill="#F5B800"/>
+          <circle cx="550" cy="42" r="4" fill="#F5B800"/>
+          <circle cx="600" cy="28" r="4" fill="#F5B800"/>
+          <circle cx="650" cy="20" r="4" fill="#F5B800"/>
+        </svg>
+        <div class="day-labels">
+          <span>30/04</span><span>01/05</span><span>02/05</span><span>03/05</span>
+          <span>04/05</span><span>05/05</span><span>06/05</span><span>07/05</span>
+          <span>08/05</span><span>09/05</span><span>10/05</span><span>11/05</span>
+          <span>12/05</span><span>13/05</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP CAMPAIGNS -->
+    <div class="section">
+      <div class="section-title">Top Campanhas</div>
+      <div class="camp-rank">
+        <div class="rank-item">
+          <div class="rank-num">1</div>
+          <div class="rank-info">
+            <div class="rank-name">WhatsApp Checkout — Lançamento Q2</div>
+            <div class="rank-bar-bg"><div class="rank-bar-fill" style="width:100%"></div></div>
+          </div>
+          <div class="rank-val">R$4.525,50</div>
+        </div>
+        <div class="rank-item">
+          <div class="rank-num">2</div>
+          <div class="rank-info">
+            <div class="rank-name">CRM Connect — Awareness</div>
+            <div class="rank-bar-bg"><div class="rank-bar-fill" style="width:60%;background:#F5B800"></div></div>
+          </div>
+          <div class="rank-val">R$1.512,20</div>
+        </div>
+        <div class="rank-item">
+          <div class="rank-num">3</div>
+          <div class="rank-info">
+            <div class="rank-name">Email Suite — Rascunho</div>
+            <div class="rank-bar-bg"><div class="rank-bar-fill" style="width:0%;background:rgba(13,27,62,.2)"></div></div>
+          </div>
+          <div class="rank-val">R$0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMAT PERFORMANCE -->
+    <div class="section">
+      <div class="section-title">Performance por Formato</div>
+      <div class="format-grid">
+        <div class="format-card">
+          <div class="format-icon">📌</div>
+          <div class="format-name">Sponsored Listing</div>
+          <div class="format-ctr">4.0%</div>
+          <div class="format-label">CTR médio</div>
+        </div>
+        <div class="format-card">
+          <div class="format-icon">🔔</div>
+          <div class="format-name">Push Patrocinado</div>
+          <div class="format-ctr">2.8%</div>
+          <div class="format-label">CTR médio</div>
+        </div>
+        <div class="format-card">
+          <div class="format-icon">✉️</div>
+          <div class="format-name">Email Patrocinado</div>
+          <div class="format-ctr">1.2%</div>
+          <div class="format-label">CTR médio</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

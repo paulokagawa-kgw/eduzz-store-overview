@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja um Builder — Eduzz Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0D1B3E;
+    --gold: #F5B800;
+    --cream: #F0EDE8;
+    --border: rgba(13,27,62,.08);
+    --text-secondary: #6B7280;
+  }
+  body { font-family: 'Inter', sans-serif; color: var(--navy); background: #fff; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 60px;
+    display: flex; align-items: center; gap: 32px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon { width: 30px; height: 30px; background: var(--gold); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: var(--navy); }
+  .nav-logo-text { font-size: 14px; font-weight: 700; }
+  .nav-logo-text span { font-weight: 400; color: var(--text-secondary); }
+  .nav-links { display: flex; gap: 24px; margin-left: 16px; }
+  .nav-link { font-size: 14px; color: var(--text-secondary); font-weight: 500; transition: color .15s; }
+  .nav-link:hover { color: var(--navy); }
+  .nav-spacer { flex: 1; }
+  .btn-store { font-size: 13.5px; color: var(--text-secondary); font-weight: 500; }
+  .btn-store:hover { color: var(--navy); }
+  .btn-nav-builder {
+    padding: 9px 18px; background: var(--navy); border-radius: 8px;
+    color: #fff; font-size: 13.5px; font-weight: 700; transition: opacity .15s;
+  }
+  .btn-nav-builder:hover { opacity: .85; }
+
+  /* ── SECTION BASE ── */
+  .section { padding: 80px 40px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+  .section-title { font-size: 40px; font-weight: 900; line-height: 1.15; margin-bottom: 18px; }
+  .section-subtitle { font-size: 16px; line-height: 1.7; max-width: 540px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy); padding: 100px 40px 80px; position: relative; overflow: hidden;
+  }
+  .hero-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(245,184,0,.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+  }
+  .hero-glow-1 { position: absolute; top: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,184,0,.12) 0%, transparent 70%); pointer-events: none; }
+  .hero-glow-2 { position: absolute; bottom: -60px; right: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(245,184,0,.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,184,0,.15); border: 1px solid rgba(245,184,0,.3);
+    border-radius: 20px; padding: 5px 14px; font-size: 11.5px; font-weight: 700;
+    color: var(--gold); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: 52px; font-weight: 900; line-height: 1.12; color: #fff; margin-bottom: 20px;
+    max-width: 700px;
+  }
+  .hero-title .gold { color: var(--gold); }
+  .hero-subtitle { font-size: 17px; color: rgba(255,255,255,.72); line-height: 1.65; max-width: 520px; margin-bottom: 36px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+  .btn-hero-primary {
+    padding: 14px 28px; background: var(--gold); border: none; border-radius: 10px;
+    color: var(--navy); font-size: 15px; font-weight: 800; cursor: pointer;
+    font-family: inherit; transition: opacity .15s;
+  }
+  .btn-hero-primary:hover { opacity: .88; }
+  .btn-hero-ghost {
+    padding: 14px 28px; background: transparent; border: 2px solid rgba(255,255,255,.25);
+    border-radius: 10px; color: rgba(255,255,255,.85); font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: border-color .15s, color .15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-hero-ghost:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+  .hero-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.12); padding-top: 40px; }
+  .hero-stat { padding: 0 32px 0 0; border-right: 1px solid rgba(255,255,255,.12); }
+  .hero-stat:last-child { border-right: none; padding-right: 0; padding-left: 32px; }
+  .hero-stat:first-child { padding-left: 0; }
+  .hero-stat:not(:first-child) { padding-left: 32px; }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--gold); margin-bottom: 4px; }
+  .stat-label { font-size: 13.5px; color: rgba(255,255,255,.6); font-weight: 500; }
+
+  /* ── SOBRE ── */
+  .sobre { background: var(--cream); }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .sobre-text { font-size: 15px; color: #374151; line-height: 1.75; margin-bottom: 24px; }
+  .sobre-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sobre-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .sobre-card-icon { font-size: 22px; margin-bottom: 8px; }
+  .sobre-card-title { font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .sobre-card-text { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+  .category-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .cat-tag { padding: 5px 13px; background: rgba(13,27,62,.07); border-radius: 20px; font-size: 12.5px; font-weight: 600; color: var(--navy); }
+
+  /* ── COMO FUNCIONA ── */
+  .como { background: #fff; }
+  .como-subtitle { font-size: 15px; color: var(--text-secondary); margin-bottom: 48px; }
+  .steps-wrap { position: relative; }
+  .steps-connector {
+    position: absolute; top: 30px; left: calc(12.5% + 24px); right: calc(12.5% + 24px);
+    height: 2px; background: repeating-linear-gradient(to right, var(--gold) 0, var(--gold) 12px, transparent 12px, transparent 20px);
+    z-index: 0;
+  }
+  .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; position: relative; z-index: 1; }
+  .step-card { background: var(--cream); border-radius: 14px; padding: 24px 20px; text-align: center; }
+  .step-num { display: inline-block; width: 48px; height: 48px; background: var(--navy); border-radius: 50%; color: var(--gold); font-size: 14px; font-weight: 800; line-height: 48px; margin-bottom: 14px; }
+  .step-icon { font-size: 24px; margin-bottom: 8px; }
+  .step-title { font-size: 14.5px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .step-text { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+  /* ── BENEFÍCIOS ── */
+  .beneficios { background: var(--cream); }
+  .beneficios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .beneficio-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .beneficio-icon { font-size: 28px; margin-bottom: 12px; }
+  .beneficio-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .beneficio-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+  .beneficio-highlight { font-size: 12.5px; font-weight: 700; color: var(--gold); margin-top: 10px; display: block; }
+
+  /* ── PARCEIROS ── */
+  .parceiros { background: #fff; }
+  .parceiros-logos { display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; margin-bottom: 48px; }
+  .partner-logo-card { background: var(--cream); border-radius: 12px; padding: 16px 12px; text-align: center; border: 1px solid var(--border); }
+  .partner-logo-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff; margin: 0 auto 8px; }
+  .partner-logo-name { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .partner-logo-cat { font-size: 10.5px; color: var(--text-secondary); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .testimonial-card { background: var(--cream); border-radius: 14px; padding: 22px; }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .testimonial-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-secondary); }
+  .testimonial-text { font-size: 13.5px; color: #374151; line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+  .testimonial-metric { display: inline-block; padding: 5px 12px; background: var(--navy); border-radius: 20px; font-size: 12px; font-weight: 700; color: var(--gold); }
+
+  /* ── CTA ── */
+  .cta-section { background: var(--navy); padding: 80px 40px; position: relative; overflow: hidden; }
+  .cta-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(245,184,0,.04) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
+  .cta-inner { max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .cta-title { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 14px; line-height: 1.2; }
+  .cta-subtitle { font-size: 16px; color: rgba(255,255,255,.65); margin-bottom: 36px; line-height: 1.6; }
+  .cta-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto 16px; }
+  .cta-input {
+    flex: 1; padding: 13px 16px; background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2); border-radius: 10px;
+    color: #fff; font-size: 14px; font-family: inherit; outline: none;
+    transition: border-color .15s;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,.45); }
+  .cta-input:focus { border-color: var(--gold); }
+  .btn-cta-submit {
+    padding: 13px 22px; background: var(--gold); border: none; border-radius: 10px;
+    color: var(--navy); font-size: 14px; font-weight: 800; cursor: pointer;
+    font-family: inherit; white-space: nowrap; transition: opacity .15s;
+  }
+  .btn-cta-submit:hover { opacity: .88; }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,.4); }
+  .cta-success { display: none; text-align: center; }
+  .cta-success-icon { font-size: 40px; margin-bottom: 12px; }
+  .cta-success-text { font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+  .cta-success-sub { font-size: 14px; color: rgba(255,255,255,.65); }
+
+  /* ── FOOTER ── */
+  .footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,.08); padding: 32px 40px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon { width: 28px; height: 28px; background: var(--gold); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--navy); }
+  .footer-logo-text { font-size: 13px; font-weight: 700; color: #fff; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-link { font-size: 13px; color: rgba(255,255,255,.5); transition: color .15s; }
+  .footer-link:hover { color: rgba(255,255,255,.85); }
+  .footer-copy { font-size: 12.5px; color: rgba(255,255,255,.35); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-stats { grid-template-columns: repeat(2,1fr); }
+    .sobre-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2,1fr); }
+    .steps-connector { display: none; }
+    .beneficios-grid { grid-template-columns: repeat(2,1fr); }
+    .parceiros-logos { grid-template-columns: repeat(3,1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .navbar { padding: 0 20px; }
+    .hero { padding: 60px 20px; }
+    .hero-title { font-size: 36px; }
+    .section { padding: 56px 20px; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .beneficios-grid { grid-template-columns: 1fr; }
+    .parceiros-logos { grid-template-columns: repeat(2,1fr); }
+    .cta-form { flex-direction: column; }
+    .hero-stats { grid-template-columns: repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="store.html" class="nav-logo">
+    <div class="nav-logo-icon">E</div>
+    <div class="nav-logo-text">Eduzz <span>/ Store</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#sobre" class="nav-link">Sobre</a>
+    <a href="#como" class="nav-link">Como funciona</a>
+    <a href="#beneficios" class="nav-link">Benefícios</a>
+    <a href="#parceiros" class="nav-link">Parceiros</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <a href="store.html" class="btn-store">Ver Store</a>
+  <a href="#cta" class="btn-nav-builder" style="margin-left:12px;">Sou Builder →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">✦ Programa de Builders</div>
+    <h1 class="hero-title">A maior vitrine de soluções para o <span class="gold">mercado digital</span></h1>
+    <p class="hero-subtitle">Distribua seu app ou integração para mais de 10.000 infoprodutores na maior plataforma de educação digital do Brasil e da LATAM.</p>
+    <div class="hero-ctas">
+      <button class="btn-hero-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Começar agora — é grátis</button>
+      <a href="store.html" class="btn-hero-ghost">Explorar a Store ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">10k+</div>
+        <div class="stat-label">Empresas ativas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">21.100</div>
+        <div class="stat-label">Instalações</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">6.683</div>
+        <div class="stat-label">Dores relatadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">4.6★</div>
+        <div class="stat-label">Avaliação média</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section sobre" id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div>
+        <div class="section-eyebrow" style="color:var(--navy);opacity:.5;">Sobre a plataforma</div>
+        <h2 class="section-title" style="font-size:32px;">O ecossistema certo para sua solução crescer</h2>
+        <p class="sobre-text">A Eduzz Store conecta desenvolvedores e builders ao maior ecossistema de infoprodutores do Brasil. Publique sua solução e acesse uma base de clientes qualificados que já usam a plataforma Eduzz para vender seus produtos digitais.</p>
+        <p class="sobre-text" style="margin-bottom:20px;">Você desenvolve, publica e a gente cuida de toda a infraestrutura de billing, autenticação e suporte base.</p>
+        <div class="category-tags">
+          <span class="cat-tag">✅ Certificados</span>
+          <span class="cat-tag">💼 CRM</span>
+          <span class="cat-tag">🎓 Área de Membros</span>
+          <span class="cat-tag">⚡ Automação</span>
+          <span class="cat-tag">💳 Pagamentos</span>
+          <span class="cat-tag">📊 Analytics</span>
+        </div>
+      </div>
+      <div class="sobre-cards">
+        <div class="sobre-card">
+          <div class="sobre-card-icon">🗓️</div>
+          <div class="sobre-card-title">Desde 2014</div>
+          <div class="sobre-card-text">Mais de uma década conectando criadores e compradores no digital.</div>
+        </div>
+        <div class="sobre-card">
+          <div class="sobre-card-icon">🌎</div>
+          <div class="sobre-card-title">Brasil + LATAM</div>
+          <div class="sobre-card-text">Alcance clientes em todo o Brasil e na América Latina.</div>
+        </div>
+        <div class="sobre-card">
+          <div class="sobre-card-icon">🛡️</div>
+          <div class="sobre-card-title">Apps verificados</div>
+          <div class="sobre-card-text">Processo rigoroso de verificação para segurança dos usuários.</div>
+        </div>
+        <div class="sobre-card">
+          <div class="sobre-card-icon">💳</div>
+          <div class="sobre-card-title">Billing integrado</div>
+          <div class="sobre-card-text">Cobrança e repasses automatizados pela infraestrutura Eduzz.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section como" id="como">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color:var(--text-secondary);">Processo</div>
+    <h2 class="section-title" style="font-size:32px;">Como funciona</h2>
+    <p class="como-subtitle">Em 4 passos simples você passa de ideia a solução publicada para milhares de infoprodutores.</p>
+    <div class="steps-wrap">
+      <div class="steps-connector"></div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔑</div>
+          <div class="step-title">Crie sua conta de Builder</div>
+          <div class="step-text">Cadastre-se gratuitamente e acesse o painel de desenvolvedor com todas as ferramentas.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">⚡</div>
+          <div class="step-title">Desenvolva sua solução</div>
+          <div class="step-text">Use nossa API e SDKs para construir seu app com a integração nativa Eduzz.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">📦</div>
+          <div class="step-title">Publique na Store</div>
+          <div class="step-text">Envie para revisão, defina seu modelo de negócio e vá ao ar para toda a base Eduzz.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">🚀</div>
+          <div class="step-title">Cresça com a plataforma</div>
+          <div class="step-text">Acompanhe métricas, colete avaliações e escale sua receita com o Programa de Partners.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="section beneficios" id="beneficios">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color:var(--text-secondary);">Por que publicar aqui</div>
+    <h2 class="section-title" style="font-size:32px;">Benefícios exclusivos para Builders</h2>
+    <div style="margin-bottom:40px;"></div>
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🏪</div>
+        <div class="beneficio-title">Vitrine de milhares</div>
+        <div class="beneficio-text">Acesso direto a mais de 10.000 infoprodutores ativos que buscam soluções para seu negócio digital.</div>
+        <span class="beneficio-highlight">10.000+ potenciais clientes</span>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🤝</div>
+        <div class="beneficio-title">Programa de Partners</div>
+        <div class="beneficio-text">Sellers indicando sua solução, revenue share e benefícios exclusivos para builders certificados.</div>
+        <span class="beneficio-highlight">Revenue share + sellers</span>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">📊</div>
+        <div class="beneficio-title">Analytics em tempo real</div>
+        <div class="beneficio-text">Painel dedicado com métricas de instalações, conversão, churn e receita recorrente do seu app.</div>
+        <span class="beneficio-highlight">Painel dedicado</span>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🔗</div>
+        <div class="beneficio-title">API de nível enterprise</div>
+        <div class="beneficio-text">Acesso completo à API Eduzz com suporte a Webhooks, OAuth2 e integração com todas as features da plataforma.</div>
+        <span class="beneficio-highlight">Webhooks + OAuth2</span>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">💡</div>
+        <div class="beneficio-title">Dores do mercado</div>
+        <div class="beneficio-text">Acesso às 6.683 dores reportadas pelos usuários — um mapa de oportunidades real para construir o próximo app de sucesso.</div>
+        <span class="beneficio-highlight">6.683 oportunidades mapeadas</span>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">⭐</div>
+        <div class="beneficio-title">Avaliações verificadas</div>
+        <div class="beneficio-text">Sistema de avaliações com usuários reais e verificados. Construa sua reputação e ganhe o selo de Builder certificado.</div>
+        <span class="beneficio-highlight">Reputação verificada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCEIROS -->
+<section class="section parceiros" id="parceiros">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color:var(--text-secondary);">Quem já está aqui</div>
+    <h2 class="section-title" style="font-size:32px;">Builders que já crescem com a Eduzz Store</h2>
+    <div style="margin-bottom:36px;"></div>
+    <div class="parceiros-logos">
+      <div class="partner-logo-card">
+        <div class="partner-logo-icon" style="background:#25D366;">WF</div>
+        <div class="partner-logo-name">WhatsFlow</div>
+        <div class="partner-logo-cat">CRM & Automação</div>
+      </div>
+      <div class="partner-logo-card">
+        <div class="partner-logo-icon" style="background:#0057FF;">CL</div>
+        <div class="partner-logo-name">Certiflink</div>
+        <div class="partner-logo-cat">Certificados</div>
+      </div>
+      <div class="partner-logo-card">
+        <div class="partner-logo-icon" style="background:#FF6B35;">NT</div>
+        <div class="partner-logo-name">Nutror</div>
+        <div class="partner-logo-cat">Área de Membros</div>
+      </div>
+      <div class="partner-logo-card">
+        <div class="partner-logo-icon" style="background:var(--navy);border:2px solid var(--gold);">SV</div>
+        <div class="partner-logo-name">SafeVideo</div>
+        <div class="partner-logo-cat">Proteção de Vídeo</div>
+      </div>
+      <div class="partner-logo-card">
+        <div class="partner-logo-icon" style="background:#7C3AED;">UT</div>
+        <div class="partner-logo-name">Umbler Talks</div>
+        <div class="partner-logo-cat">Atendimento</div>
+      </div>
+      <div class="partner-logo-card">
+        <div class="partner-logo-icon" style="background:#059669;">SN</div>
+        <div class="partner-logo-name">Sua Nota</div>
+        <div class="partner-logo-cat">Fiscal & NF-e</div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#25D366;">FM</div>
+          <div>
+            <div class="testimonial-name">Felipe Matos</div>
+            <div class="testimonial-role">CEO · WhatsFlow</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"Em 3 meses chegamos a 1.400 instalações ativas. A base da Eduzz é muito qualificada e a conversão de trials é absurda comparada a outros canais."</p>
+        <span class="testimonial-metric">1.400 instalações</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#0057FF;">LB</div>
+          <div>
+            <div class="testimonial-name">Lucas Brandão</div>
+            <div class="testimonial-role">Fundador · Certiflink</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"O Programa de Partners é game changer. Temos sellers indicando o Certiflink e geramos R$8k/mês só com essa receita extra. Recomendo demais."</p>
+        <span class="testimonial-metric">R$8k/mês</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FF6B35;">AR</div>
+          <div>
+            <div class="testimonial-name">Ana Rodrigues</div>
+            <div class="testimonial-role">CTO · Nutror</div>
+          </div>
+        </div>
+        <p class="testimonial-text">"A API é a mais bem documentada que já integrei. Fizemos nosso MVP em 2 semanas com toda a autenticação e billing funcionando nativamente."</p>
+        <span class="testimonial-metric">MVP em 2 semanas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="cta-dots"></div>
+  <div class="cta-inner">
+    <h2 class="cta-title">Pronto para distribuir sua solução para 10.000+ empresas?</h2>
+    <p class="cta-subtitle">Cadastre seu email e receba o acesso antecipado ao programa de Builders da Eduzz Store.</p>
+
+    <div id="ctaForm">
+      <div class="cta-form">
+        <input class="cta-input" type="email" id="ctaEmail" placeholder="seu@email.com">
+        <button class="btn-cta-submit" onclick="submitCta()">Quero ser Builder →</button>
+      </div>
+      <div class="cta-note">✓ Gratuito para começar · ✓ Sem cartão de crédito · ✓ Suporte dedicado</div>
+    </div>
+
+    <div class="cta-success" id="ctaSuccess">
+      <div class="cta-success-icon">🎉</div>
+      <div class="cta-success-text">Você está na lista!</div>
+      <div class="cta-success-sub">Entraremos em contato em breve com o seu acesso ao programa de Builders.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-icon">E</div>
+      <div class="footer-logo-text">Eduzz Store</div>
+    </div>
+    <div class="footer-links">
+      <a href="store.html" class="footer-link">Marketplace</a>
+      <a href="become-partner.html" class="footer-link">Builders</a>
+      <a href="#" class="footer-link">Documentação</a>
+      <a href="#" class="footer-link">Termos</a>
+      <a href="#" class="footer-link">Privacidade</a>
+    </div>
+    <div class="footer-copy">© 2024 Eduzz. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<script>
+function submitCta() {
+  const email = document.getElementById('ctaEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('ctaEmail').style.borderColor = '#EF4444';
+    document.getElementById('ctaEmail').focus();
+    return;
+  }
+  document.getElementById('ctaForm').style.display = 'none';
+  document.getElementById('ctaSuccess').style.display = 'block';
+}
+
+// Allow Enter key to submit
+document.getElementById('ctaEmail').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') submitCta();
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const id = this.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

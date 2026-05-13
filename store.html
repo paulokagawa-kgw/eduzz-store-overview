@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduzz Store — Marketplace de Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0D1B3E;
+    --gold: #F5B800;
+    --cream: #F0EDE8;
+    --border: rgba(13,27,62,.08);
+    --text-secondary: #6B7280;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--navy); display: flex; height: 100vh; overflow: hidden; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 224px; min-width: 224px; background: var(--navy); color: #fff;
+    display: flex; flex-direction: column; height: 100vh; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+  }
+  .sidebar-logo {
+    display: flex; align-items: center; gap: 10px; padding: 20px 16px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .logo-icon {
+    width: 32px; height: 32px; background: var(--gold); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: var(--navy); flex-shrink: 0;
+  }
+  .logo-text { font-size: 13px; font-weight: 600; line-height: 1.3; opacity: .9; }
+  .logo-text span { display: block; font-weight: 400; font-size: 11px; opacity: .6; margin-top: 1px; }
+
+  .sidebar-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .1em;
+    color: rgba(255,255,255,.4); padding: 16px 16px 6px; text-transform: uppercase;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 16px; font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,.72); cursor: pointer; border-radius: 0;
+    transition: background .15s, color .15s; position: relative;
+    text-decoration: none;
+  }
+  .nav-item:hover { background: rgba(255,255,255,.07); color: #fff; }
+  .nav-item.active { color: #fff; }
+  .nav-item.active::before {
+    content: ''; width: 6px; height: 6px; background: var(--gold);
+    border-radius: 50%; flex-shrink: 0;
+  }
+  .nav-item:not(.active)::before { content: ''; width: 6px; flex-shrink: 0; }
+
+  .installed-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 16px; font-size: 12px; color: rgba(255,255,255,.6);
+    cursor: pointer;
+  }
+  .installed-item:hover { color: rgba(255,255,255,.9); }
+  .installed-badge {
+    width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: rgba(255,255,255,.8); flex-shrink: 0;
+  }
+
+  .sidebar-footer { margin-top: auto; padding: 12px; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 8px; }
+  .btn-report {
+    width: 100%; padding: 8px 12px; background: transparent;
+    border: 1px solid rgba(255,255,255,.2); border-radius: 8px;
+    color: rgba(255,255,255,.7); font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: all .15s; text-align: center;
+  }
+  .btn-report:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+  .btn-builder {
+    width: 100%; padding: 8px 12px; background: var(--gold);
+    border: none; border-radius: 8px; color: var(--navy); font-size: 12px;
+    font-weight: 700; cursor: pointer; transition: opacity .15s; text-align: center;
+    text-decoration: none; display: block;
+  }
+  .btn-builder:hover { opacity: .88; }
+  .sidebar-user {
+    display: flex; align-items: center; gap: 8px; padding: 4px 0;
+  }
+  .user-avatar {
+    width: 28px; height: 28px; background: rgba(245,184,0,.3); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--gold); flex-shrink: 0;
+  }
+  .user-info { font-size: 11.5px; color: rgba(255,255,255,.7); line-height: 1.4; }
+  .user-info strong { display: block; color: rgba(255,255,255,.9); font-weight: 600; }
+
+  /* ── MAIN AREA ── */
+  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+  .topbar {
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+    flex-shrink: 0;
+  }
+  .search-wrap {
+    flex: 1; position: relative; max-width: 440px;
+  }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 15px; pointer-events: none; }
+  .search-input {
+    width: 100%; padding: 9px 12px 9px 36px; border: 1px solid var(--border);
+    border-radius: 10px; background: #fff; font-size: 13.5px; color: var(--navy);
+    outline: none; font-family: inherit; transition: border-color .15s;
+  }
+  .search-input:focus { border-color: rgba(13,27,62,.25); }
+  .search-input::placeholder { color: var(--text-secondary); }
+  .topbar-count { margin-left: auto; font-size: 13px; color: var(--text-secondary); white-space: nowrap; }
+
+  .content { flex: 1; overflow-y: auto; padding: 24px; }
+
+  /* ── HERO CAROUSEL ── */
+  .hero-carousel {
+    background: var(--navy); border-radius: 16px; height: 320px;
+    position: relative; overflow: hidden; margin-bottom: 32px;
+  }
+  .carousel-bg-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(245,184,0,.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .carousel-bg-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13,27,62,.9) 0%, rgba(0,0,0,.7) 100%);
+  }
+  .carousel-stage {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .carousel-card {
+    position: absolute; width: 260px; border-radius: 14px; overflow: hidden;
+    background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    transition: transform .4s ease, opacity .4s ease, z-index 0s;
+    cursor: pointer;
+  }
+  .carousel-card[data-pos="0"] { transform: translateX(0) scale(1); opacity: 1; z-index: 30; }
+  .carousel-card[data-pos="1"] { transform: translateX(44%) scale(.82); opacity: .72; z-index: 20; }
+  .carousel-card[data-pos="-1"] { transform: translateX(-44%) scale(.82); opacity: .72; z-index: 20; }
+  .carousel-card[data-pos="2"] { transform: translateX(78%) scale(.64); opacity: .38; z-index: 10; }
+  .carousel-card[data-pos="-2"] { transform: translateX(-78%) scale(.64); opacity: .38; z-index: 10; }
+
+  .carousel-card-screen {
+    height: 160px; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: rgba(255,255,255,.5); font-weight: 500; letter-spacing: .05em;
+  }
+  .carousel-card-body { padding: 10px 12px 0; }
+  .carousel-card-name { font-size: 12.5px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .carousel-card-builder { font-size: 11px; color: var(--text-secondary); }
+  .carousel-card-footer {
+    margin-top: 8px; padding: 8px 12px; background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .carousel-card-meta { font-size: 10.5px; color: rgba(255,255,255,.7); }
+  .carousel-card-btn {
+    padding: 4px 10px; background: var(--gold); border: none; border-radius: 6px;
+    font-size: 10.5px; font-weight: 700; color: var(--navy); cursor: pointer;
+    font-family: inherit;
+  }
+
+  .carousel-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 36px; height: 36px; background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 50; color: #fff; font-size: 16px;
+    transition: background .15s; backdrop-filter: blur(4px);
+    user-select: none;
+  }
+  .carousel-arrow:hover { background: rgba(255,255,255,.28); }
+  .carousel-arrow-left { left: 16px; }
+  .carousel-arrow-right { right: 16px; }
+
+  .carousel-dots {
+    position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px; z-index: 50;
+  }
+  .carousel-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.35);
+    cursor: pointer; transition: background .2s, width .2s;
+  }
+  .carousel-dot.active { background: var(--gold); width: 20px; border-radius: 4px; }
+
+  /* ── SECTIONS ── */
+  .section-header { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+  .section-title { font-size: 16px; font-weight: 700; color: var(--navy); }
+  .section-count { font-size: 12.5px; color: var(--text-secondary); }
+
+  .scroll-row { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+  .scroll-row::-webkit-scrollbar { display: none; }
+
+  .mini-card {
+    width: 192px; min-width: 192px; background: #fff; border-radius: 12px;
+    border: 1px solid var(--border); overflow: hidden; cursor: pointer;
+    transition: box-shadow .15s, transform .15s; flex-shrink: 0;
+    text-decoration: none; display: block; color: inherit;
+  }
+  .mini-card:hover { box-shadow: 0 4px 16px rgba(13,27,62,.1); transform: translateY(-2px); }
+  .mini-card-thumb { height: 96px; display: flex; align-items: center; justify-content: center; }
+  .app-logo-badge {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; color: #fff;
+  }
+  .mini-card-body { padding: 10px 12px 12px; }
+  .mini-card-name { font-size: 12.5px; font-weight: 700; color: var(--navy); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mini-card-builder { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mini-card-bottom { display: flex; align-items: center; justify-content: space-between; }
+  .mini-card-rating { font-size: 11px; color: var(--text-secondary); }
+  .mini-card-rating span { color: #F59E0B; }
+  .badge {
+    font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px;
+  }
+  .badge-free { background: #D1FAE5; color: #065F46; }
+  .badge-freemium { background: #EDE9FE; color: #5B21B6; }
+  .badge-paid { background: #FEF3C7; color: #92400E; }
+  .badge-new { background: var(--gold); color: var(--navy); }
+
+  /* ── ALL APPS GRID ── */
+  .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 900px) { .apps-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .apps-grid { grid-template-columns: 1fr; } }
+
+  .app-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px; display: flex; gap: 12px; cursor: pointer;
+    transition: box-shadow .15s, transform .15s; text-decoration: none; color: inherit;
+  }
+  .app-card:hover { box-shadow: 0 4px 16px rgba(13,27,62,.1); transform: translateY(-1px); }
+  .app-card-logo {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .app-card-info { flex: 1; min-width: 0; }
+  .app-card-name { font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 1px; }
+  .app-card-builder { font-size: 11px; color: var(--text-secondary); margin-bottom: 5px; }
+  .app-card-tagline { font-size: 12px; color: #374151; line-height: 1.45; margin-bottom: 7px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .app-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .app-card-rating { font-size: 11.5px; color: var(--text-secondary); }
+  .app-card-rating span { color: #F59E0B; }
+  .app-card-installs { font-size: 11px; color: var(--text-secondary); }
+
+  /* ── CTA BUILDER ── */
+  .cta-builder {
+    margin-top: 32px; background: var(--navy); border-radius: 16px;
+    padding: 32px; text-align: center; color: #fff;
+    background-image: radial-gradient(circle at 20% 50%, rgba(245,184,0,.08) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 50%, rgba(245,184,0,.05) 0%, transparent 60%);
+  }
+  .cta-builder-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .cta-builder h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+  .cta-builder p { font-size: 14px; color: rgba(255,255,255,.7); max-width: 480px; margin: 0 auto 20px; line-height: 1.6; }
+  .btn-cta-builder {
+    display: inline-block; padding: 11px 24px; background: var(--gold);
+    border: none; border-radius: 10px; font-size: 14px; font-weight: 700;
+    color: var(--navy); cursor: pointer; text-decoration: none;
+    transition: opacity .15s;
+  }
+  .btn-cta-builder:hover { opacity: .88; }
+
+  /* section spacing */
+  .section { margin-bottom: 32px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">E</div>
+    <div class="logo-text">Eduzz <span>Store</span></div>
+  </div>
+
+  <div class="sidebar-section-label">Categorias</div>
+  <a href="store.html" class="nav-item active">Início</a>
+  <a href="#" class="nav-item">WhatsApp</a>
+  <a href="#" class="nav-item">Checkout</a>
+  <a href="#" class="nav-item">CRM</a>
+  <a href="#" class="nav-item">Email</a>
+  <a href="#" class="nav-item">Analytics</a>
+  <a href="#" class="nav-item">Financeiro</a>
+  <a href="#" class="nav-item">Afiliados</a>
+  <a href="#" class="nav-item">Área de Membros</a>
+  <a href="#" class="nav-item">Suporte</a>
+
+  <div class="sidebar-section-label" style="margin-top:8px;">Instalados</div>
+  <div class="installed-item">
+    <div class="installed-badge" style="background:#25D366;">WA</div>
+    <span>WhatsApp Checkout Pro</span>
+  </div>
+  <div class="installed-item">
+    <div class="installed-badge" style="background:#1D9E75;">CR</div>
+    <span>CRM Eduzz Connect</span>
+  </div>
+  <div class="installed-item">
+    <div class="installed-badge" style="background:#7C3AED;">UM</div>
+    <span>UpsellMax</span>
+  </div>
+  <div class="installed-item">
+    <div class="installed-badge" style="background:#2563EB;">EF</div>
+    <span>EmailFlow AI</span>
+  </div>
+
+  <div class="sidebar-footer">
+    <button class="btn-report">✦ Reportar uma dor</button>
+    <a href="become-partner.html" class="btn-builder">Sou Builder →</a>
+    <div class="sidebar-user">
+      <div class="user-avatar">U</div>
+      <div class="user-info">
+        <strong>Usuário</strong>
+        Plano Gratuito
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<div class="main">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" placeholder="Buscar apps, integrações...">
+    </div>
+    <div class="topbar-count">10 apps disponíveis</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- HERO CAROUSEL -->
+    <div class="hero-carousel">
+      <div class="carousel-bg-dots"></div>
+      <div class="carousel-bg-overlay"></div>
+
+      <div class="carousel-stage" id="carouselStage"></div>
+
+      <div class="carousel-arrow carousel-arrow-left" id="carouselPrev">&#8249;</div>
+      <div class="carousel-arrow carousel-arrow-right" id="carouselNext">&#8250;</div>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+
+    <!-- EM ALTA -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">🔥 Em alta</span>
+        <span class="section-count">5 apps</span>
+      </div>
+      <div class="scroll-row" id="hotRow"></div>
+    </div>
+
+    <!-- NOVIDADES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">✨ Novidades</span>
+        <span class="section-count">2 apps</span>
+      </div>
+      <div class="scroll-row" id="newRow"></div>
+    </div>
+
+    <!-- TODOS OS APPS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Todos os apps</span>
+        <span class="section-count">10 apps</span>
+      </div>
+      <div class="apps-grid" id="appsGrid"></div>
+    </div>
+
+    <!-- CTA BUILDER -->
+    <div class="cta-builder">
+      <div class="cta-builder-eyebrow">Para Builders</div>
+      <h2>Publique sua solução na Store</h2>
+      <p>Conecte-se a 10.000+ infoprodutores e escale sua receita distribuindo seu app para o maior ecossistema de educação digital do Brasil.</p>
+      <a href="become-partner.html" class="btn-cta-builder">Quero ser Builder →</a>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+const apps = [
+  { id:'wa', initials:'WA', color:'#25D366', name:'WhatsApp Checkout Pro', builder:'AppLaunch Studio', tagline:'Recupere até 30% dos carrinhos abandonados com IA + WhatsApp', rating:4.8, installs:4200, price:'freemium', isNew:false },
+  { id:'um', initials:'UM', color:'#7C3AED', name:'UpsellMax', builder:'ConvertiFlow', tagline:'Aumente o ticket médio com order bumps e upsells inteligentes', rating:4.7, installs:3890, price:'paid', isNew:false },
+  { id:'ef', initials:'EF', color:'#2563EB', name:'EmailFlow AI', builder:'MailBridge', tagline:'Automação de email com segmentação por comportamento de compra', rating:4.3, installs:2150, price:'freemium', isNew:false },
+  { id:'ap', initials:'AP', color:'#0D1B3E', name:'AfiliadosPro', builder:'GrowPartners', tagline:'Gerencie sua rede de afiliados com painel completo e relatórios', rating:4.6, installs:1980, price:'paid', isNew:false },
+  { id:'mh', initials:'MH', color:'#F59E0B', name:'MétricasHub', builder:'DataVizBR', tagline:'Dashboard unificado de métricas para todo o ecossistema Eduzz', rating:4.8, installs:1540, price:'paid', isNew:false },
+  { id:'cr', initials:'CR', color:'#1D9E75', name:'CRM Eduzz Connect', builder:'IntegraLabs', tagline:'CRM gratuito integrado nativamente com vendas e leads Eduzz', rating:4.5, installs:3120, price:'free', isNew:false },
+  { id:'ob', initials:'OB', color:'#EF4444', name:'Order Bump Pro', builder:'ConversionKit', tagline:'Adicione order bumps de alta conversão em qualquer checkout', rating:4.4, installs:1320, price:'paid', isNew:false },
+  { id:'cs', initials:'CS', color:'#6366F1', name:'CheckoutShield', builder:'SafeCommerce', tagline:'Proteção antifraude em tempo real para o checkout Eduzz', rating:4.7, installs:987, price:'paid', isNew:false },
+  { id:'me', initials:'ME', color:'#F97316', name:'MembrosEngage', builder:'EduTech Labs', tagline:'Gamificação e engajamento para área de membros', rating:4.4, installs:234, price:'freemium', isNew:true },
+  { id:'ai', initials:'AI', color:'#14B8A6', name:'SupportAI', builder:'HelpDesk AI', tagline:'Atendimento automatizado com IA treinada no seu produto', rating:4.5, installs:156, price:'freemium', isNew:true },
+];
+
+function priceBadge(p) {
+  if(p==='free') return '<span class="badge badge-free">Gratuito</span>';
+  if(p==='freemium') return '<span class="badge badge-freemium">Grátis+</span>';
+  return '<span class="badge badge-paid">Pago</span>';
+}
+function stars(r) { return '★'+r.toFixed(1); }
+function fmtInstalls(n){ return n>=1000?(n/1000).toFixed(1).replace('.0','')+'k':n; }
+
+// ── CAROUSEL ──
+const carouselApps = [apps[0],apps[1],apps[2],apps[3],apps[4]];
+let activeIdx = 0;
+
+const screenColors = ['#1A3A2E','#1E1040','#0D1F5C','#0D1B3E','#4A2D00'];
+
+function posForIndex(i) {
+  let d = i - activeIdx;
+  const n = carouselApps.length;
+  if(d > Math.floor(n/2)) d -= n;
+  if(d < -Math.floor(n/2)) d += n;
+  return d;
+}
+
+function buildCarousel() {
+  const stage = document.getElementById('carouselStage');
+  stage.innerHTML = '';
+  carouselApps.forEach((app, i) => {
+    const pos = posForIndex(i);
+    if(Math.abs(pos) > 2) return;
+    const card = document.createElement('div');
+    card.className = 'carousel-card';
+    card.dataset.pos = pos;
+    card.dataset.idx = i;
+    card.innerHTML = `
+      <div class="carousel-card-screen" style="background:${screenColors[i]};">
+        <div class="app-logo-badge" style="background:${app.color};font-size:18px;width:48px;height:48px;border-radius:12px;">${app.initials}</div>
+      </div>
+      <div class="carousel-card-body">
+        <div class="carousel-card-name">${app.name}</div>
+        <div class="carousel-card-builder">${app.builder}</div>
+      </div>
+      <div class="carousel-card-footer">
+        <span class="carousel-card-meta">★${app.rating} · ${fmtInstalls(app.installs)} installs</span>
+        <button class="carousel-card-btn" onclick="window.location.href='store-app.html'">Ver planos →</button>
+      </div>
+    `;
+    if(pos !== 0) card.addEventListener('click', ()=>{ goTo(i); });
+    stage.appendChild(card);
+  });
+
+  // dots
+  const dotsEl = document.getElementById('carouselDots');
+  dotsEl.innerHTML = '';
+  carouselApps.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className = 'carousel-dot'+(i===activeIdx?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsEl.appendChild(d);
+  });
+}
+
+function goTo(idx){
+  activeIdx = ((idx % carouselApps.length) + carouselApps.length) % carouselApps.length;
+  buildCarousel();
+}
+
+document.getElementById('carouselPrev').addEventListener('click',()=>goTo(activeIdx-1));
+document.getElementById('carouselNext').addEventListener('click',()=>goTo(activeIdx+1));
+
+buildCarousel();
+
+// ── HOT ROW ──
+const hotApps = [apps[0],apps[1],apps[2],apps[3],apps[4]];
+const hotRow = document.getElementById('hotRow');
+hotApps.forEach(app=>{
+  hotRow.innerHTML += `
+    <a href="store-app.html" class="mini-card">
+      <div class="mini-card-thumb" style="background:${app.color}22;">
+        <div class="app-logo-badge" style="background:${app.color};">${app.initials}</div>
+      </div>
+      <div class="mini-card-body">
+        <div class="mini-card-name">${app.name}</div>
+        <div class="mini-card-builder">${app.builder}</div>
+        <div class="mini-card-bottom">
+          <div class="mini-card-rating"><span>★</span>${app.rating}</div>
+          ${priceBadge(app.price)}
+        </div>
+      </div>
+    </a>`;
+});
+
+// ── NEW ROW ──
+const newApps = apps.filter(a=>a.isNew);
+const newRow = document.getElementById('newRow');
+newApps.forEach(app=>{
+  newRow.innerHTML += `
+    <a href="store-app.html" class="mini-card">
+      <div class="mini-card-thumb" style="background:${app.color}22; position:relative;">
+        <div class="app-logo-badge" style="background:${app.color};">${app.initials}</div>
+        <span class="badge badge-new" style="position:absolute;top:8px;right:8px;">Novo</span>
+      </div>
+      <div class="mini-card-body">
+        <div class="mini-card-name">${app.name}</div>
+        <div class="mini-card-builder">${app.builder}</div>
+        <div class="mini-card-bottom">
+          <div class="mini-card-rating"><span>★</span>${app.rating}</div>
+          ${priceBadge(app.price)}
+        </div>
+      </div>
+    </a>`;
+});
+
+// ── ALL APPS GRID ──
+const grid = document.getElementById('appsGrid');
+apps.forEach(app=>{
+  grid.innerHTML += `
+    <a href="store-app.html" class="app-card">
+      <div class="app-card-logo" style="background:${app.color};">${app.initials}</div>
+      <div class="app-card-info">
+        <div class="app-card-name">${app.name}${app.isNew?'  <span class="badge badge-new" style="font-size:9px;vertical-align:middle;">Novo</span>':''}</div>
+        <div class="app-card-builder">${app.builder}</div>
+        <div class="app-card-tagline">${app.tagline}</div>
+        <div class="app-card-meta">
+          <span class="app-card-rating"><span>★</span>${app.rating}</span>
+          <span class="app-card-installs">${fmtInstalls(app.installs)} instalações</span>
+          ${priceBadge(app.price)}
+        </div>
+      </div>
+    </a>`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Eduzz Store Ads</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #F7F4EE; display: flex; min-height: 100vh; color: #0D1B3E; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
+    background: #0D1B3E;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 100;
+  }
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 16px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: #F5B800;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0D1B3E;
+    flex-shrink: 0;
+  }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text span:first-child { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .logo-text span:last-child { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .5px; }
+
+  .sidebar-nav { flex: 1; padding: 12px 0; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    border-radius: 0;
+    transition: background .15s, color .15s;
+    cursor: pointer;
+  }
+  .nav-item:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.85); }
+  .nav-item.active { background: rgba(245,184,0,.12); color: #F5B800; }
+  .nav-item svg { flex-shrink: 0; opacity: .7; }
+  .nav-item.active svg { opacity: 1; }
+
+  .sidebar-footer {
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .user-row { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 30px; height: 30px;
+    background: #F5B800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0D1B3E;
+    flex-shrink: 0;
+  }
+  .user-info { display: flex; flex-direction: column; }
+  .user-info span:first-child { font-size: 12px; font-weight: 600; color: #fff; }
+  .user-info span:last-child { font-size: 10px; color: rgba(255,255,255,.45); }
+  .store-link {
+    font-size: 11px;
+    color: rgba(255,255,255,.4);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color .15s;
+  }
+  .store-link:hover { color: #F5B800; }
+
+  /* MAIN */
+  .main { margin-left: 200px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+
+  .page-header {
+    background: #fff;
+    border-bottom: 1px solid rgba(13,27,62,.08);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left h1 { font-size: 20px; font-weight: 700; color: #0D1B3E; }
+  .header-left p { font-size: 13px; color: #6B7280; margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  .credits-badge {
+    background: rgba(245,184,0,.12);
+    border: 1px solid rgba(245,184,0,.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0D1B3E;
+  }
+  .btn-ghost {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    background: transparent;
+    border: 1.5px solid rgba(13,27,62,.15);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: #0D1B3E;
+    transition: border-color .2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-ghost:hover { border-color: #0D1B3E; }
+
+  .page-body { padding: 28px 32px; flex: 1; }
+
+  /* FILTERS */
+  .filters { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .filter-group { display: flex; flex-direction: column; gap: 4px; }
+  .filter-group label { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: .5px; }
+  .filter-group select {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 8px 12px;
+    border: 1.5px solid rgba(13,27,62,.12);
+    border-radius: 8px;
+    background: #fff;
+    color: #0D1B3E;
+    outline: none;
+    cursor: pointer;
+    min-width: 150px;
+  }
+  .filter-group select:focus { border-color: #0D1B3E; }
+
+  /* METRIC CARDS */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .metric-card {
+    background: #fff;
+    border: 1px solid rgba(13,27,62,.08);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .metric-label { font-size: 12px; font-weight: 500; color: #6B7280; margin-bottom: 8px; }
+  .metric-value { font-size: 26px; font-weight: 700; color: #0D1B3E; line-height: 1; margin-bottom: 8px; }
+  .metric-footer { display: flex; align-items: center; gap: 8px; }
+  .metric-delta {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 12px;
+  }
+  .delta-up { background: rgba(16,185,129,.1); color: #059669; }
+  .delta-neutral { background: rgba(107,114,128,.1); color: #6B7280; }
+  .metric-hint { font-size: 11px; color: #9CA3AF; }
+
+  /* CHARTS */
+  .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .chart-card {
+    background: #fff;
+    border: 1px solid rgba(13,27,62,.08);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .chart-title { font-size: 14px; font-weight: 600; color: #0D1B3E; margin-bottom: 20px; }
+
+  /* FUNNEL CHART */
+  .funnel-item { margin-bottom: 12px; }
+  .funnel-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .funnel-label { font-size: 12px; font-weight: 500; color: #6B7280; }
+  .funnel-value { font-size: 12px; font-weight: 600; color: #0D1B3E; }
+  .funnel-bar-bg { background: rgba(13,27,62,.06); border-radius: 4px; height: 12px; overflow: hidden; }
+  .funnel-bar-fill { height: 100%; border-radius: 4px; background: #0D1B3E; transition: width .6s; }
+  .funnel-bar-fill.gold { background: #F5B800; }
+  .funnel-bar-fill.light { background: rgba(13,27,62,.3); }
+  .funnel-bar-fill.lighter { background: rgba(13,27,62,.15); }
+
+  /* BAR CHART */
+  .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 120px; padding-bottom: 4px; }
+  .bar-col { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+  .bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 4px; }
+  .bar-month { font-size: 9px; color: #9CA3AF; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">E</div>
+    <div class="logo-text">
+      <span>Eduzz</span>
+      <span>Store Ads</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item active">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a href="campaigns.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Campanhas
+    </a>
+    <a href="analytics.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Analytics
+    </a>
+    <a href="billing.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      Billing
+    </a>
+    <a href="eligibility.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0112 0v1"/></svg>
+      Elegibilidade
+    </a>
+    <a href="opportunities.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Oportunidades
+    </a>
+    <a href="devhub.html" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      DevHub
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-row">
+      <div class="avatar">D</div>
+      <div class="user-info">
+        <span>Demo Builder</span>
+        <span>Faixa Green</span>
+      </div>
+    </div>
+    <a href="store.html" class="store-link">🏪 Eduzz Store</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="page-header">
+    <div class="header-left">
+      <h1>Dashboard</h1>
+      <p>Visão geral das suas campanhas de mídia</p>
+    </div>
+    <div class="header-right">
+      <div class="credits-badge">R$ 1.500,00 em créditos</div>
+      <button class="btn-ghost">⬇ Exportar CSV</button>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <div class="filter-group">
+        <label>Data início</label>
+        <select><option>01/04/2026</option><option>01/03/2026</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Data fim</label>
+        <select><option>13/05/2026</option><option>30/04/2026</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Campanha</label>
+        <select>
+          <option>Todas as campanhas</option>
+          <option>WhatsApp Checkout — Q2</option>
+          <option>CRM Connect — Awareness</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Formato</label>
+        <select>
+          <option>Todos os formatos</option>
+          <option>Sponsored Listing</option>
+          <option>Push Patrocinado</option>
+          <option>Email Patrocinado</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- METRICS GRID -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Receita de Mídia</div>
+        <div class="metric-value">R$ 6.037,70</div>
+        <div class="metric-footer">
+          <span class="metric-delta delta-up">▲ 12.4%</span>
+          <span class="metric-hint">vs. período anterior</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Taxa de Conversão</div>
+        <div class="metric-value">0.6%</div>
+        <div class="metric-footer">
+          <span class="metric-delta delta-up">▲ 3.1%</span>
+          <span class="metric-hint">impressão → instalação</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">CTR Médio</div>
+        <div class="metric-value">3.7%</div>
+        <div class="metric-footer">
+          <span class="metric-delta delta-up">▲ 0.5%</span>
+          <span class="metric-hint">vs. período anterior</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Instalações</div>
+        <div class="metric-value">455</div>
+        <div class="metric-footer">
+          <span class="metric-delta delta-up">▲ 8.7%</span>
+          <span class="metric-hint">vs. período anterior</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Leads no Checkout</div>
+        <div class="metric-value">230</div>
+        <div class="metric-footer">
+          <span class="metric-delta delta-neutral">— 0.0%</span>
+          <span class="metric-hint">vs. período anterior</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">CPC Médio</div>
+        <div class="metric-value">R$ 2,12</div>
+        <div class="metric-footer">
+          <span class="metric-delta delta-up">▲ 1.2%</span>
+          <span class="metric-hint">custo por clique</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-row">
+      <!-- FUNNEL -->
+      <div class="chart-card">
+        <div class="chart-title">Funil de Conversão</div>
+        <div class="funnel-item">
+          <div class="funnel-label-row">
+            <span class="funnel-label">Impressões</span>
+            <span class="funnel-value">45.2k</span>
+          </div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="funnel-item">
+          <div class="funnel-label-row">
+            <span class="funnel-label">Cliques</span>
+            <span class="funnel-value">1.8k</span>
+          </div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill light" style="width:62%"></div></div>
+        </div>
+        <div class="funnel-item">
+          <div class="funnel-label-row">
+            <span class="funnel-label">Installs</span>
+            <span class="funnel-value">310</span>
+          </div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill gold" style="width:38%"></div></div>
+        </div>
+        <div class="funnel-item">
+          <div class="funnel-label-row">
+            <span class="funnel-label">Ativações</span>
+            <span class="funnel-value">280</span>
+          </div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill lighter" style="width:22%"></div></div>
+        </div>
+      </div>
+
+      <!-- BAR CHART -->
+      <div class="chart-card">
+        <div class="chart-title">Performance no Tempo</div>
+        <div class="bar-chart" id="perfChart">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const heights = [40,55,35,70,80,60,90,65,75,50,85,95];
+  const colors = ['#0D1B3E','#F5B800','#0D1B3E','#F5B800','#0D1B3E','#F5B800','#0D1B3E','#F5B800','#0D1B3E','#F5B800','#0D1B3E','#F5B800'];
+  const chart = document.getElementById('perfChart');
+  heights.forEach((h, i) => {
+    const col = document.createElement('div');
+    col.className = 'bar-col';
+    col.innerHTML = `<div class="bar" style="height:${h}px;background:${colors[i]};"></div><span class="bar-month">${months[i]}</span>`;
+    chart.appendChild(col);
+  });
+</script>
+</body>
+</html>

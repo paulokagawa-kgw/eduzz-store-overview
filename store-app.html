@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Checkout Pro — Eduzz Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0D1B3E;
+    --gold: #F5B800;
+    --cream: #F0EDE8;
+    --border: rgba(13,27,62,.08);
+    --text-secondary: #6B7280;
+    --app-color: #25D366;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--navy); }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 0 24px; height: 56px;
+    display: flex; align-items: center; gap: 0;
+  }
+  .navbar-back {
+    display: flex; align-items: center; gap: 6px; text-decoration: none;
+    color: var(--text-secondary); font-size: 13px; font-weight: 500;
+    padding-right: 16px; border-right: 1px solid var(--border);
+    transition: color .15s; white-space: nowrap;
+  }
+  .navbar-back:hover { color: var(--navy); }
+  .navbar-breadcrumb {
+    display: flex; align-items: center; gap: 6px; padding-left: 16px;
+    font-size: 13px; color: var(--text-secondary);
+  }
+  .navbar-breadcrumb span { color: var(--navy); font-weight: 600; }
+  .navbar-spacer { flex: 1; }
+  .btn-builder-nav {
+    padding: 8px 16px; background: var(--navy); border: none; border-radius: 8px;
+    color: #fff; font-size: 13px; font-weight: 600; cursor: pointer;
+    text-decoration: none; font-family: inherit; transition: opacity .15s;
+  }
+  .btn-builder-nav:hover { opacity: .85; }
+
+  /* ── PAGE LAYOUT ── */
+  .page-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 24px 48px; }
+  .two-col { display: flex; gap: 24px; align-items: flex-start; }
+  .col-main { flex: 1; min-width: 0; }
+  .col-aside { width: 280px; min-width: 280px; position: sticky; top: 76px; }
+
+  /* ── HERO CARD ── */
+  .hero-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 20px; }
+  .screenshot-main {
+    height: 288px; background: linear-gradient(135deg, #0a1628 0%, var(--navy) 60%, #1a3a2e 100%);
+    display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+  }
+  .screenshot-main::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(37,211,102,.06) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  .screenshot-mock {
+    background: rgba(255,255,255,.07); border-radius: 12px; padding: 20px 28px;
+    text-align: center; border: 1px solid rgba(255,255,255,.1); position: relative; z-index:1;
+  }
+  .screenshot-mock-logo { font-size: 36px; margin-bottom: 10px; }
+  .screenshot-mock-label { font-size: 13px; color: rgba(255,255,255,.6); font-weight: 500; }
+  .screenshot-mock-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 4px; }
+
+  .thumb-row { display: flex; gap: 8px; padding: 12px; }
+  .thumb {
+    width: 72px; height: 48px; border-radius: 8px; cursor: pointer;
+    border: 2px solid transparent; transition: border-color .15s; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 10px; font-weight: 700; color: rgba(255,255,255,.7);
+  }
+  .thumb.active { border-color: var(--navy); }
+
+  .hero-info { padding: 16px 20px 20px; }
+  .hero-app-header { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .hero-logo {
+    width: 56px; height: 56px; border-radius: 14px; background: var(--app-color);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .hero-app-meta { flex: 1; }
+  .hero-app-name { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+  .hero-app-by { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+  .hero-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+  .badge-new { background: var(--gold); color: var(--navy); }
+  .badge-hot { background: #FEE2E2; color: #991B1B; }
+  .badge-freemium { background: #EDE9FE; color: #5B21B6; }
+  .badge-free { background: #D1FAE5; color: #065F46; }
+  .badge-paid { background: #FEF3C7; color: #92400E; }
+
+  .hero-tagline { font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px; }
+  .hero-stats { display: flex; gap: 20px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--border); }
+  .hero-stat { font-size: 13px; color: var(--text-secondary); }
+  .hero-stat strong { color: var(--navy); font-weight: 700; }
+  .hero-stat .stars { color: #F59E0B; }
+
+  /* ── TABS ── */
+  .tabs-header { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 20px; background: #fff; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid var(--border); border-bottom: none; }
+  .tab-btn {
+    padding: 12px 20px; font-size: 14px; font-weight: 500; color: var(--text-secondary);
+    background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+    font-family: inherit; transition: color .15s; white-space: nowrap;
+  }
+  .tab-btn.active { color: var(--navy); font-weight: 700; border-bottom-color: var(--navy); }
+  .tab-btn:hover:not(.active) { color: var(--navy); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .card-section { background: #fff; border: 1px solid var(--border); border-radius: 0 0 12px 12px; padding: 20px; margin-bottom: 20px; }
+
+  /* ── DESCRIPTION TAB ── */
+  .about-text { font-size: 14px; color: #374151; line-height: 1.7; margin-bottom: 20px; }
+  .meta-row { margin-bottom: 14px; }
+  .meta-label { font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: monospace; font-size: 12px; padding: 4px 10px; background: var(--cream); border-radius: 6px; color: var(--navy); border: 1px solid var(--border); }
+
+  /* ── REVIEWS TAB ── */
+  .rating-overview { display: flex; gap: 24px; align-items: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .rating-big { text-align: center; flex-shrink: 0; }
+  .rating-big .num { font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; }
+  .rating-big .stars { font-size: 18px; color: #F59E0B; margin: 4px 0; }
+  .rating-big .count { font-size: 12px; color: var(--text-secondary); }
+  .rating-bars { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .rating-bar-row { display: flex; align-items: center; gap: 8px; }
+  .rating-bar-label { font-size: 12px; color: var(--text-secondary); width: 20px; text-align: right; flex-shrink: 0; }
+  .rating-bar-track { flex: 1; height: 8px; background: var(--cream); border-radius: 4px; overflow: hidden; }
+  .rating-bar-fill { height: 100%; background: var(--gold); border-radius: 4px; }
+  .rating-bar-count { font-size: 11px; color: var(--text-secondary); width: 16px; flex-shrink: 0; }
+  .criteria-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+  .criteria-card { background: var(--cream); border-radius: 10px; padding: 12px; text-align: center; }
+  .criteria-name { font-size: 11.5px; color: var(--text-secondary); margin-bottom: 6px; }
+  .criteria-score { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .criteria-bar { height: 4px; background: rgba(13,27,62,.1); border-radius: 2px; overflow: hidden; }
+  .criteria-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+  .review-card { padding: 16px; background: var(--cream); border-radius: 10px; margin-bottom: 12px; }
+  .review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .review-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .review-name { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+  .review-stars { font-size: 13px; color: #F59E0B; }
+  .review-title { font-size: 13.5px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+  .review-text { font-size: 13px; color: #374151; line-height: 1.55; margin-bottom: 10px; }
+  .review-helpful { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; }
+  .helpful-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; cursor: pointer; font-size: 12px; font-family: inherit; transition: background .15s; }
+  .helpful-btn:hover { background: rgba(13,27,62,.05); }
+
+  /* ── SUPPORT TAB ── */
+  .support-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .support-card { background: var(--cream); border-radius: 12px; padding: 16px; text-align: center; }
+  .support-icon { font-size: 28px; margin-bottom: 8px; }
+  .support-title { font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .support-text { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── RELATED APPS ── */
+  .related-section { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+  .related-title { font-size: 14.5px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+  .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .related-card {
+    border: 1px solid var(--border); border-radius: 10px; padding: 12px;
+    cursor: pointer; text-decoration: none; color: inherit; display: flex; gap: 10px; align-items: flex-start;
+    transition: box-shadow .15s;
+  }
+  .related-card:hover { box-shadow: 0 3px 12px rgba(13,27,62,.1); }
+  .related-logo { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .related-info { min-width: 0; }
+  .related-name { font-size: 12.5px; font-weight: 700; color: var(--navy); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .related-builder { font-size: 11px; color: var(--text-secondary); }
+
+  .builder-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+
+  /* ── ASIDE CARDS ── */
+  .aside-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+  .aside-card-title { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
+  .install-price { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+  .install-cancel { font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; }
+  .btn-install {
+    width: 100%; padding: 13px; background: var(--app-color); border: none; border-radius: 10px;
+    color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+    transition: opacity .15s; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .btn-install:hover { opacity: .88; }
+  .install-secure { font-size: 12px; color: var(--text-secondary); text-align: center; }
+
+  /* PLANS */
+  .plans-section { display: none; }
+  .plan-card {
+    border: 2px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 10px;
+    cursor: pointer; transition: border-color .15s;
+  }
+  .plan-card.selected { border-color: var(--app-color); background: rgba(37,211,102,.04); }
+  .plan-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px; }
+  .plan-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+  .plan-price { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .plan-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.45; }
+  .btn-confirm {
+    width: 100%; padding: 12px; background: var(--navy); border: none; border-radius: 10px;
+    color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+    transition: opacity .15s; margin-top: 12px;
+  }
+  .btn-confirm:hover { opacity: .85; }
+  .btn-back-plan {
+    width: 100%; padding: 9px; background: none; border: 1px solid var(--border); border-radius: 10px;
+    color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit;
+    margin-top: 8px; transition: border-color .15s;
+  }
+  .btn-back-plan:hover { border-color: var(--navy); color: var(--navy); }
+
+  /* SUCCESS */
+  .success-section { display: none; text-align: center; padding: 8px 0; }
+  .success-icon { font-size: 36px; margin-bottom: 10px; }
+  .success-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .success-text { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5; }
+  .btn-dashboard {
+    width: 100%; padding: 12px; background: var(--app-color); border: none; border-radius: 10px;
+    color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+  }
+
+  /* INFO CARD */
+  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { font-size: 12.5px; color: var(--text-secondary); }
+  .info-value { font-size: 12.5px; font-weight: 600; color: var(--navy); text-align: right; }
+
+  /* VERIFIED */
+  .verified-card { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+  .verified-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .verified-logo { width: 32px; height: 32px; border-radius: 8px; background: var(--app-color); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; }
+  .verified-name { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+  .verified-check { margin-left: auto; font-size: 13px; color: #16A34A; font-weight: 600; }
+  .verified-text { font-size: 12px; color: #166534; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="store.html" class="navbar-back">← Eduzz Store</a>
+  <div class="navbar-breadcrumb">
+    <span style="opacity:.5;">WhatsApp</span>
+    <span style="opacity:.4;margin:0 2px;">/</span>
+    <span>WhatsApp Checkout Pro</span>
+  </div>
+  <div class="navbar-spacer"></div>
+  <a href="become-partner.html" class="btn-builder-nav">Sou Builder →</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="two-col">
+
+    <!-- MAIN COLUMN -->
+    <div class="col-main">
+
+      <!-- HERO CARD -->
+      <div class="hero-card">
+        <div class="screenshot-main" id="screenshotMain">
+          <div class="screenshot-mock">
+            <div class="screenshot-mock-logo">💬</div>
+            <div class="screenshot-mock-label">WhatsApp Checkout Pro</div>
+            <div class="screenshot-mock-sub">Recuperação automática com IA</div>
+          </div>
+        </div>
+        <div class="thumb-row">
+          <div class="thumb active" style="background:linear-gradient(135deg,#0a1628,#1a3a2e);" data-screen="main" onclick="selectThumb(this,'main')">
+            <span style="color:rgba(255,255,255,.5);font-size:9px;">PREVIEW 1</span>
+          </div>
+          <div class="thumb" style="background:linear-gradient(135deg,#1a3a2e,#25D366);" data-screen="second" onclick="selectThumb(this,'second')">
+            <span style="color:rgba(255,255,255,.5);font-size:9px;">PREVIEW 2</span>
+          </div>
+          <div class="thumb" style="background:linear-gradient(135deg,#0D1B3E,#1a2a4a);" data-screen="third" onclick="selectThumb(this,'third')">
+            <span style="color:rgba(255,255,255,.5);font-size:9px;">PREVIEW 3</span>
+          </div>
+        </div>
+        <div class="hero-info">
+          <div class="hero-app-header">
+            <div class="hero-logo">WA</div>
+            <div class="hero-app-meta">
+              <div class="hero-app-name">WhatsApp Checkout Pro</div>
+              <div class="hero-app-by">por AppLaunch Studio</div>
+              <div class="hero-badges">
+                <span class="badge badge-new">✨ Novo</span>
+                <span class="badge badge-hot">🔥 Em alta</span>
+                <span class="badge badge-freemium">Grátis+</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-tagline">Recupere até 30% dos carrinhos abandonados usando IA + WhatsApp. Configure em 5 minutos sem código. Envie mensagens personalizadas automaticamente para leads que não finalizaram a compra.</div>
+          <div class="hero-stats">
+            <div class="hero-stat"><span class="stars">★</span> <strong>4.8</strong> (1.247 avaliações)</div>
+            <div class="hero-stat"><strong>4.200</strong> instalações</div>
+            <div class="hero-stat">A partir de <strong>R$0/mês</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="tabs-header">
+        <button class="tab-btn active" onclick="switchTab('descricao', this)">Descrição</button>
+        <button class="tab-btn" onclick="switchTab('avaliacoes', this)">Avaliações <span style="background:var(--cream);padding:2px 7px;border-radius:10px;font-size:11px;margin-left:4px;">8</span></button>
+        <button class="tab-btn" onclick="switchTab('suporte', this)">Suporte</button>
+      </div>
+
+      <!-- TAB: DESCRICAO -->
+      <div class="tab-panel active card-section" id="tab-descricao">
+        <div class="meta-row">
+          <div class="meta-label">Sobre o app</div>
+          <p class="about-text">Recupere até 30% dos carrinhos abandonados usando IA + WhatsApp. Configure em 5 minutos sem código. Envie mensagens personalizadas automaticamente para leads que não finalizaram a compra. Suporte a múltiplos produtos e checkout.<br><br>A solução integra diretamente com o checkout da Eduzz e detecta automaticamente leads que abandonaram o processo de compra. Com inteligência artificial, personaliza cada mensagem de recuperação baseada no perfil e comportamento do usuário.</p>
+        </div>
+        <div class="meta-row">
+          <div class="meta-label">Tags</div>
+          <div class="tags-row">
+            <span class="tag">whatsapp</span>
+            <span class="tag">checkout</span>
+            <span class="tag">recuperação</span>
+            <span class="tag">IA</span>
+            <span class="tag">automação</span>
+            <span class="tag">notificação</span>
+          </div>
+        </div>
+        <div class="meta-row" style="margin-bottom:0;">
+          <div class="meta-label">Categoria</div>
+          <div class="tags-row">
+            <span class="tag" style="background:#D1FAE5;border-color:#A7F3D0;color:#065F46;">💬 WhatsApp</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: AVALIACOES -->
+      <div class="tab-panel card-section" id="tab-avaliacoes">
+        <div class="rating-overview">
+          <div class="rating-big">
+            <div class="num">4.8</div>
+            <div class="stars">★★★★★</div>
+            <div class="count">1.247 avaliações</div>
+          </div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span class="rating-bar-label">5</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:75%;"></div></div><span class="rating-bar-count">6</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">4</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:12%;"></div></div><span class="rating-bar-count">1</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">3</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:12%;"></div></div><span class="rating-bar-count">1</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">2</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">1</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+          </div>
+        </div>
+        <div class="criteria-grid">
+          <div class="criteria-card">
+            <div class="criteria-name">Facilidade de uso</div>
+            <div class="criteria-score">4.9</div>
+            <div class="criteria-bar"><div class="criteria-bar-fill" style="width:98%;"></div></div>
+          </div>
+          <div class="criteria-card">
+            <div class="criteria-name">Qualidade</div>
+            <div class="criteria-score">4.8</div>
+            <div class="criteria-bar"><div class="criteria-bar-fill" style="width:96%;"></div></div>
+          </div>
+          <div class="criteria-card">
+            <div class="criteria-name">Suporte</div>
+            <div class="criteria-score">4.6</div>
+            <div class="criteria-bar"><div class="criteria-bar-fill" style="width:92%;"></div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar" style="background:#25D366;">JM</div>
+            <div>
+              <div class="review-name">João Mendes</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="review-title">Triplicou minha recuperação de carrinhos</div>
+          <div class="review-text">Implementei em 10 minutos e no primeiro mês recuperei 28% dos carrinhos. ROI absurdo.</div>
+          <div class="review-helpful">Útil? <button class="helpful-btn">👍</button> <button class="helpful-btn">👎</button></div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar" style="background:#2563EB;">AC</div>
+            <div>
+              <div class="review-name">Ana Costa</div>
+              <div class="review-stars">★★★★☆</div>
+            </div>
+          </div>
+          <div class="review-title">Excelente ferramenta, suporte poderia ser melhor</div>
+          <div class="review-text">Funciona muito bem. Tive uma dúvida técnica e levou 6h pra responder.</div>
+          <div class="review-helpful">Útil? <button class="helpful-btn">👍</button> <button class="helpful-btn">👎</button></div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar" style="background:#7C3AED;">PL</div>
+            <div>
+              <div class="review-name">Pedro Lima</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="review-title">Melhor app da Store</div>
+          <div class="review-text">Indispensável para qualquer infoprodutor que use checkout Eduzz.</div>
+          <div class="review-helpful">Útil? <button class="helpful-btn">👍</button> <button class="helpful-btn">👎</button></div>
+        </div>
+      </div>
+
+      <!-- TAB: SUPORTE -->
+      <div class="tab-panel card-section" id="tab-suporte">
+        <div class="support-grid">
+          <div class="support-card">
+            <div class="support-icon">📖</div>
+            <div class="support-title">Documentação</div>
+            <div class="support-text">Guias completos de instalação, configuração e uso avançado.</div>
+          </div>
+          <div class="support-card">
+            <div class="support-icon">💬</div>
+            <div class="support-title">Suporte do builder</div>
+            <div class="support-text">Entre em contato com a equipe da AppLaunch Studio para dúvidas técnicas.</div>
+          </div>
+          <div class="support-card">
+            <div class="support-icon">🛡️</div>
+            <div class="support-title">Suporte Eduzz</div>
+            <div class="support-text">Para questões de integração, billing e conta entre em contato com a Eduzz.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELATED APPS -->
+      <div class="related-section">
+        <div class="related-title">🔗 Frequentemente usados juntos</div>
+        <div class="related-grid">
+          <a href="store-app.html" class="related-card">
+            <div class="related-logo" style="background:#7C3AED;">UM</div>
+            <div class="related-info">
+              <div class="related-name">UpsellMax</div>
+              <div class="related-builder">ConvertiFlow</div>
+            </div>
+          </a>
+          <a href="store-app.html" class="related-card">
+            <div class="related-logo" style="background:#2563EB;">EF</div>
+            <div class="related-info">
+              <div class="related-name">EmailFlow AI</div>
+              <div class="related-builder">MailBridge</div>
+            </div>
+          </a>
+          <a href="store-app.html" class="related-card">
+            <div class="related-logo" style="background:#EF4444;">OB</div>
+            <div class="related-info">
+              <div class="related-name">Order Bump Pro</div>
+              <div class="related-builder">ConversionKit</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- MORE FROM BUILDER -->
+      <div class="related-section">
+        <div class="related-title">📦 Mais de AppLaunch Studio</div>
+        <div class="builder-grid">
+          <a href="store-app.html" class="related-card">
+            <div class="related-logo" style="background:#EF4444;">OB</div>
+            <div class="related-info">
+              <div class="related-name">Order Bump Pro</div>
+              <div class="related-builder">ConversionKit</div>
+            </div>
+          </a>
+          <a href="store-app.html" class="related-card">
+            <div class="related-logo" style="background:#6366F1;">CS</div>
+            <div class="related-info">
+              <div class="related-name">CheckoutShield</div>
+              <div class="related-builder">SafeCommerce</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /col-main -->
+
+    <!-- ASIDE -->
+    <div class="col-aside">
+
+      <!-- INSTALL CARD -->
+      <div class="aside-card">
+        <!-- IDLE STATE -->
+        <div id="stateIdle">
+          <div class="install-price">A partir de R$0/mês</div>
+          <div class="install-cancel">Cancele quando quiser</div>
+          <button class="btn-install" onclick="showPlans()">⚡ Instalar grátis</button>
+          <div class="install-secure">🔒 Pagamento seguro via Eduzz</div>
+        </div>
+
+        <!-- PLANS STATE -->
+        <div class="plans-section" id="statePlans">
+          <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;">Escolha seu plano</div>
+          <div class="plan-card selected" id="plan-free" onclick="selectPlan('free')">
+            <div class="plan-header">
+              <span class="plan-name">Gratuito</span>
+              <span class="plan-price">R$0/mês</span>
+            </div>
+            <div class="plan-desc">Até 50 recuperações/mês</div>
+          </div>
+          <div class="plan-card" id="plan-starter" onclick="selectPlan('starter')">
+            <div class="plan-header">
+              <span class="plan-name">Starter</span>
+              <span class="plan-price">R$97/mês</span>
+            </div>
+            <div class="plan-desc">Até 500 recuperações/mês + relatórios</div>
+          </div>
+          <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
+            <div class="plan-header">
+              <span class="plan-name">Pro</span>
+              <span class="plan-price">R$297/mês</span>
+            </div>
+            <div class="plan-desc">Ilimitado + IA avançada + suporte prioritário</div>
+          </div>
+          <button class="btn-confirm" onclick="confirmInstall()">✓ Confirmar instalação</button>
+          <button class="btn-back-plan" onclick="showIdle()">Voltar</button>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-section" id="stateSuccess">
+          <div class="success-icon">✅</div>
+          <div class="success-title">App instalado!</div>
+          <div class="success-text">WhatsApp Checkout Pro foi adicionado ao seu painel.</div>
+          <button class="btn-install" onclick="alert('Indo para o painel...')">Ir para o painel →</button>
+        </div>
+      </div>
+
+      <!-- INFO CARD -->
+      <div class="aside-card">
+        <div class="aside-card-title">Informações</div>
+        <div class="info-row"><span class="info-label">Builder</span><span class="info-value">AppLaunch Studio</span></div>
+        <div class="info-row"><span class="info-label">Avaliação</span><span class="info-value" style="color:#F59E0B;">★ 4.8</span></div>
+        <div class="info-row"><span class="info-label">Instalações</span><span class="info-value">4.200</span></div>
+        <div class="info-row"><span class="info-label">Categoria</span><span class="info-value">💬 WhatsApp</span></div>
+        <div class="info-row"><span class="info-label">Segurança</span><span class="info-value" style="color:#16A34A;">Verificado ✅</span></div>
+      </div>
+
+      <!-- VERIFIED CARD -->
+      <div class="verified-card">
+        <div class="verified-header">
+          <div class="verified-logo">WA</div>
+          <div class="verified-name">AppLaunch Studio</div>
+          <div class="verified-check">✅ Verificado</div>
+        </div>
+        <div class="verified-text">Builder verificado pela Eduzz. Seguro para instalar em sua conta.</div>
+      </div>
+
+    </div><!-- /col-aside -->
+  </div><!-- /two-col -->
+</div><!-- /page-wrap -->
+
+<script>
+// ── TABS ──
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tabId).classList.add('active');
+}
+
+// ── SCREENSHOTS ──
+const screenshots = {
+  main: {
+    bg: 'linear-gradient(135deg, #0a1628 0%, #0D1B3E 60%, #1a3a2e 100%)',
+    icon: '💬', label: 'WhatsApp Checkout Pro', sub: 'Recuperação automática com IA'
+  },
+  second: {
+    bg: 'linear-gradient(135deg, #1a3a2e 0%, #25D366 100%)',
+    icon: '📊', label: 'Dashboard de Recuperação', sub: '28% de taxa de recuperação'
+  },
+  third: {
+    bg: 'linear-gradient(135deg, #0D1B3E 0%, #1a2a4a 100%)',
+    icon: '⚡', label: 'Configuração Rápida', sub: 'Pronto em 5 minutos'
+  }
+};
+function selectThumb(el, key) {
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const s = screenshots[key];
+  const main = document.getElementById('screenshotMain');
+  main.style.background = s.bg;
+  main.querySelector('.screenshot-mock-logo').textContent = s.icon;
+  main.querySelector('.screenshot-mock-label').textContent = s.label;
+  main.querySelector('.screenshot-mock-sub').textContent = s.sub;
+}
+
+// ── INSTALL FLOW ──
+let selectedPlan = 'free';
+function showPlans() {
+  document.getElementById('stateIdle').style.display = 'none';
+  document.getElementById('statePlans').style.display = 'block';
+  document.getElementById('stateSuccess').style.display = 'none';
+}
+function showIdle() {
+  document.getElementById('stateIdle').style.display = 'block';
+  document.getElementById('statePlans').style.display = 'none';
+  document.getElementById('stateSuccess').style.display = 'none';
+}
+function confirmInstall() {
+  document.getElementById('stateIdle').style.display = 'none';
+  document.getElementById('statePlans').style.display = 'none';
+  document.getElementById('stateSuccess').style.display = 'block';
+}
+function selectPlan(plan) {
+  selectedPlan = plan;
+  ['free','starter','pro'].forEach(p => {
+    document.getElementById('plan-'+p).classList.toggle('selected', p === plan);
+  });
+}
+</script>
+</body>
+</html>
