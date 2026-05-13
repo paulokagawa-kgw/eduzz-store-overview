@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Eduzz Store Ads Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1B3E;
+  --gold:#F5B800;
+  --cream:#F7F4EE;
+  --w:#fff;
+  --muted:#6B7280;
+  --border:rgba(13,27,62,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1f2937;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ─ NAV ─ */
+nav{
+  position:sticky;top:0;z-index:99;
+  background:rgba(13,27,62,.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav-wrap{
+  max-width:1080px;margin:0 auto;padding:0 20px;
+  height:56px;display:flex;align-items:center;gap:12px;
+}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-e{
+  width:32px;height:32px;border-radius:8px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:var(--navy);font-size:14px;flex-shrink:0;
+}
+.logo-text p:first-child{color:#fff;font-weight:800;font-size:13px;line-height:1.1}
+.logo-text p:last-child{color:var(--gold);font-size:10px;font-weight:600;line-height:1.1}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-a{
+  color:rgba(255,255,255,.45);font-size:11px;font-weight:500;
+  padding:5px 10px;border-radius:6px;transition:.15s;
+}
+.nav-a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+/* ─ HERO ─ */
+.hero{
+  background:var(--navy);padding:80px 20px 88px;
+  position:relative;overflow:hidden;
+}
+.hero-dots{
+  position:absolute;inset:0;opacity:.055;
+  background-image:radial-gradient(circle,#F5B800 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.hero-glow-l{position:absolute;top:-120px;left:-80px;width:480px;height:480px;border-radius:50%;background:rgba(245,184,0,.1);filter:blur(110px)}
+.hero-glow-r{position:absolute;bottom:-80px;right:-60px;width:360px;height:360px;border-radius:50%;background:rgba(100,160,255,.07);filter:blur(90px)}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(245,184,0,.12);border:1px solid rgba(245,184,0,.28);
+  border-radius:999px;padding:5px 16px;margin-bottom:26px;
+}
+.hero-pill span{color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.hero h1{
+  font-size:clamp(30px,5.5vw,60px);font-weight:900;color:#fff;
+  line-height:1.06;margin-bottom:20px;max-width:780px;
+}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{
+  color:rgba(255,255,255,.58);font-size:clamp(14px,2vw,17px);
+  max-width:500px;line-height:1.75;margin-bottom:36px;
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:56px}
+.btn-gold{
+  background:var(--gold);color:var(--navy);font-weight:800;
+  font-size:13px;padding:12px 26px;border-radius:10px;
+  box-shadow:0 4px 20px rgba(245,184,0,.3);transition:.15s;
+}
+.btn-gold:hover{background:#e6ad00}
+.btn-ghost{
+  color:rgba(255,255,255,.75);font-weight:600;font-size:13px;
+  padding:12px 22px;border-radius:10px;border:1px solid rgba(255,255,255,.18);
+  transition:.15s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.stats-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+  max-width:680px;
+}
+.stat-box{padding:16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.stat-box .v{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--gold);line-height:1}
+.stat-box .l{font-size:11px;font-weight:600;color:rgba(255,255,255,.8);margin-top:4px}
+.stat-box .s{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
+
+/* ─ SECTIONS ─ */
+.sec{padding:72px 20px}
+.sec.alt{background:var(--cream)}
+.wrap{max-width:1080px;margin:0 auto}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.sec-title{font-size:clamp(22px,3.5vw,36px);font-weight:900;color:var(--navy);line-height:1.18;margin-bottom:10px}
+.sec-sub{color:var(--muted);font-size:14px;line-height:1.7;max-width:460px;margin-bottom:44px}
+
+/* ─ CARDS GRID ─ */
+.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px}
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:16px;
+  padding:26px;transition:box-shadow .2s,transform .2s;
+}
+.card:hover{box-shadow:0 6px 28px rgba(13,27,62,.07);transform:translateY(-1px)}
+.card-chip{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:16px;
+}
+.chip-admin{background:rgba(13,27,62,.07);color:var(--navy)}
+.chip-store{background:rgba(245,184,0,.13);color:#8a6800;border:1px solid rgba(245,184,0,.28)}
+.card-icon{font-size:28px;margin-bottom:14px}
+.card h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.card-url{
+  display:inline-block;font-family:monospace;font-size:11px;
+  color:var(--muted);background:var(--cream);padding:3px 9px;border-radius:5px;margin-bottom:10px;
+}
+.card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.feats{list-style:none;border-top:1px solid var(--border);padding-top:14px}
+.feats li{
+  font-size:12px;color:var(--muted);padding:4px 0;
+  display:flex;align-items:flex-start;gap:8px;
+  border-bottom:1px solid var(--border);
+}
+.feats li:last-child{border-bottom:none}
+.feats li::before{content:"✓";color:var(--gold);font-weight:700;font-size:11px;margin-top:1px;flex-shrink:0}
+
+/* ─ MOCKUP SCREENS ─ */
+.screen{
+  background:#fff;border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;box-shadow:0 8px 40px rgba(13,27,62,.08);
+}
+.screen-bar{
+  background:#f0efed;padding:9px 14px;display:flex;align-items:center;gap:6px;
+  border-bottom:1px solid var(--border);
+}
+.dot-r{width:9px;height:9px;border-radius:50%;background:#ff5f57}
+.dot-y{width:9px;height:9px;border-radius:50%;background:#ffbd2e}
+.dot-g{width:9px;height:9px;border-radius:50%;background:#28c840}
+.url-bar{
+  flex:1;background:#fff;border:1px solid #e5e5e5;border-radius:5px;
+  font-family:monospace;font-size:10px;color:var(--muted);
+  padding:4px 10px;margin-left:10px;
+}
+
+/* dashboard */
+.dash-wrap{display:flex;min-height:300px}
+.dash-sb{
+  width:164px;flex-shrink:0;background:var(--navy);
+  padding:14px 10px;display:flex;flex-direction:column;gap:2px;
+}
+.sb-logo{display:flex;align-items:center;gap:7px;padding:0 5px 12px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:10px}
+.sb-logo .e{width:24px;height:24px;border-radius:6px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--navy);font-size:11px}
+.sb-item{padding:6px 8px;border-radius:6px;font-size:10px;font-weight:500;color:rgba(255,255,255,.38);display:flex;align-items:center;gap:6px}
+.sb-item.on{background:rgba(255,255,255,.09);color:#fff}
+.sb-item.on::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.dash-main{flex:1;background:#F0EDE8;padding:14px;overflow:hidden}
+.dash-h{font-size:14px;font-weight:900;color:var(--navy);margin-bottom:4px}
+.dash-sub{font-size:9px;color:var(--muted);margin-bottom:12px}
+.m-row{display:flex;gap:6px;margin-bottom:10px}
+.m-box{flex:1;background:#fff;border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+.m-box .v{font-size:13px;font-weight:900;color:var(--navy)}
+.m-box .l{font-size:8px;color:var(--muted);margin-top:1px}
+.m-box .up{font-size:8px;color:#10b981;font-weight:600;margin-top:2px}
+.bars{background:#fff;border:1px solid var(--border);border-radius:9px;padding:10px;display:flex;align-items:flex-end;gap:3px;height:80px}
+.bar{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(to top,var(--navy),rgba(13,27,62,.35));min-height:6px}
+
+/* store */
+.store-wrap{display:flex;min-height:300px}
+.store-sb{width:148px;flex-shrink:0;background:var(--navy);padding:12px 8px;display:flex;flex-direction:column;gap:2px}
+.store-main{flex:1;background:#F0EDE8;overflow:hidden}
+.s-topbar{background:rgba(240,237,232,.92);border-bottom:1px solid var(--border);padding:7px 12px;display:flex;align-items:center;gap:8px}
+.s-search{flex:1;background:#fff;border:1px solid var(--border);border-radius:999px;padding:4px 10px;font-size:9px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.s-body{padding:10px 12px}
+.fan-hero{
+  position:relative;height:100px;background:var(--navy);border-radius:8px;
+  margin-bottom:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.fan-hero .overlay{position:absolute;inset:0;background:rgba(13,27,62,.72)}
+.fan-side{position:absolute;width:130px;height:74px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:7px;top:50%;transform:translateY(-50%)}
+.fan-center{
+  position:relative;z-index:5;width:150px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  border-radius:7px;overflow:hidden;
+}
+.fan-img{height:50px;display:flex;align-items:flex-end;padding:5px;background:linear-gradient(135deg,rgba(245,184,0,.25),rgba(245,184,0,.08))}
+.fan-foot{background:rgba(13,27,62,.9);padding:4px 6px;display:flex;align-items:center;justify-content:space-between}
+.s-item{padding:5px 8px;border-radius:6px;font-size:9px;font-weight:500;color:rgba(255,255,255,.38)}
+.s-item.on{background:rgba(245,184,0,.14);color:var(--gold)}
+.apps-row{display:flex;gap:6px}
+.app-c{flex:1;background:#fff;border:1px solid var(--border);border-radius:7px;overflow:hidden}
+.app-t{height:36px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff}
+.app-b{padding:5px 6px}
+.app-n{font-size:8px;font-weight:700;color:var(--navy)}
+.app-s{font-size:7px;color:var(--muted)}
+
+/* apppage */
+.app-wrap{display:flex;min-height:280px}
+.app-main{flex:1;background:var(--cream);padding:12px;overflow:hidden}
+.app-shot{background:var(--navy);border-radius:7px;height:80px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,.3);margin-bottom:10px}
+.app-hdr{display:flex;gap:8px;margin-bottom:10px}
+.app-lg{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:10px;color:#fff;flex-shrink:0}
+.app-htitle{font-size:12px;font-weight:800;color:var(--navy)}
+.app-hby{font-size:9px;color:var(--muted);margin-top:1px}
+.app-hstars{display:flex;align-items:center;gap:4px;margin-top:4px}
+.tabs-row{display:flex;border-bottom:1px solid var(--border);margin-bottom:8px}
+.t{font-size:9px;font-weight:600;padding:4px 10px;color:var(--muted)}
+.t.on{color:var(--navy);border-bottom:2px solid var(--navy)}
+.app-sb{width:180px;flex-shrink:0;background:#fff;padding:12px;border-left:1px solid var(--border)}
+.install-box{background:var(--cream);border:1px solid var(--border);border-radius:9px;padding:12px;text-align:center;margin-bottom:10px}
+.install-price{font-size:16px;font-weight:900;color:var(--navy)}
+.install-btn{display:block;background:var(--navy);color:#fff;font-size:9px;font-weight:700;padding:7px;border-radius:7px;margin-top:8px;text-align:center}
+.info-row{display:flex;align-items:center;gap:5px;font-size:8px;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--border)}
+.info-row:last-child{border-bottom:none}
+
+/* marketing */
+.mkt-hero{background:var(--navy);padding:28px 24px 24px;text-align:center;position:relative;overflow:hidden}
+.mkt-dots{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(circle,#F5B800 1px,transparent 1px);background-size:20px 20px}
+.mkt-pill{display:inline-block;background:rgba(245,184,0,.14);border:1px solid rgba(245,184,0,.28);border-radius:999px;padding:3px 12px;font-size:8px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;position:relative;z-index:1}
+.mkt-h1{font-size:18px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:6px;position:relative;z-index:1}
+.mkt-h1 em{color:var(--gold);font-style:normal}
+.mkt-p{font-size:9px;color:rgba(255,255,255,.48);margin-bottom:14px;position:relative;z-index:1}
+.mkt-stats{display:flex;justify-content:center;gap:24px;position:relative;z-index:1}
+.ms .v{font-size:14px;font-weight:900;color:var(--gold)}
+.ms .l{font-size:8px;color:rgba(255,255,255,.4);margin-top:1px}
+.mkt-body{display:flex}
+.mkt-left{flex:1.5;padding:16px 20px;background:var(--cream)}
+.mkt-right{flex:1;padding:16px 20px;background:#fff}
+.mkt-sec-h{font-size:10px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.steps-mini{display:flex;gap:6px}
+.step-m{flex:1;background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px;text-align:center}
+.step-m .num{font-size:7px;font-weight:900;color:var(--gold)}
+.step-m .ico{font-size:14px;margin-bottom:2px}
+.step-m .ttl{font-size:7px;font-weight:700;color:var(--navy)}
+.partners-mini{display:flex;gap:5px;flex-wrap:wrap}
+.p-chip{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff}
+
+/* devhub */
+.dh-main{flex:1;background:var(--cream);padding:14px;overflow:hidden}
+.dh-tabs{display:flex;gap:4px;margin-bottom:12px}
+.dh-tab{background:#fff;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:9px;font-weight:600;color:var(--muted)}
+.dh-tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cred-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.cred-dot{width:7px;height:7px;border-radius:50%;background:#10b981;flex-shrink:0}
+.cred-n{font-size:9px;font-weight:700;color:var(--navy)}
+.cred-v{font-size:8px;color:var(--muted);font-family:monospace}
+.cred-badge{margin-left:auto;background:rgba(16,185,129,.1);color:#065f46;font-size:7px;font-weight:700;border-radius:4px;padding:2px 5px}
+.wh-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-bottom:5px}
+.wh-url{font-size:8px;font-family:monospace;color:var(--navy);margin-bottom:4px}
+.wh-tags{display:flex;gap:3px;flex-wrap:wrap}
+.wh-tag{background:rgba(13,27,62,.06);font-size:7px;font-weight:600;color:var(--muted);padding:2px 5px;border-radius:4px}
+
+/* stack */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.s-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px}
+.s-ico{width:36px;height:36px;border-radius:9px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.s-name{font-size:13px;font-weight:700;color:var(--navy)}
+.s-desc{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+
+/* routes table */
+.rt{width:100%;border-collapse:collapse;font-size:13px}
+.rt th{text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:8px 14px;background:var(--cream);border-bottom:1px solid var(--border)}
+.rt td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.rt tr:last-child td{border-bottom:none}
+.rt tr:hover td{background:rgba(245,184,0,.025)}
+.rt code{font-family:monospace;font-size:11px;background:var(--cream);padding:2px 6px;border-radius:4px;color:var(--navy)}
+.badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:999px}
+.b-a{background:rgba(13,27,62,.07);color:var(--navy)}
+.b-s{background:rgba(245,184,0,.14);color:#8a6800}
+
+/* footer */
+footer{background:var(--navy);padding:40px 20px}
+.ft-wrap{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ft-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:720px){
+  .dash-wrap,.store-wrap,.app-wrap{flex-direction:column}
+  .dash-sb,.store-sb,.app-sb{display:none}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .grid-2{grid-template-columns:1fr}
+  .mkt-body{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-wrap">
+    <div class="logo">
+      <div class="logo-e">E</div>
+      <div class="logo-text"><p>Eduzz</p><p>Store Ads</p></div>
+    </div>
+    <div class="nav-links">
+      <a class="nav-a" href="#modulos">Módulos</a>
+      <a class="nav-a" href="#telas">Telas</a>
+      <a class="nav-a" href="#stack">Stack</a>
+      <a class="nav-a" href="#rotas">Rotas</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow-l"></div>
+  <div class="hero-glow-r"></div>
+  <div class="hero-inner">
+    <div class="hero-pill"><span>Projeto — Eduzz Store Ads Platform</span></div>
+    <h1>Plataforma de <em>anúncios</em><br>e <em>marketplace</em> Eduzz</h1>
+    <p>Monorepo React com painel de builder, marketplace de apps para infoprodutores, páginas de produto individuais, landing de parceiros e hub de desenvolvedores.</p>
+    <div class="hero-ctas">
+      <a class="btn-gold" href="#modulos">Ver módulos →</a>
+      <a class="btn-ghost" href="#telas">Explorar telas</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="v">10</div><div class="l">Páginas</div><div class="s">interfaces completas</div></div>
+      <div class="stat-box"><div class="v">3</div><div class="l">Módulos</div><div class="s">Admin · Store · DevHub</div></div>
+      <div class="stat-box"><div class="v">12</div><div class="l">Rotas</div><div class="s">React Router v6</div></div>
+      <div class="stat-box"><div class="v">100%</div><div class="l">TypeScript</div><div class="s">React 18 + Vite</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MÓDULOS -->
+<section class="sec" id="modulos">
+  <div class="wrap">
+    <div class="sec-label">O que foi construído</div>
+    <div class="sec-title">Módulos do projeto</div>
+    <p class="sec-sub">Dois contextos visuais independentes — painel do builder com sidebar e ecossistema público da Store.</p>
+    <div class="grid-3">
+
+      <div class="card">
+        <span class="card-chip chip-admin">Painel Admin</span>
+        <div class="card-icon">📊</div>
+        <h3>Dashboard do Builder</h3>
+        <div class="card-url">/ (com sidebar)</div>
+        <p>Visão geral das campanhas de mídia com métricas, funil de conversão e gráfico de série temporal.</p>
+        <ul class="feats">
+          <li>Receita, CTR, instalações, CPC médio em tempo real</li>
+          <li>Funil de conversão: impressões → cliques → installs</li>
+          <li>Filtros por data, campanha e formato de anúncio</li>
+          <li>Exportação de métricas em CSV</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-chip chip-admin">Painel Admin</span>
+        <div class="card-icon">📣</div>
+        <h3>Campanhas & Analytics</h3>
+        <div class="card-url">/campaigns · /analytics</div>
+        <p>Listagem e detalhamento de campanhas com performance detalhada por formato de anúncio.</p>
+        <ul class="feats">
+          <li>Listagem com status: ACTIVE, PAUSED, DRAFT</li>
+          <li>Formatos: Sponsored Listing, Push, Email</li>
+          <li>Métricas por campanha: CTR, CPC, qualityScore</li>
+          <li>Gráficos detalhados por campanha individual</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-chip chip-admin">Painel Admin</span>
+        <div class="card-icon">💳</div>
+        <h3>Billing · Elegibilidade · Oportunidades</h3>
+        <div class="card-url">/billing · /eligibility · /opportunities</div>
+        <p>Gestão financeira, critérios de acesso e oportunidades de mercado baseadas em dores reais.</p>
+        <ul class="feats">
+          <li>Saldo de créditos e histórico de transações</li>
+          <li>Critérios de elegibilidade para formatos premium</li>
+          <li>6.683 dores de mercado mapeadas por infoprodutores</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-chip chip-store">Store</span>
+        <div class="card-icon">🏪</div>
+        <h3>Marketplace</h3>
+        <div class="card-url">/store (layout próprio)</div>
+        <p>Marketplace público com sidebar de categorias, hero em leque (fan carousel) e seções de apps em destaque.</p>
+        <ul class="feats">
+          <li>Hero carousel em leque com 5 cards animados</li>
+          <li>Sidebar: categorias, apps instalados, ações</li>
+          <li>Seções "Em alta" e "Novidades" em scroll horizontal</li>
+          <li>Grid responsivo com busca e filtro por categoria</li>
+          <li>Modal "Reportar uma dor" com formulário em 2 etapas</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-chip chip-store">Store</span>
+        <div class="card-icon">📱</div>
+        <h3>Página de App</h3>
+        <div class="card-url">/store/app/:appId</div>
+        <p>Página de produto completa para cada app com galeria de screenshots, avaliações e fluxo de instalação.</p>
+        <ul class="feats">
+          <li>Galeria com navegação por thumbnails</li>
+          <li>3 abas: Descrição · Avaliações · Suporte</li>
+          <li>Fluxo de instalação progressivo (idle → plano → sucesso)</li>
+          <li>Avaliações com distribuição por estrela e 3 critérios</li>
+          <li>Seções "Usado junto com" e "Mais do builder"</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-chip chip-store">Store</span>
+        <div class="card-icon">🤝</div>
+        <h3>Landing de Parceiros</h3>
+        <div class="card-url">/store/become-partner</div>
+        <p>Landing page para atrair builders ao programa de parceiros da Store com cases reais e CTA de conversão.</p>
+        <ul class="feats">
+          <li>Hero navy com 4 stats de impacto em destaque</li>
+          <li>4 etapas do processo com linha conectora</li>
+          <li>6 benefícios + 6 parceiros reais (WhatsFlow, Nutror…)</li>
+          <li>3 depoimentos com métricas (1.400 installs, R$8k/seller)</li>
+          <li>Formulário de email com confirmação animada</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-chip chip-admin">Painel Admin</span>
+        <div class="card-icon">⚙️</div>
+        <h3>DevHub</h3>
+        <div class="card-url">/devhub</div>
+        <p>Hub de desenvolvedor para gerenciar credenciais OAuth2, webhooks e apps publicados na Store.</p>
+        <ul class="feats">
+          <li>Credenciais OAuth2 com client_id/secret mascarado</li>
+          <li>Webhooks com URL, eventos e histórico de entregas</li>
+          <li>Apps publicados com status e métricas</li>
+          <li>Schema Prisma: Credential, Webhook, WebhookDelivery</li>
+          <li>API REST: /devhub/credentials, /webhooks, /apps</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TELAS -->
+<section class="sec alt" id="telas">
+  <div class="wrap">
+    <div class="sec-label">Wireframes das telas</div>
+    <div class="sec-title">Visualização das interfaces</div>
+    <p class="sec-sub">Mockups das principais telas construídas no projeto.</p>
+
+    <!-- Dashboard -->
+    <div style="margin-bottom:32px">
+      <p style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em">Dashboard</p>
+      <div class="screen">
+        <div class="screen-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><div class="url-bar">localhost:3000/</div></div>
+        <div class="dash-wrap">
+          <div class="dash-sb">
+            <div class="sb-logo">
+              <div class="e">E</div>
+              <div style="line-height:1"><div style="color:#fff;font-size:10px;font-weight:700">Eduzz</div><div style="color:var(--gold);font-size:8px;font-weight:600">Store Ads</div></div>
+            </div>
+            <div class="sb-item on">Dashboard</div>
+            <div class="sb-item">Campanhas</div>
+            <div class="sb-item">Analytics</div>
+            <div class="sb-item">Billing</div>
+            <div class="sb-item">Elegibilidade</div>
+            <div class="sb-item">Oportunidades</div>
+            <div class="sb-item">DevHub</div>
+            <div style="margin-top:auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:6px;text-align:center;font-size:8px;color:rgba(255,255,255,.3)">🏪 Eduzz Store ↗</div>
+          </div>
+          <div class="dash-main">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div><div class="dash-h">Dashboard</div><div class="dash-sub">Visão geral das campanhas de mídia</div></div>
+              <div style="background:#fff;border:1px solid var(--border);border-radius:7px;padding:4px 9px;font-size:8px;color:var(--muted);display:flex;align-items:center;gap:4px">⬇ Exportar CSV</div>
+            </div>
+            <div style="display:flex;gap:5px;margin-bottom:8px">
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:8px;color:var(--muted)">14/04 → 13/05/2026</div>
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:8px;color:var(--muted)">Todas campanhas</div>
+              <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:8px;color:var(--muted)">Todos formatos</div>
+            </div>
+            <div class="m-row">
+              <div class="m-box"><div class="v">R$ 6.037</div><div class="l">Receita de Mídia</div><div class="up">▲ 12.4%</div></div>
+              <div class="m-box"><div class="v">0.6%</div><div class="l">Conversão</div><div class="up">▲ 3.1%</div></div>
+              <div class="m-box"><div class="v">3.7%</div><div class="l">CTR Médio</div></div>
+              <div class="m-box"><div class="v">455</div><div class="l">Instalações</div><div class="up">▲ 8.7%</div></div>
+              <div class="m-box"><div class="v">230</div><div class="l">Leads Checkout</div></div>
+              <div class="m-box"><div class="v">R$ 2,12</div><div class="l">CPC Médio</div></div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <div style="flex:1">
+                <div style="font-size:8px;font-weight:700;color:var(--navy);margin-bottom:4px">Performance no Tempo</div>
+                <div class="bars">
+                  <div class="bar" style="height:38%"></div><div class="bar" style="height:52%"></div><div class="bar" style="height:44%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:78%"></div><div class="bar" style="height:63%"></div><div class="bar" style="height:88%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:83%"></div><div class="bar" style="height:92%"></div><div class="bar" style="height:76%"></div>
+                </div>
+              </div>
+              <div style="width:110px">
+                <div style="font-size:8px;font-weight:700;color:var(--navy);margin-bottom:4px">Funil</div>
+                <div class="bars" style="flex-direction:column;align-items:stretch;gap:3px;padding:8px;height:80px">
+                  <div style="background:var(--navy);border-radius:3px;height:18px;display:flex;align-items:center;padding:0 5px;font-size:6px;color:rgba(255,255,255,.5)">Impressões 45.2k</div>
+                  <div style="background:var(--navy);border-radius:3px;height:14px;width:75%;display:flex;align-items:center;padding:0 5px;font-size:6px;color:rgba(255,255,255,.5)">Cliques 1.8k</div>
+                  <div style="background:var(--gold);border-radius:3px;height:11px;width:50%;display:flex;align-items:center;padding:0 5px;font-size:6px;color:var(--navy);font-weight:700">Installs 310</div>
+                  <div style="background:var(--gold);border-radius:3px;height:8px;width:36%;opacity:.7"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Store -->
+    <div style="margin-bottom:32px">
+      <p style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em">Marketplace — /store</p>
+      <div class="screen">
+        <div class="screen-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><div class="url-bar">localhost:3000/store</div></div>
+        <div class="store-wrap">
+          <div class="store-sb">
+            <div class="sb-logo">
+              <div class="e">E</div>
+              <div style="line-height:1"><div style="color:#fff;font-size:10px;font-weight:700">Eduzz</div><div style="color:var(--gold);font-size:8px;font-weight:600">Store</div></div>
+            </div>
+            <div style="font-size:7px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:.1em;text-transform:uppercase;padding:0 6px 5px">Categorias</div>
+            <div class="s-item on">● Início</div>
+            <div class="s-item">WhatsApp</div>
+            <div class="s-item">Checkout</div>
+            <div class="s-item">CRM</div>
+            <div class="s-item">Email</div>
+            <div class="s-item">Analytics</div>
+            <div class="s-item">Financeiro</div>
+            <div class="s-item">Afiliados</div>
+            <div style="margin-top:auto;padding:6px 5px">
+              <div style="font-size:7px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;padding:0 3px">Instalados</div>
+              <div style="display:flex;align-items:center;gap:4px;padding:3px 5px;font-size:8px;color:rgba(255,255,255,.3)">
+                <div style="width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:800;color:#fff">WA</div> WhatsApp Pro
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;padding:3px 5px;font-size:8px;color:rgba(255,255,255,.3)">
+                <div style="width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:800;color:#fff">CR</div> CRM Connect
+              </div>
+              <div style="background:var(--gold);border-radius:6px;padding:6px;text-align:center;font-size:8px;font-weight:800;color:var(--navy);margin-top:6px">Sou Builder →</div>
+            </div>
+          </div>
+          <div class="store-main">
+            <div class="s-topbar">
+              <div class="s-search">🔍 Buscar apps, integrações...</div>
+              <div style="font-size:8px;color:rgba(13,27,62,.4)">10 apps</div>
+            </div>
+            <div class="s-body">
+              <div class="fan-hero">
+                <div class="fan-side" style="left:calc(50% - 190px)"></div>
+                <div class="fan-side" style="right:calc(50% - 190px)"></div>
+                <div class="fan-center">
+                  <div class="fan-img">
+                    <div style="display:flex;align-items:center;gap:5px">
+                      <div style="width:18px;height:18px;border-radius:4px;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:800;color:#fff">WA</div>
+                      <div style="color:#fff;font-size:7px;font-weight:800;line-height:1.2">WhatsApp Checkout Pro<br><span style="font-weight:400;color:rgba(255,255,255,.5)">Recupere carrinhos com IA</span></div>
+                    </div>
+                  </div>
+                  <div class="fan-foot">
+                    <div style="font-size:6px;color:rgba(255,255,255,.4)">★ 4.8 · 4.2k installs</div>
+                    <div style="background:var(--gold);color:var(--navy);font-size:6px;font-weight:800;padding:2px 7px;border-radius:999px">Ver planos</div>
+                  </div>
+                </div>
+                <div style="position:absolute;bottom:5px;left:50%;transform:translateX(-50%);display:flex;gap:3px">
+                  <div style="width:12px;height:2px;border-radius:999px;background:var(--gold)"></div>
+                  <div style="width:3px;height:2px;border-radius:999px;background:rgba(255,255,255,.25)"></div>
+                  <div style="width:3px;height:2px;border-radius:999px;background:rgba(255,255,255,.25)"></div>
+                  <div style="width:3px;height:2px;border-radius:999px;background:rgba(255,255,255,.25)"></div>
+                </div>
+              </div>
+              <div style="font-size:9px;font-weight:800;color:var(--navy);margin-bottom:6px">🔥 Em alta <span style="font-size:8px;font-weight:400;color:var(--muted)">· mais instalados</span></div>
+              <div class="apps-row">
+                <div class="app-c"><div class="app-t" style="background:#25D366">WA</div><div class="app-b"><div class="app-n">WhatsApp Checkout</div><div class="app-s">★ 4.8 · Grátis+</div></div></div>
+                <div class="app-c"><div class="app-t" style="background:#7C3AED">UM</div><div class="app-b"><div class="app-n">UpsellMax</div><div class="app-s">★ 4.7 · Pago</div></div></div>
+                <div class="app-c"><div class="app-t" style="background:#2563EB">EF</div><div class="app-b"><div class="app-n">EmailFlow AI</div><div class="app-s">★ 4.3 · Grátis+</div></div></div>
+                <div class="app-c"><div class="app-t" style="background:#0D1B3E">AP</div><div class="app-b"><div class="app-n">AfiliadosPro</div><div class="app-s">★ 4.6 · Pago</div></div></div>
+                <div class="app-c"><div class="app-t" style="background:#F59E0B">MH</div><div class="app-b"><div class="app-n">MétricasHub</div><div class="app-s">★ 4.8 · Pago</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Page -->
+    <div style="margin-bottom:32px">
+      <p style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em">Página de App — /store/app/:id</p>
+      <div class="screen">
+        <div class="screen-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><div class="url-bar">localhost:3000/store/app/whatsapp-checkout-pro</div></div>
+        <div style="background:#fff;border-bottom:1px solid var(--border);padding:7px 18px;display:flex;align-items:center;gap:5px;font-size:9px;color:var(--muted)">
+          <span>← Eduzz Store</span><span style="color:rgba(13,27,62,.2)">/</span><span>WhatsApp</span><span style="color:rgba(13,27,62,.2)">/</span><span style="font-weight:700;color:var(--navy)">WhatsApp Checkout Pro</span>
+          <div style="margin-left:auto;background:var(--navy);color:#fff;font-size:8px;font-weight:700;padding:4px 10px;border-radius:999px">Sou Builder →</div>
+        </div>
+        <div class="app-wrap">
+          <div class="app-main">
+            <div class="app-shot">🖼️ Galeria de screenshots · 3 imagens com navegação por miniaturas</div>
+            <div class="app-hdr">
+              <div class="app-lg" style="background:#25D366">WA</div>
+              <div>
+                <div class="app-htitle">WhatsApp Checkout Pro</div>
+                <div class="app-hby">por AppLaunch Studio</div>
+                <div class="app-hstars">
+                  <span style="color:var(--gold);font-size:10px">★★★★★</span>
+                  <span style="font-size:8px;color:var(--muted)">4.8 · 1.247 avaliações · 4.200 instalações</span>
+                  <span style="font-size:8px;font-weight:700;background:rgba(59,130,246,.1);color:#1d4ed8;padding:1px 6px;border-radius:999px">Grátis+</span>
+                </div>
+              </div>
+            </div>
+            <div class="tabs-row">
+              <div class="t on">Descrição</div>
+              <div class="t">Avaliações (8)</div>
+              <div class="t">Suporte</div>
+            </div>
+            <div style="font-size:9px;color:var(--muted);line-height:1.7;margin-bottom:8px">
+              Recupere até 30% dos carrinhos abandonados usando IA + WhatsApp. Integração em 5 minutos. Sem necessidade de conhecimento técnico.
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:rgba(13,27,62,.05);font-size:7px;font-family:monospace;padding:2px 6px;border-radius:4px;color:var(--muted)">whatsapp</span>
+              <span style="background:rgba(13,27,62,.05);font-size:7px;font-family:monospace;padding:2px 6px;border-radius:4px;color:var(--muted)">checkout</span>
+              <span style="background:rgba(13,27,62,.05);font-size:7px;font-family:monospace;padding:2px 6px;border-radius:4px;color:var(--muted)">recuperação</span>
+              <span style="background:rgba(13,27,62,.05);font-size:7px;font-family:monospace;padding:2px 6px;border-radius:4px;color:var(--muted)">IA</span>
+            </div>
+          </div>
+          <div class="app-sb">
+            <div class="install-box">
+              <div class="install-price">Grátis+</div>
+              <div style="font-size:7px;color:var(--muted);margin-top:1px">Cancele quando quiser</div>
+              <div class="install-btn">⚡ Instalar grátis</div>
+              <div style="font-size:7px;color:var(--muted);margin-top:5px">🔒 Pagamento seguro Eduzz</div>
+            </div>
+            <div style="font-size:9px;font-weight:700;color:var(--navy);margin-bottom:6px">Informações</div>
+            <div class="info-row"><span>🏢</span><span>AppLaunch Studio</span></div>
+            <div class="info-row"><span>★</span><span>4.8 / 5.0</span></div>
+            <div class="info-row"><span>⬇️</span><span>4.200 instalações</span></div>
+            <div class="info-row"><span>🔒</span><span>Revisado pela Eduzz</span></div>
+            <div style="margin-top:8px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:8px;display:flex;gap:6px;align-items:center">
+              <span style="font-size:14px">✅</span>
+              <div>
+                <div style="font-size:8px;font-weight:700;color:var(--navy)">Builder verificado</div>
+                <div style="font-size:7px;color:var(--muted);margin-top:1px">Passou pela revisão técnica Eduzz</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marketing -->
+    <div style="margin-bottom:32px">
+      <p style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em">Landing Page — /store/become-partner</p>
+      <div class="screen">
+        <div class="screen-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><div class="url-bar">localhost:3000/store/become-partner</div></div>
+        <div class="mkt-hero">
+          <div class="mkt-dots"></div>
+          <div class="mkt-pill">Programa de Builders</div>
+          <div class="mkt-h1">A maior vitrine para o <em>mercado digital</em></div>
+          <div class="mkt-p">Conecte sua solução a 10.000+ infoprodutores. Desde 2014 no ecossistema digital brasileiro.</div>
+          <div class="mkt-stats">
+            <div class="ms"><div class="v">10k+</div><div class="l">Empresas ativas</div></div>
+            <div class="ms"><div class="v">21.100</div><div class="l">Instalações</div></div>
+            <div class="ms"><div class="v">6.683</div><div class="l">Dores mapeadas</div></div>
+            <div class="ms"><div class="v">4.6★</div><div class="l">Avaliação média</div></div>
+          </div>
+        </div>
+        <div class="mkt-body">
+          <div class="mkt-left">
+            <div class="mkt-sec-h">Como funciona — 4 passos</div>
+            <div class="steps-mini">
+              <div class="step-m"><div class="ico">🔑</div><div class="num">01</div><div class="ttl">Criar conta</div></div>
+              <div class="step-m"><div class="ico">⚡</div><div class="num">02</div><div class="ttl">Desenvolver</div></div>
+              <div class="step-m"><div class="ico">📦</div><div class="num">03</div><div class="ttl">Publicar</div></div>
+              <div class="step-m"><div class="ico">🚀</div><div class="num">04</div><div class="ttl">Crescer</div></div>
+            </div>
+          </div>
+          <div class="mkt-right">
+            <div class="mkt-sec-h">Parceiros na Store</div>
+            <div class="partners-mini">
+              <div class="p-chip" style="background:#25D366">WF</div>
+              <div class="p-chip" style="background:#0057FF">CL</div>
+              <div class="p-chip" style="background:#FF6B35">NT</div>
+              <div class="p-chip" style="background:#1A1A2E;outline:1px solid var(--gold)">SV</div>
+              <div class="p-chip" style="background:#7C3AED">UT</div>
+              <div class="p-chip" style="background:#059669">SN</div>
+            </div>
+            <div style="margin-top:12px;background:var(--navy);border-radius:8px;padding:10px;text-align:center">
+              <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:3px">Quero ser Builder →</div>
+              <div style="font-size:8px;color:rgba(255,255,255,.4)">Grátis para começar · Sem taxa de setup</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DevHub -->
+    <div>
+      <p style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em">DevHub — /devhub</p>
+      <div class="screen">
+        <div class="screen-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><div class="url-bar">localhost:3000/devhub</div></div>
+        <div class="dash-wrap">
+          <div class="dash-sb">
+            <div class="sb-logo">
+              <div class="e">E</div>
+              <div style="line-height:1"><div style="color:#fff;font-size:10px;font-weight:700">Eduzz</div><div style="color:var(--gold);font-size:8px;font-weight:600">Store Ads</div></div>
+            </div>
+            <div class="sb-item">Dashboard</div>
+            <div class="sb-item">Campanhas</div>
+            <div class="sb-item">Analytics</div>
+            <div class="sb-item">Billing</div>
+            <div class="sb-item">Elegibilidade</div>
+            <div class="sb-item">Oportunidades</div>
+            <div class="sb-item on">DevHub</div>
+          </div>
+          <div class="dh-main">
+            <div style="font-size:13px;font-weight:900;color:var(--navy);margin-bottom:12px">Developer Hub</div>
+            <div class="dh-tabs">
+              <div class="dh-tab on">Credenciais</div>
+              <div class="dh-tab">Webhooks</div>
+              <div class="dh-tab">Apps</div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-dot"></div>
+              <div><div class="cred-n">WhatsApp Checkout Pro</div><div class="cred-v">client_id: wcp_live_Kx9m…f3Qp · secret: ••••••••••••</div></div>
+              <div class="cred-badge">Ativo</div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-dot"></div>
+              <div><div class="cred-n">CRM Eduzz Connect</div><div class="cred-v">client_id: crm_live_Jy2n…g7Rk · secret: ••••••••••••</div></div>
+              <div class="cred-badge">Ativo</div>
+            </div>
+            <div style="font-size:9px;font-weight:700;color:var(--navy);margin:12px 0 6px">Webhooks ativos</div>
+            <div class="wh-card">
+              <div class="wh-url">https://app.whatsflowchat.com/eduzz/webhooks</div>
+              <div class="wh-tags">
+                <span class="wh-tag">app.install</span><span class="wh-tag">app.uninstall</span><span class="wh-tag">subscription.created</span><span class="wh-tag">payment.confirmed</span>
+              </div>
+            </div>
+            <div class="wh-card">
+              <div class="wh-url">https://crm.eduzzconnect.io/webhooks/eduzz</div>
+              <div class="wh-tags"><span class="wh-tag">app.install</span><span class="wh-tag">subscription.created</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="sec" id="stack">
+  <div class="wrap">
+    <div class="sec-label">Tecnologias</div>
+    <div class="sec-title">Stack utilizada</div>
+    <p class="sec-sub">Monorepo com apps separados por contexto e pacotes de tipos compartilhados.</p>
+    <div class="stack-grid">
+      <div class="s-card"><div class="s-ico">⚛️</div><div><div class="s-name">React 18</div><div class="s-desc">Hooks modernos, estado local e composição de componentes</div></div></div>
+      <div class="s-card"><div class="s-ico">🔷</div><div><div class="s-name">TypeScript</div><div class="s-desc">100% tipado — interfaces, mock-data e componentes</div></div></div>
+      <div class="s-card"><div class="s-ico">⚡</div><div><div class="s-name">Vite</div><div class="s-desc">Build tool com HMR instantâneo e alias @/ configurado</div></div></div>
+      <div class="s-card"><div class="s-ico">🎨</div><div><div class="s-name">Tailwind CSS</div><div class="s-desc">Utility-first com tokens navy, gold e cream customizados</div></div></div>
+      <div class="s-card"><div class="s-ico">🗺️</div><div><div class="s-name">React Router v6</div><div class="s-desc">Rotas aninhadas com layout condicional admin/store</div></div></div>
+      <div class="s-card"><div class="s-ico">🗄️</div><div><div class="s-name">Prisma ORM</div><div class="s-desc">Schema: Campaign, App, Credential, Webhook, WebhookDelivery</div></div></div>
+      <div class="s-card"><div class="s-ico">📦</div><div><div class="s-name">pnpm Workspaces</div><div class="s-desc">Monorepo: apps/web, apps/api, packages/shared-types</div></div></div>
+      <div class="s-card"><div class="s-ico">📅</div><div><div class="s-name">date-fns</div><div class="s-desc">Formatação: formatDate, formatCurrency, formatPercent</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROTAS -->
+<section class="sec alt" id="rotas">
+  <div class="wrap">
+    <div class="sec-label">Estrutura de Rotas</div>
+    <div class="sec-title">Todas as rotas</div>
+    <p class="sec-sub">12 rotas organizadas por contexto visual e responsabilidade.</p>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;overflow-x:auto">
+      <table class="rt">
+        <thead>
+          <tr><th>Rota</th><th>Componente</th><th>Contexto</th><th>Função</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>/login</code></td><td>LoginPage</td><td><span class="badge b-a">Admin</span></td><td>Autenticação do builder</td></tr>
+          <tr><td><code>/</code></td><td>DashboardPage</td><td><span class="badge b-a">Admin</span></td><td>Métricas de campanha, funil e série temporal</td></tr>
+          <tr><td><code>/campaigns</code></td><td>CampaignsPage</td><td><span class="badge b-a">Admin</span></td><td>Listagem com status, orçamento e performance</td></tr>
+          <tr><td><code>/campaigns/:id</code></td><td>AnalyticsPage</td><td><span class="badge b-a">Admin</span></td><td>Analytics detalhada de uma campanha</td></tr>
+          <tr><td><code>/analytics</code></td><td>AnalyticsPage</td><td><span class="badge b-a">Admin</span></td><td>Visão consolidada com filtros avançados</td></tr>
+          <tr><td><code>/billing</code></td><td>BillingPage</td><td><span class="badge b-a">Admin</span></td><td>Saldo de créditos e histórico de transações</td></tr>
+          <tr><td><code>/eligibility</code></td><td>EligibilityPage</td><td><span class="badge b-a">Admin</span></td><td>Critérios de elegibilidade para formatos premium</td></tr>
+          <tr><td><code>/opportunities</code></td><td>OpportunitiesPage</td><td><span class="badge b-a">Admin</span></td><td>Oportunidades mapeadas pelas dores dos usuários</td></tr>
+          <tr><td><code>/devhub</code></td><td>DevHubPage</td><td><span class="badge b-a">Admin</span></td><td>Credenciais OAuth2, webhooks e apps publicados</td></tr>
+          <tr style="background:rgba(245,184,0,.02)"><td><code>/store</code></td><td>MarketplacePage</td><td><span class="badge b-s">Store</span></td><td>Marketplace público com hero carousel e grade de apps</td></tr>
+          <tr style="background:rgba(245,184,0,.02)"><td><code>/store/app/:appId</code></td><td>AppPage</td><td><span class="badge b-s">Store</span></td><td>Produto com galeria, reviews e fluxo de instalação</td></tr>
+          <tr style="background:rgba(245,184,0,.02)"><td><code>/store/become-partner</code></td><td>MarketingPage</td><td><span class="badge b-s">Store</span></td><td>Landing page para atrair builders ao programa</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-wrap">
+    <div class="logo">
+      <div class="logo-e">E</div>
+      <div class="logo-text"><p>Eduzz Store Ads</p><p>Platform Overview</p></div>
+    </div>
+    <div class="ft-copy">Construído com React 18 · TypeScript · Vite · Tailwind CSS · Prisma</div>
+  </div>
+</footer>
+
+</body>
+</html>
