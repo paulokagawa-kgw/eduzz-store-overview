@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Dossiê · Retail Media Channels · Eduzz Store Ads</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1B3E;--navy2:#162550;--gold:#F5B800;--gold2:#E5AB00;
+  --cream:#F7F4EE;--cream2:#EDE9E0;
+  --green:#16A34A;--green-bg:#F0FDF4;
+  --red:#DC2626;--red-bg:#FEF2F2;
+  --orange:#EA580C;--orange-bg:#FFF7ED;
+  --blue:#2563EB;--blue-bg:#EFF6FF;
+  --purple:#7C3AED;--purple-bg:#F5F3FF;
+  --muted:#6B7280;--border:rgba(13,27,62,.08);
+  --shadow:0 2px 8px rgba(13,27,62,.08);
+  --shadow-lg:0 8px 32px rgba(13,27,62,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1f2937;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ──────────────────────────────────────────── NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,27,62,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-wrap{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:8px}
+.logo{display:flex;align-items:center;gap:10px;margin-right:auto}
+.logo-e{width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--navy);font-size:14px;flex-shrink:0}
+.logo-text p:first-child{color:#fff;font-weight:800;font-size:13px;line-height:1.1}
+.logo-text p:last-child{color:var(--gold);font-size:10px;font-weight:600;line-height:1.1}
+.nav-a{color:rgba(255,255,255,.5);font-size:11px;font-weight:500;padding:5px 10px;border-radius:6px;transition:.15s;white-space:nowrap}
+.nav-a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-badge{background:var(--gold);color:var(--navy);font-size:9px;font-weight:800;padding:2px 6px;border-radius:20px;margin-left:4px}
+
+/* ──────────────────────────────────────────── HERO */
+.hero{background:var(--navy);position:relative;overflow:hidden;padding:80px 24px 64px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(245,184,0,.12),transparent),radial-gradient(ellipse 50% 80% at 20% 20%,rgba(37,99,235,.08),transparent)}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(245,184,0,.15);border:1px solid rgba(245,184,0,.3);border-radius:20px;padding:5px 14px;margin-bottom:24px}
+.hero-eyebrow span{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-size:clamp(28px,4vw,52px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.6;max-width:680px;margin-bottom:40px}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;max-width:900px}
+.stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px 18px}
+.stat-card .num{font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+.stat-card .lbl{font-size:12px;color:rgba(255,255,255,.5);margin-top:6px;line-height:1.3}
+.stat-card .sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:3px}
+
+/* ──────────────────────────────────────────── SECTIONS */
+section{padding:72px 24px}
+section.alt{background:var(--cream)}
+.wrap{max-width:1200px;margin:0 auto}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.sec-title{font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--navy);line-height:1.15;margin-bottom:10px}
+.sec-sub{color:var(--muted);font-size:15px;line-height:1.6;max-width:640px;margin-bottom:40px}
+.part-number{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--navy);color:var(--gold);font-weight:900;font-size:14px;border-radius:8px;margin-right:10px;vertical-align:middle}
+
+/* ──────────────────────────────────────────── ECOSSISTEMA GRID */
+.eco-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:48px}
+.eco-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:.18s;text-align:center}
+.eco-card:hover,.eco-card.active{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,184,0,.15)}
+.eco-card.active{background:var(--navy)}
+.eco-card .icon{font-size:26px;margin-bottom:8px}
+.eco-card .name{font-size:12px;font-weight:700;color:var(--navy);line-height:1.2}
+.eco-card.active .name{color:#fff}
+.eco-card .count{font-size:10px;color:var(--muted);margin-top:3px}
+.eco-card.active .count{color:rgba(255,255,255,.5)}
+
+/* ──────────────────────────────────────────── SURFACE CARDS */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;align-items:center}
+.filter-pill{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
+.filter-pill:hover{border-color:var(--navy);color:var(--navy)}
+.filter-pill.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.filter-pill.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+
+.surfaces-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.surface-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:20px;transition:.18s;display:flex;flex-direction:column;gap:10px}
+.surface-card:hover{box-shadow:var(--shadow-lg);border-color:rgba(13,27,62,.15);transform:translateY(-1px)}
+.surface-card.hidden{display:none}
+
+.sc-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.sc-product{display:flex;align-items:center;gap:6px}
+.sc-product-icon{font-size:14px}
+.sc-product-name{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.sc-priority{font-size:9px;font-weight:800;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.p1{background:#FEF2F2;color:#DC2626}
+.p2{background:#FFF7ED;color:#EA580C}
+.p3{background:#FEF9C3;color:#CA8A04}
+.p4{background:#F3F4F6;color:#6B7280}
+
+.sc-title{font-size:13px;font-weight:700;color:var(--navy);line-height:1.35}
+.sc-pain{font-size:11px;color:var(--muted);line-height:1.45;font-style:italic}
+.sc-pain::before{content:'"';color:var(--gold);font-size:14px;font-style:normal}
+.sc-pain::after{content:'"';color:var(--gold);font-size:14px;font-style:normal}
+
+.sc-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;display:inline-flex;align-items:center;gap:3px}
+.badge-intent-alta{background:var(--green-bg);color:var(--green)}
+.badge-intent-altíssima{background:#FEF2F2;color:#DC2626}
+.badge-intent-media{background:var(--blue-bg);color:var(--blue)}
+.badge-intent-media-alta{background:var(--blue-bg);color:var(--blue)}
+.badge-intent-baixa{background:#F3F4F6;color:#6B7280}
+.badge-format{background:var(--navy);color:rgba(255,255,255,.9)}
+.badge-ctr{background:var(--gold);color:var(--navy)}
+.badge-model{background:var(--purple-bg);color:var(--purple)}
+.badge-who{background:var(--cream2);color:var(--navy)}
+
+/* ──────────────────────────────────────────── TOP 10 */
+.top10-grid{display:flex;flex-direction:column;gap:28px}
+.top-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;overflow:hidden;transition:.18s}
+.top-card:hover{box-shadow:var(--shadow-lg)}
+.top-card-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:24px 28px;cursor:pointer}
+.rank-bubble{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;flex-shrink:0;border:3px solid var(--gold);color:var(--navy);background:var(--gold)}
+.rank-bubble.silver{background:#E5E7EB;border-color:#9CA3AF;color:#374151}
+.rank-bubble.bronze{background:#FCD34D;border-color:#F59E0B;color:#78350F}
+.rank-bubble.rest{background:var(--cream2);border-color:var(--cream2);color:var(--navy);font-size:15px}
+.tc-title{font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:6px}
+.tc-subtitle{font-size:12px;color:var(--muted)}
+.score-display{text-align:center;flex-shrink:0}
+.score-num{font-size:28px;font-weight:900;color:var(--navy);line-height:1}
+.score-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px}
+.score-bar-outer{width:64px;height:6px;background:var(--cream2);border-radius:3px;margin:6px auto 0}
+.score-bar-inner{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),#F97316)}
+
+.top-card-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--border)}
+.tcb-section{padding:20px 24px;border-right:1px solid var(--border)}
+.tcb-section:last-child{border-right:none}
+.tcb-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.tcb-text{font-size:12px;color:#374151;line-height:1.55}
+.mockup-box{background:var(--cream);border-radius:12px;padding:12px;font-size:10.5px;line-height:1.7;color:var(--navy);font-family:monospace;white-space:pre-wrap;overflow-x:auto}
+
+.dim-bars{display:flex;flex-direction:column;gap:8px}
+.dim-row{display:flex;align-items:center;gap:8px}
+.dim-label{font-size:10px;color:var(--muted);width:52px;flex-shrink:0}
+.dim-track{flex:1;height:6px;background:var(--cream2);border-radius:3px;overflow:hidden}
+.dim-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.dim-val{font-size:10px;font-weight:700;color:var(--navy);width:18px;text-align:right;flex-shrink:0}
+.fill-intent{background:var(--green)}
+.fill-scale{background:var(--blue)}
+.fill-ease{background:var(--orange)}
+.fill-revenue{background:var(--purple)}
+
+.kpi-chips{display:flex;flex-direction:column;gap:6px}
+.kpi-chip{background:var(--cream);border-radius:8px;padding:8px 10px;font-size:11px;line-height:1.45;color:#374151}
+.kpi-chip strong{color:var(--navy)}
+
+/* ──────────────────────────────────────────── CHANNEL MAP */
+.channel-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.channel-bucket{border-radius:16px;overflow:hidden;border:1.5px solid var(--border)}
+.bucket-header{padding:16px 20px;display:flex;align-items:center;gap:10px}
+.bucket-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.bucket-title{font-size:13px;font-weight:800;line-height:1.2}
+.bucket-sub{font-size:11px;opacity:.7;margin-top:1px}
+.bucket-body{padding:14px 16px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.channel-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:8px;background:var(--cream)}
+.ci-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.ci-text{font-size:11px;color:#374151;line-height:1.45}
+.ci-text strong{color:var(--navy)}
+
+/* Bucket colors */
+.bucket-plg .bucket-header{background:#0D1B3E;color:#fff}
+.bucket-plg .bucket-icon{background:rgba(245,184,0,.2)}
+.bucket-setup .bucket-header{background:#1D4ED8;color:#fff}
+.bucket-setup .bucket-icon{background:rgba(255,255,255,.2)}
+.bucket-pain .bucket-header{background:#DC2626;color:#fff}
+.bucket-pain .bucket-icon{background:rgba(255,255,255,.2)}
+.bucket-celebration .bucket-header{background:#D97706;color:#fff}
+.bucket-celebration .bucket-icon{background:rgba(255,255,255,.2)}
+.bucket-async .bucket-header{background:#7C3AED;color:#fff}
+.bucket-async .bucket-icon{background:rgba(255,255,255,.2)}
+.bucket-discovery .bucket-header{background:#059669;color:#fff}
+.bucket-discovery .bucket-icon{background:rgba(255,255,255,.2)}
+
+/* ──────────────────────────────────────────── DATA ARCH */
+.data-arch{display:flex;flex-direction:column;gap:32px}
+.arch-layer{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden}
+.arch-layer-header{background:var(--navy);padding:14px 24px;display:flex;align-items:center;gap:12px}
+.arch-layer-header h3{color:#fff;font-size:14px;font-weight:700}
+.arch-layer-header .layer-num{background:var(--gold);color:var(--navy);font-weight:900;font-size:12px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.arch-body{padding:20px 24px}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.event-group{background:var(--cream);border-radius:10px;padding:14px}
+.event-group h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.event-tag{font-size:10px;font-family:monospace;background:var(--navy);color:var(--gold);padding:2px 7px;border-radius:4px;margin-bottom:4px;display:block}
+
+.targeting-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tl-card{border-radius:12px;padding:16px 18px;border:1.5px solid var(--border)}
+.tl-card h4{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.tl-body{font-size:11px;color:#374151;line-height:1.6}
+.tl-body code{background:var(--cream2);font-size:10px;padding:1px 5px;border-radius:3px;font-family:monospace}
+
+.lgpd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.lgpd-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;background:var(--cream)}
+.lgpd-status{font-size:14px;flex-shrink:0}
+.lgpd-info{display:flex;flex-direction:column;gap:1px}
+.lgpd-title{font-size:11px;font-weight:600;color:var(--navy)}
+.lgpd-base{font-size:10px;color:var(--muted)}
+
+/* ──────────────────────────────────────────── ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.phase-card{border-radius:20px;overflow:hidden;border:1.5px solid var(--border)}
+.phase-header{padding:22px 22px 16px}
+.phase-tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.phase-title{font-size:18px;font-weight:900;line-height:1.2;margin-bottom:6px}
+.phase-window{font-size:12px;opacity:.7}
+.phase-body{padding:16px 22px 20px;background:rgba(255,255,255,.9);display:flex;flex-direction:column;gap:10px}
+.impl-item{display:flex;align-items:flex-start;gap:8px}
+.impl-icon{font-size:13px;flex-shrink:0;margin-top:1px}
+.impl-text{font-size:11.5px;color:#374151;line-height:1.45}
+.impl-text strong{color:var(--navy)}
+.phase-kpis{margin-top:8px;padding-top:12px;border-top:1px solid var(--border)}
+.kpi-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+.kpi-item{font-size:11px;color:var(--navy);padding:3px 0;display:flex;gap:6px}
+.kpi-item::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0}
+
+.phase-1{--ph-bg:#0D1B3E;--ph-text:#fff;--ph-tag:var(--gold)}
+.phase-2{--ph-bg:#1D4ED8;--ph-text:#fff;--ph-tag:#93C5FD}
+.phase-3{--ph-bg:#7C3AED;--ph-text:#fff;--ph-tag:#C4B5FD}
+.phase-4{--ph-bg:#059669;--ph-text:#fff;--ph-tag:#6EE7B7}
+.phase-card .phase-header{background:var(--ph-bg)}
+.phase-tag{color:var(--ph-tag)}
+.phase-title{color:var(--ph-text)}
+.phase-window{color:var(--ph-text)}
+
+/* ──────────────────────────────────────────── PRINCIPLES */
+.principles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.principle-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:20px}
+.principle-icon{font-size:24px;margin-bottom:10px}
+.principle-title{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.principle-text{font-size:11.5px;color:var(--muted);line-height:1.55}
+
+/* ──────────────────────────────────────────── FOOTER */
+footer{background:var(--navy);padding:48px 24px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-copy{color:rgba(255,255,255,.4);font-size:12px}
+.footer-links{display:flex;gap:20px}
+.footer-links a{color:rgba(255,255,255,.4);font-size:12px;transition:.15s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ──────────────────────────────────────────── UTILITIES */
+.divider{height:1px;background:var(--border);margin:48px 0}
+.tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;display:inline-flex;align-items:center}
+.tag-admin{background:#EEF2FF;color:#4F46E5}
+.tag-store{background:#F0FDF4;color:#16A34A}
+.tag-dev{background:#FFF7ED;color:#C2410C}
+
+.arrow-connector{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px;padding:4px 0}
+
+.expand-btn{background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;transition:.2s;flex-shrink:0;padding:4px;border-radius:50%}
+.expand-btn:hover{background:var(--cream);color:var(--navy)}
+.top-card-body{display:none}
+.top-card.open .top-card-body{display:grid}
+.top-card.open .expand-btn{transform:rotate(180deg)}
+
+@media(max-width:900px){
+  .top-card-body{grid-template-columns:1fr}
+  .tcb-section{border-right:none;border-bottom:1px solid var(--border)}
+  .tcb-section:last-child{border-bottom:none}
+  .targeting-layers{grid-template-columns:1fr}
+  .nav-a.hide-mobile{display:none}
+}
+@media(max-width:640px){
+  .hero{padding:56px 20px 48px}
+  section{padding:48px 20px}
+}
+
+/* Highlight for anti-patterns table */
+.anti-table{width:100%;border-collapse:collapse;font-size:12px}
+.anti-table th{text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:10px 16px;background:var(--cream);border-bottom:1px solid var(--border)}
+.anti-table td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;color:#374151}
+.anti-table tr:last-child td{border-bottom:none}
+.anti-table tr:hover td{background:var(--cream)}
+.anti-table td:first-child{font-weight:600;color:var(--navy)}
+.anti-icon{color:var(--red);margin-right:4px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-wrap">
+    <div class="logo">
+      <div class="logo-e">E</div>
+      <div class="logo-text"><p>Eduzz Store Ads</p><p>Retail Media</p></div>
+    </div>
+    <a class="nav-a hide-mobile" href="#ecossistema">Ecossistema</a>
+    <a class="nav-a hide-mobile" href="#superficies">Superfícies</a>
+    <a class="nav-a hide-mobile" href="#top10">Top 10</a>
+    <a class="nav-a hide-mobile" href="#canais">Canais</a>
+    <a class="nav-a hide-mobile" href="#dados">Dados</a>
+    <a class="nav-a" href="#roadmap">Roadmap</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span>Dossiê Estratégico · Eduzz Store Ads Platform</span></div>
+    <h1>Mapeamento de Canais de<br><em>Retail Media</em> · Eduzz</h1>
+    <p>Análise completa de oportunidades PLG em 14 produtos do ecossistema Eduzz. Cada superfície mapeada por intenção do usuário, formato de ad, modelo de precificação, viabilidade técnica e prioridade de implementação.</p>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="num">46</div><div class="lbl">Superfícies mapeadas</div><div class="sub">em 14 produtos</div></div>
+      <div class="stat-card"><div class="num">12</div><div class="lbl">Slots de intenção alta</div><div class="sub">CTR esperado &gt; 10%</div></div>
+      <div class="stat-card"><div class="num">4</div><div class="lbl">Fases de rollout</div><div class="sub">0 → 180 dias</div></div>
+      <div class="stat-card"><div class="num">R$ 300k+</div><div class="lbl">Revenue potencial</div><div class="sub">estimativa mês 6</div></div>
+      <div class="stat-card"><div class="num">3–5×</div><div class="lbl">Conversão PLG vs. ext.</div><div class="sub">tese central do projeto</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ECOSSISTEMA -->
+<section id="ecossistema">
+  <div class="wrap">
+    <div class="sec-label">Parte 0 — Visão Geral</div>
+    <div class="sec-title">Os 14 produtos do ecossistema</div>
+    <p class="sec-sub">Cada produto é uma superfície de retail media com oportunidades únicas de inserção contextual.</p>
+    <div class="eco-grid" id="ecoGrid">
+      <div class="eco-card" data-prod="Órbita" onclick="filterProduct('Órbita',this)">
+        <div class="icon">🌐</div><div class="name">Órbita</div><div class="count">7 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Checkout Sun" onclick="filterProduct('Checkout Sun',this)">
+        <div class="icon">☀️</div><div class="name">Checkout Sun</div><div class="count">5 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Nutror" onclick="filterProduct('Nutror',this)">
+        <div class="icon">📚</div><div class="name">Nutror</div><div class="count">4 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="AlpaClass" onclick="filterProduct('AlpaClass',this)">
+        <div class="icon">🎓</div><div class="name">AlpaClass</div><div class="count">4 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="SafeVideo" onclick="filterProduct('SafeVideo',this)">
+        <div class="icon">🎬</div><div class="name">SafeVideo</div><div class="count">2 superfícies · P2</div>
+      </div>
+      <div class="eco-card" data-prod="HeyCamp" onclick="filterProduct('HeyCamp',this)">
+        <div class="icon">💬</div><div class="name">HeyCamp</div><div class="count">3 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Blinket" onclick="filterProduct('Blinket',this)">
+        <div class="icon">🎟️</div><div class="name">Blinket</div><div class="count">3 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Orbit Pages" onclick="filterProduct('Orbit Pages',this)">
+        <div class="icon">🖼️</div><div class="name">Orbit Pages</div><div class="count">3 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Telescope" onclick="filterProduct('Telescope',this)">
+        <div class="icon">🔭</div><div class="name">Telescope</div><div class="count">3 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Alumy" onclick="filterProduct('Alumy',this)">
+        <div class="icon">♻️</div><div class="name">Alumy</div><div class="count">2 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Store Eduzz" onclick="filterProduct('Store Eduzz',this)">
+        <div class="icon">🛍️</div><div class="name">Store Eduzz</div><div class="count">4 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="MyEduzz" onclick="filterProduct('MyEduzz',this)">
+        <div class="icon">💳</div><div class="name">MyEduzz</div><div class="count">2 superfícies · P2</div>
+      </div>
+      <div class="eco-card" data-prod="DevHub" onclick="filterProduct('DevHub',this)">
+        <div class="icon">⚙️</div><div class="name">DevHub</div><div class="count">2 superfícies · P1</div>
+      </div>
+      <div class="eco-card" data-prod="Jornada Elite" onclick="filterProduct('Jornada Elite',this)">
+        <div class="icon">🏆</div><div class="name">Jornada Elite</div><div class="count">2 superfícies · P1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPERFÍCIES -->
+<section class="alt" id="superficies">
+  <div class="wrap">
+    <div class="sec-label"><span class="part-number">1</span>Parte 1 — Mapa Completo</div>
+    <div class="sec-title">46 superfícies de retail media</div>
+    <p class="sec-sub">Filtre por produto ou prioridade. Cada card mostra o contexto PLG, formato de ad sugerido e métricas esperadas.</p>
+
+    <div class="filter-bar" id="filterBar">
+      <span style="font-size:11px;font-weight:700;color:var(--muted);margin-right:4px">Prioridade:</span>
+      <div class="filter-pill active" onclick="filterPriority('all',this)">Todas</div>
+      <div class="filter-pill" onclick="filterPriority('P1',this)" style="border-color:#DC2626;color:#DC2626">P1 Crítico</div>
+      <div class="filter-pill" onclick="filterPriority('P2',this)" style="border-color:#EA580C;color:#EA580C">P2 Alto</div>
+      <div class="filter-pill" onclick="filterPriority('P3',this)" style="border-color:#CA8A04;color:#CA8A04">P3 Médio</div>
+      <div class="filter-pill" onclick="filterPriority('reset',this)" style="margin-left:auto">← Limpar filtro</div>
+    </div>
+
+    <div class="surfaces-grid" id="surfacesGrid"></div>
+  </div>
+</section>
+
+<!-- TOP 10 -->
+<section id="top10">
+  <div class="wrap">
+    <div class="sec-label"><span class="part-number">2</span>Parte 2 — Oportunidades PLG</div>
+    <div class="sec-title">Top 10 momentos de maior potencial</div>
+    <p class="sec-sub">Rankeados por: Intenção (40%) · Escala (30%) · Facilidade de implementação (20%) · Potencial de receita (10%). Clique em cada card para expandir.</p>
+    <div class="top10-grid" id="top10Grid"></div>
+  </div>
+</section>
+
+<!-- CANAIS POR TIPO -->
+<section class="alt" id="canais">
+  <div class="wrap">
+    <div class="sec-label"><span class="part-number">3</span>Parte 3 — Taxonomia de Canais</div>
+    <div class="sec-title">Mapa de canais por tipo de mídia</div>
+    <p class="sec-sub">6 categorias estratégicas que organizam todos os 46 slots por padrão de inserção e intenção do usuário.</p>
+    <div class="channel-map" id="channelMap"></div>
+  </div>
+</section>
+
+<!-- DATA ARCH -->
+<section id="dados">
+  <div class="wrap">
+    <div class="sec-label"><span class="part-number">4</span>Parte 4 — Arquitetura de Dados</div>
+    <div class="sec-title">Motor de targeting e dados necessários</div>
+    <p class="sec-sub">Eventos de produto, camadas de targeting, dados de primeira parte disponíveis e restrições LGPD.</p>
+    <div class="data-arch">
+
+      <!-- Layer 1: Events -->
+      <div class="arch-layer">
+        <div class="arch-layer-header">
+          <div class="layer-num">1</div>
+          <h3>Eventos de Produto a Capturar</h3>
+        </div>
+        <div class="arch-body">
+          <div class="events-grid">
+            <div class="event-group">
+              <h4>☀️ Checkout Sun</h4>
+              <code class="event-tag">sale_confirmed</code>
+              <code class="event-tag">cart_abandoned</code>
+              <code class="event-tag">checkout_configured</code>
+              <code class="event-tag">order_bump_empty</code>
+            </div>
+            <div class="event-group">
+              <h4>📚 Nutror / 🎓 AlpaClass</h4>
+              <code class="event-tag">module_completed</code>
+              <code class="event-tag">module_abandoned</code>
+              <code class="event-tag">student_inactive_7d</code>
+              <code class="event-tag">completion_rate_low</code>
+            </div>
+            <div class="event-group">
+              <h4>🌐 Órbita</h4>
+              <code class="event-tag">metric_decline</code>
+              <code class="event-tag">feature_not_configured</code>
+              <code class="event-tag">tools_empty_state</code>
+              <code class="event-tag">cart_abandon_alert</code>
+            </div>
+            <div class="event-group">
+              <h4>🔭 Telescope</h4>
+              <code class="event-tag">funnel_dropoff</code>
+              <code class="event-tag">roas_below_threshold</code>
+              <code class="event-tag">conversion_alert_realtime</code>
+            </div>
+            <div class="event-group">
+              <h4>♻️ Alumy</h4>
+              <code class="event-tag">churn_rate_high</code>
+              <code class="event-tag">subscriber_inactive_30d</code>
+            </div>
+            <div class="event-group">
+              <h4>🛍️ Store Eduzz</h4>
+              <code class="event-tag">app_search_query</code>
+              <code class="event-tag">app_detail_viewed</code>
+              <code class="event-tag">app_installed</code>
+              <code class="event-tag">app_activated</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-connector">↓</div>
+
+      <!-- Layer 2: Ad Server targeting -->
+      <div class="arch-layer">
+        <div class="arch-layer-header">
+          <div class="layer-num">2</div>
+          <h3>Motor de Targeting — 3 Camadas</h3>
+        </div>
+        <div class="arch-body">
+          <div class="targeting-layers">
+            <div class="tl-card" style="border-color:var(--navy)">
+              <h4>⚡ Camada 1 — Contexto em Tempo Real</h4>
+              <div class="tl-body">
+                Evento dispara query ao Ad Server:<br><br>
+                <code>cart_abandoned{value:R$890}</code><br>
+                → slot: <code>"notification_abandonment"</code><br>
+                → retorna: app com maior bid + NPS ≥ 4.0 + categoria "cart_recovery"<br><br>
+                Latência máxima aceitável: <strong>&lt; 50ms</strong> (resultado cacheado, não síncrono)
+              </div>
+            </div>
+            <div class="tl-card" style="border-color:var(--blue)">
+              <h4>🧠 Camada 2 — Segmento Pré-computado</h4>
+              <div class="tl-body">
+                Atualização diária por batch:<br><br>
+                <code>producer_segment = {nicho, ticket_médio, belt_level, apps_instalados}</code><br><br>
+                Exemplos:<br>
+                · nicho_fitness_baixo_ticket → apps [A, B, C]<br>
+                · nicho_educacional_escala → apps [D, E, F]<br>
+                · produtor_early → apps de setup<br>
+                · produtor_scale Gold+ → apps de otimização
+              </div>
+            </div>
+            <div class="tl-card" style="border-color:var(--red)">
+              <h4>🛡️ Camada 3 — Exclusões e Safety</h4>
+              <div class="tl-body">
+                Regras de proteção automática:<br><br>
+                · <code>app_instalado = true</code> → excluir do targeting<br>
+                · <code>NPS_app &lt; 3.5</code> → bloquear independente do bid<br>
+                · <code>opted_out = true</code> → excluir de targeting personalizado<br>
+                · Freq. cap: máx. 3 impressões/semana por app/usuário
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-connector">↓</div>
+
+      <!-- Layer 3: LGPD -->
+      <div class="arch-layer">
+        <div class="arch-layer-header">
+          <div class="layer-num">3</div>
+          <h3>Dados de Primeira Parte — Status LGPD</h3>
+        </div>
+        <div class="arch-body">
+          <div class="lgpd-grid">
+            <div class="lgpd-row"><div class="lgpd-status">✅</div><div class="lgpd-info"><div class="lgpd-title">Histórico de vendas por nicho</div><div class="lgpd-base">Legítimo interesse · Checkout Sun</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">✅</div><div class="lgpd-info"><div class="lgpd-title">Produtos configurados vs. não</div><div class="lgpd-base">Legítimo interesse · Órbita</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">✅</div><div class="lgpd-info"><div class="lgpd-title">Taxa de engajamento de alunos</div><div class="lgpd-base">Contrato com produtor · Nutror</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">✅</div><div class="lgpd-info"><div class="lgpd-title">Nível Elite / Belt</div><div class="lgpd-base">Contrato · Órbita</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">✅</div><div class="lgpd-info"><div class="lgpd-title">Apps instalados vs. disponíveis</div><div class="lgpd-base">Contrato · Store</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">✅</div><div class="lgpd-info"><div class="lgpd-title">Funil de conversão por produtor</div><div class="lgpd-base">Contrato · Telescope</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">⚠️</div><div class="lgpd-info"><div class="lgpd-title">Comportamento do aluno final</div><div class="lgpd-base">Usar apenas agregado/anonimizado</div></div></div>
+            <div class="lgpd-row"><div class="lgpd-status">❌</div><div class="lgpd-info"><div class="lgpd-title">Dados financeiros detalhados</div><div class="lgpd-base">Dados sensíveis — não usar para ad targeting</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /data-arch -->
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="alt" id="roadmap">
+  <div class="wrap">
+    <div class="sec-label"><span class="part-number">5</span>Parte 5 — Roadmap de Implementação</div>
+    <div class="sec-title">4 fases · 0 a 180 dias</div>
+    <p class="sec-sub">Da prova de conceito com quick wins até a rede programática completa com leilão generalizado.</p>
+    <div class="roadmap">
+
+      <div class="phase-card phase-1">
+        <div class="phase-header">
+          <div class="phase-tag">🚀 Fase 1</div>
+          <div class="phase-title">Quick Wins PLG</div>
+          <div class="phase-window">0 – 30 dias</div>
+        </div>
+        <div class="phase-body">
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Órbita:</strong> slot "order bump empty state" — componente React + API Store</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Checkout Sun:</strong> card pós-venda na página de obrigado</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Orbit Pages:</strong> checklist de setup na biblioteca de templates</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>DevHub:</strong> card de Store Ads após publicação do 1º app</div></div>
+          <div class="phase-kpis">
+            <div class="kpi-title">KPIs de sucesso</div>
+            <div class="kpi-item">CTR médio cross-slots ≥ 6%</div>
+            <div class="kpi-item">300+ instalações atribuídas</div>
+            <div class="kpi-item">NPS das páginas: sem redução</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card phase-2">
+        <div class="phase-header">
+          <div class="phase-tag">💰 Fase 2</div>
+          <div class="phase-title">Checkout e Pós-Venda</div>
+          <div class="phase-window">30 – 60 dias</div>
+        </div>
+        <div class="phase-body">
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Órbita:</strong> notificação de abandono enriquecida com ad</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Checkout Sun:</strong> recovery + upsell slot</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Telescope:</strong> banner de drop-off no funil</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Alumy:</strong> card de churn no dashboard MRR</div></div>
+          <div class="impl-item"><div class="impl-icon">⚙️</div><div class="impl-text"><strong>Infra:</strong> Ad Server v1 com leilão simples por slot (CPC bid)</div></div>
+          <div class="phase-kpis">
+            <div class="kpi-title">KPIs de sucesso</div>
+            <div class="kpi-item">Revenue: R$ 30–50k/mês</div>
+            <div class="kpi-item">150+ Builders com campanha ativa</div>
+            <div class="kpi-item">CTR médio ≥ 8%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card phase-3">
+        <div class="phase-header">
+          <div class="phase-tag">🧠 Fase 3</div>
+          <div class="phase-title">Canais de Produto Profundos</div>
+          <div class="phase-window">60 – 90 dias</div>
+        </div>
+        <div class="phase-body">
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Nutror:</strong> banner contextual no relatório de engajamento</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>AlpaClass:</strong> card de alunos inativos + empty state gamificação</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>SafeVideo:</strong> slot no dashboard de baixa retenção</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>HeyCamp:</strong> empty state de comunidade inativa</div></div>
+          <div class="impl-item"><div class="impl-icon">⚙️</div><div class="impl-text"><strong>Infra:</strong> recomendações pré-computadas por segmento + NPS-gate automático</div></div>
+          <div class="phase-kpis">
+            <div class="kpi-title">KPIs de sucesso</div>
+            <div class="kpi-item">Revenue: R$ 80–120k/mês</div>
+            <div class="kpi-item">300+ Builders ativos</div>
+            <div class="kpi-item">CTR médio sustentado ≥ 7%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card phase-4">
+        <div class="phase-header">
+          <div class="phase-tag">🌐 Fase 4</div>
+          <div class="phase-title">Rede Programática</div>
+          <div class="phase-window">90 – 180 dias</div>
+        </div>
+        <div class="phase-body">
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Store:</strong> busca patrocinada com leilão por keyword</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>Email:</strong> slots contextuais em digests semanais do Órbita</div></div>
+          <div class="impl-item"><div class="impl-icon">→</div><div class="impl-text"><strong>P2P:</strong> produtor como veículo — co-marketing com afiliados (split 30/20/50)</div></div>
+          <div class="impl-item"><div class="impl-icon">⚙️</div><div class="impl-text"><strong>Infra:</strong> Ad Server v2 — leilão generalizado de segundo preço + attribution multi-touch</div></div>
+          <div class="phase-kpis">
+            <div class="kpi-title">KPIs de sucesso</div>
+            <div class="kpi-item">Revenue: R$ 300k+/mês</div>
+            <div class="kpi-item">500+ Builders com campanha ativa</div>
+            <div class="kpi-item">NPS ecossistema: mantido ou melhorado</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRINCÍPIOS -->
+<section id="principios">
+  <div class="wrap">
+    <div class="sec-label">Restrições e Princípios</div>
+    <div class="sec-title">5 regras não negociáveis</div>
+    <p class="sec-sub">Nenhum canal é implementado se violar estes princípios — o produto e a confiança do usuário estão acima de qualquer receita.</p>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-icon">🌱</div>
+        <div class="principle-title">PLG First</div>
+        <div class="principle-text">O ad só existe se a remoção mental deixar a tela "incompleta". Se a tela ficar melhor sem ele, é intrusão — não fazer.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🔒</div>
+        <div class="principle-title">LGPD</div>
+        <div class="principle-text">Base legal clara para cada dado. Anonimização quando necessário. Opt-out de ads personalizados sempre disponível.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">⭐</div>
+        <div class="principle-title">Qualidade do Builder</div>
+        <div class="principle-text">Nenhum app com NPS &lt; 3.5 pode ser anunciado em momentos de alta intenção. A missão é recomendar a solução certa.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🏷️</div>
+        <div class="principle-title">Transparência</div>
+        <div class="principle-text">Todo slot patrocinado é identificado: "Solução recomendada", "Patrocinado" ou "Da Store Eduzz". Nunca disfarçado de feature nativa.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">⚡</div>
+        <div class="principle-title">Performance</div>
+        <div class="principle-text">Nenhum canal de ad adiciona mais de 50ms de latência. Recomendações pré-computadas e cacheadas — nunca síncronas no request principal.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec-title" style="font-size:20px;margin-bottom:20px">⛔ Anti-padrões — O que NÃO fazer</div>
+    <div style="background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden">
+      <table class="anti-table">
+        <thead><tr><th>Superfície proibida</th><th>Por que não fazer</th></tr></thead>
+        <tbody>
+          <tr><td><span class="anti-icon">✗</span>Dentro do fluxo de checkout do comprador (aluno comprando)</td><td>Interrompe a conversão — risco direto de abandono de carrinho. Zona protegida.</td></tr>
+          <tr><td><span class="anti-icon">✗</span>Emails transacionais críticos (senha, confirmação financeira)</td><td>Viola confiança e possivelmente regulação de comunicação financeira.</td></tr>
+          <tr><td><span class="anti-icon">✗</span>Pop-up no player de vídeo durante reprodução</td><td>Destrói experiência de aprendizado — exato oposto de PLG.</td></tr>
+          <tr><td><span class="anti-icon">✗</span>Banner genérico sem contexto em toda sessão</td><td>Degrada NPS do produto base. Sem contexto = intrusão.</td></tr>
+          <tr><td><span class="anti-icon">✗</span>Apps com NPS &lt; 3.5 em qualquer slot</td><td>Danifica a reputação da Store como curadoria de qualidade.</td></tr>
+          <tr><td><span class="anti-icon">✗</span>Targeting por dados financeiros individuais detalhados</td><td>Restrição LGPD + risco de exposição de dados sensíveis do produtor.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="logo">
+      <div class="logo-e">E</div>
+      <div class="logo-text"><p>Eduzz Store Ads</p><p>Retail Media Dossiê · 2026</p></div>
+    </div>
+    <div class="footer-copy">Dossiê gerado para uso interno · Eduzz Store Ads Platform</div>
+    <div class="footer-links">
+      <a href="index.html">← Voltar ao início</a>
+      <a href="store.html">Ver Store</a>
+      <a href="dashboard.html">Ver Dashboard</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ───── DATA ───── */
+const SURFACES = [
+  // ÓRBITA
+  {id:1,product:"Órbita",icon:"🌐",surface:"Dashboard Principal — métricas em queda",who:"Infoprodutor",doing:"Monitorando negócio",intent:"Média-Alta",pain:"Minha conversão caiu. O que fazer?",format:"Card nativo contextual",ctr:"4–7%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:2,product:"Órbita",icon:"🌐",surface:"Gestão de Produtos — Novo Produto (empty state)",who:"Infoprodutor",doing:"Configurando produto do zero",intent:"Alta",pain:"Preciso de checkout, área de membros, entrega — por onde começo?",format:"Banner inline de setup-wizard",ctr:"10–18%",model:"CPC",complexity:"Baixa",priority:"P1"},
+  {id:3,product:"Órbita",icon:"🌐",surface:"Gestão de Afiliados — sem afiliados ativos",who:"Infoprodutor",doing:"Ativando canal de afiliados",intent:"Alta",pain:"Não sei como recrutar afiliados. Onde encontro profissionais?",format:"Card de recomendação inline",ctr:"7–12%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:4,product:"Órbita",icon:"🌐",surface:"Ferramentas de Conversão — Order Bump (vazio)",who:"Infoprodutor",doing:"Otimizando checkout para mais receita",intent:"Alta",pain:"O que ofereço como order bump? Não sei o que funciona",format:"Sugestão contextual inline com ranking",ctr:"12–20%",model:"CPA instalação",complexity:"Baixa",priority:"P1"},
+  {id:5,product:"Órbita",icon:"🌐",surface:"Configurações Avançadas — Webhooks/API",who:"Infoprodutor",doing:"Configurando integração com ferramenta externa",intent:"Alta",pain:"Preciso conectar [CRM/WhatsApp] ao Eduzz sem código",format:"Card 'Integre sem código via Store'",ctr:"8–14%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:6,product:"Órbita",icon:"🌐",surface:"Dashboard Elite — faltam R$ X para próximo Belt",who:"Infoprodutor",doing:"Acompanhando progressão de fidelidade",intent:"Alta",pain:"Quero subir de nível. Como faturar mais rápido?",format:"Card contextual de ferramentas por Belt",ctr:"6–10%",model:"CPC / Revenue Share",complexity:"Média",priority:"P2"},
+  {id:7,product:"Órbita",icon:"🌐",surface:"Notificação — Alerta de Abandono de Carrinho",who:"Infoprodutor",doing:"Recebendo alerta de perda de venda em tempo real",intent:"Altíssima",pain:"Estou perdendo R$ X agora. Preciso de recovery urgente",format:"Toast enriquecido com app de recovery",ctr:"15–25%",model:"CPA / instalação",complexity:"Baixa",priority:"P1"},
+  // CHECKOUT SUN
+  {id:8,product:"Checkout Sun",icon:"☀️",surface:"Configuração de Checkout — setup inicial",who:"Infoprodutor",doing:"Configurando primeiro checkout",intent:"Alta",pain:"Meu checkout precisa de WhatsApp, pixel, cupom — como configuro tudo?",format:"Checklist de setup com apps por etapa",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:9,product:"Checkout Sun",icon:"☀️",surface:"Página de Obrigado — pós-venda",who:"Infoprodutor",doing:"Recebendo confirmação de venda",intent:"Altíssima",pain:"Acabei de vender! Como fidelizo esse aluno agora?",format:"Card nativo de celebração pós-venda",ctr:"8–15%",model:"CPA instalação",complexity:"Baixa",priority:"P1"},
+  {id:10,product:"Checkout Sun",icon:"☀️",surface:"Configuração de Order Bump — slot vazio",who:"Infoprodutor",doing:"Otimizando ticket médio no checkout",intent:"Alta",pain:"Preciso de uma oferta complementar que converta bem",format:"Dropdown nativo 'App da Store' + 3 sugestões",ctr:"10–18%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:11,product:"Checkout Sun",icon:"☀️",surface:"Recovery de Carrinho Abandonado — configuração",who:"Infoprodutor",doing:"Recuperando receita perdida",intent:"Alta",pain:"Como mando mensagem automática para quem abandonou?",format:"Banner inline de configuração de recovery",ctr:"10–16%",model:"CPA",complexity:"Média",priority:"P2"},
+  {id:12,product:"Checkout Sun",icon:"☀️",surface:"Upsell Pós-Compra — slot vazio",who:"Infoprodutor",doing:"Maximizando LTV do cliente",intent:"Alta",pain:"Quero oferecer mais após a compra, mas não sei o fluxo",format:"Card contextual com apps de upsell",ctr:"8–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  // NUTROR
+  {id:13,product:"Nutror",icon:"📚",surface:"Relatório de Engajamento — abandono de módulo",who:"Infoprodutor",doing:"Analisando progresso dos alunos",intent:"Alta",pain:"40% dos alunos abandonaram o módulo 3. Preciso reengajar",format:"Banner contextual abaixo do gráfico de abandono",ctr:"12–20%",model:"CPC",complexity:"Baixa",priority:"P1"},
+  {id:14,product:"Nutror",icon:"📚",surface:"Dashboard — onboarding de novo curso",who:"Infoprodutor",doing:"Lançando primeiro curso EAD",intent:"Alta",pain:"Tenho o curso criado mas não sei como engajar e manter alunos",format:"Setup-assistant inline com apps por etapa",ctr:"13–19%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:15,product:"Nutror",icon:"📚",surface:"App Mobile — push para alunos inativos",who:"Infoprodutor",doing:"Recebendo alerta no celular sobre alunos sumidos",intent:"Alta",pain:"Meus alunos pararam de assistir. Como ativo de volta?",format:"Push enriched com app de reengajamento",ctr:"8–12%",model:"CPA",complexity:"Média",priority:"P2"},
+  {id:16,product:"Nutror",icon:"📚",surface:"Relatório — taxa de conclusão abaixo de 20%",who:"Infoprodutor",doing:"Analisando retenção de alunos",intent:"Alta",pain:"Poucos alunos terminam meu curso. Isso afeta minhas avaliações",format:"Card de recomendação de gamificação",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  // ALPACLASS
+  {id:17,product:"AlpaClass",icon:"🎓",surface:"Dashboard da Escola — alunos inativos visíveis",who:"Infoprodutor",doing:"Gerenciando escola digital",intent:"Alta",pain:"Paguei para esses alunos entrarem e eles sumiram. Vou perder renovação",format:"Card contextual: reengajamento automático",ctr:"11–17%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:18,product:"AlpaClass",icon:"🎓",surface:"Gamificação — configurar primeiro quiz (empty state)",who:"Infoprodutor",doing:"Ativando gamificação da escola",intent:"Alta",pain:"Não sei o que colocar de recompensa. Preciso de ideias e ferramentas",format:"Sugestão de conteúdo + app de quiz",ctr:"9–15%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:19,product:"AlpaClass",icon:"🎓",surface:"Comunidade Interna — sem posts há 7 dias",who:"Infoprodutor",doing:"Vendo comunidade inativa",intent:"Alta",pain:"Minha comunidade está morta. Como ativo os membros?",format:"Banner com app de engajamento + automação",ctr:"7–12%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:20,product:"AlpaClass",icon:"🎓",surface:"Campanhas de Email — zero campanhas enviadas",who:"Infoprodutor",doing:"Configurando comunicação com alunos",intent:"Alta",pain:"Nunca mandei email para meus alunos. Não sei começar",format:"Setup-card: conecte email marketing em 1 clique",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  // SAFEVIDEO
+  {id:21,product:"SafeVideo",icon:"🎬",surface:"Dashboard de Estatísticas — retenção de vídeo < 40%",who:"Infoprodutor",doing:"Analisando performance de vídeos",intent:"Alta",pain:"Meus alunos abandonam o vídeo nos primeiros minutos",format:"Banner contextual: app de produção/roteiro",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:22,product:"SafeVideo",icon:"🎬",surface:"Biblioteca de Mídias — grande acervo (50+ vídeos)",who:"Infoprodutor",doing:"Gerenciando biblioteca de conteúdo",intent:"Média",pain:"Tenho muitos vídeos. Preciso organizar e adicionar SEO",format:"Card de apps de transcrição e legendas",ctr:"4–7%",model:"CPC",complexity:"Baixa",priority:"P3"},
+  // HEYCAMP
+  {id:23,product:"HeyCamp",icon:"💬",surface:"Feed da Comunidade — primeiro post (onboarding)",who:"Infoprodutor",doing:"Ativando comunidade pela primeira vez",intent:"Alta",pain:"Acabei de criar a comunidade. Como faço crescer e engajar?",format:"Setup-assistant: automação de boas-vindas + posts",ctr:"11–17%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:24,product:"HeyCamp",icon:"💬",surface:"Espaços/Grupos — grupo sem interação há 1 semana",who:"Infoprodutor",doing:"Vendo grupo temático parado",intent:"Alta",pain:"Esse grupo parou. O que faço para ativar?",format:"Card: enquetes automáticas + desafios semanais",ctr:"7–11%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:25,product:"HeyCamp",icon:"💬",surface:"Moderação — tickets em aberto acumulando",who:"Infoprodutor",doing:"Moderando comunidade manualmente",intent:"Média",pain:"Não consigo moderar tudo manualmente",format:"Toast: app de IA moderação",ctr:"5–9%",model:"CPC",complexity:"Baixa",priority:"P3"},
+  // BLINKET
+  {id:26,product:"Blinket",icon:"🎟️",surface:"Criar Evento — setup inicial (1º evento)",who:"Infoprodutor",doing:"Configurando primeiro evento digital",intent:"Alta",pain:"Nunca fiz evento. Preciso de página, confirmação e WhatsApp",format:"Checklist de setup com apps por etapa do evento",ctr:"13–20%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:27,product:"Blinket",icon:"🎟️",surface:"Dashboard do Evento — vendas < 20% da meta",who:"Infoprodutor",doing:"Acompanhando vendas de ingressos",intent:"Alta",pain:"Meu evento não está vendendo. Como promovo?",format:"Banner: apps de tráfego + WhatsApp de convite",ctr:"9–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:28,product:"Blinket",icon:"🎟️",surface:"Comunicação com Participantes — 0 mensagens pré-evento",who:"Infoprodutor",doing:"Preparando engajamento pré-evento",intent:"Alta",pain:"Não sei como manter os inscritos aquecidos até o dia",format:"Card: sequência automática WhatsApp pré-evento",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  // ORBIT PAGES
+  {id:29,product:"Orbit Pages",icon:"🖼️",surface:"Biblioteca de Templates — sem integração de email",who:"Infoprodutor",doing:"Escolhendo template de página de vendas",intent:"Alta",pain:"Vou lançar uma página mas não tenho ferramenta de email",format:"Checklist contextual de setup na seleção de template",ctr:"12–20%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:30,product:"Orbit Pages",icon:"🖼️",surface:"Editor — seção de Depoimentos (sem social proof)",who:"Infoprodutor",doing:"Construindo página de vendas",intent:"Alta",pain:"Não tenho depoimentos suficientes. Minha página converte pouco",format:"Inline suggestion: app de coleta de depoimentos",ctr:"8–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:31,product:"Orbit Pages",icon:"🖼️",surface:"Publicação — primeiro publish (preview antes de publicar)",who:"Infoprodutor",doing:"Finalizando e publicando página",intent:"Alta",pain:"Minha página está no ar mas não sei se vai converter",format:"Modal pós-publicação: app de heatmap + A/B test",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  // TELESCOPE
+  {id:32,product:"Telescope",icon:"🔭",surface:"Funil de Conversão — drop-off > 60% em etapa",who:"Infoprodutor",doing:"Diagnosticando perda de conversão",intent:"Alta",pain:"Meu funil está quebrado aqui. Preciso resolver agora",format:"Banner contextual abaixo do gráfico de funil",ctr:"12–18%",model:"CPC",complexity:"Baixa",priority:"P1"},
+  {id:33,product:"Telescope",icon:"🔭",surface:"Análise por Fonte — ROAS < 1 em tráfego pago",who:"Infoprodutor",doing:"Analisando ROI de campanhas pagas",intent:"Alta",pain:"Estou gastando em tráfego mas não retorna. Algo está errado",format:"Card: apps que resolvem drop-off por etapa",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:34,product:"Telescope",icon:"🔭",surface:"Dashboard — queda súbita de conversão em tempo real",who:"Infoprodutor",doing:"Monitorando métricas ao vivo",intent:"Altíssima",pain:"Algo quebrou. Estou perdendo vendas agora mesmo",format:"Alert banner com ação imediata: recovery + monitoramento",ctr:"18–30%",model:"CPA urgente",complexity:"Média",priority:"P1"},
+  // ALUMY
+  {id:35,product:"Alumy",icon:"♻️",surface:"Dashboard MRR — churn > 5% no mês",who:"Infoprodutor",doing:"Analisando saúde do clube de assinatura",intent:"Altíssima",pain:"Estou perdendo assinantes. Se não reverter, meu MRR colapsa",format:"Card contextual de urgência: app de retenção de churn",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:36,product:"Alumy",icon:"♻️",surface:"Gestão de Assinantes — zombie subscribers (30+ dias inativos)",who:"Infoprodutor",doing:"Gerenciando base de assinantes",intent:"Alta",pain:"Esses assinantes estão pagando mas não usam. Vão cancelar",format:"Card: sequência de reativação automática",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  // STORE EDUZZ
+  {id:37,product:"Store Eduzz",icon:"🛍️",surface:"Homepage — Destaques (Sponsored Listings)",who:"Infoprodutor",doing:"Explorando apps disponíveis",intent:"Alta",pain:"Preciso de uma solução mas não sei o que existe",format:"Card patrocinado entre orgânicos com badge 'Destaque'",ctr:"5–9%",model:"CPM + CPC",complexity:"Média",priority:"P2"},
+  {id:38,product:"Store Eduzz",icon:"🛍️",surface:"Busca Interna — Resultados Patrocinados",who:"Infoprodutor",doing:"Buscando ativamente uma solução específica",intent:"Altíssima",pain:"Intent explícita: busca por 'WhatsApp checkout', 'recuperar carrinho'",format:"Resultado #1 com badge 'Patrocinado' + snippet de benefício",ctr:"15–25%",model:"CPC leiloado",complexity:"Média",priority:"P1"},
+  {id:39,product:"Store Eduzz",icon:"🛍️",surface:"Páginas de Categoria — topo do listing",who:"Infoprodutor",doing:"Navegando por categoria específica de apps",intent:"Alta",pain:"Está em categoria 'WhatsApp' ou 'CRM' — intenção definida",format:"Card fixo de destaque no topo da categoria",ctr:"8–14%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:40,product:"Store Eduzz",icon:"🛍️",surface:"Detalhe do App — 'Você também pode gostar'",who:"Infoprodutor",doing:"Avaliando um app específico",intent:"Alta",pain:"Esse app resolve X, mas também preciso de Y",format:"Cross-sell nativo: 3 apps complementares",ctr:"6–11%",model:"CPC / Bundle Revenue",complexity:"Baixa",priority:"P2"},
+  // MYEDUZZ
+  {id:41,product:"MyEduzz",icon:"💳",surface:"Dashboard Financeiro — saldo baixo com antecipação",who:"Infoprodutor",doing:"Gerenciando fluxo de caixa",intent:"Alta",pain:"Estou sem capital para investir em ferramentas e tráfego",format:"Card: antecipe e invista em crescimento",ctr:"6–10%",model:"CPC / Revenue Share",complexity:"Média",priority:"P3"},
+  {id:42,product:"MyEduzz",icon:"💳",surface:"Menu de Acesso — produto nunca acessado",who:"Infoprodutor",doing:"Navegando pelo ecossistema de produtos",intent:"Alta",pain:"Pago o ecossistema mas não uso metade das ferramentas",format:"Recomendação de ativação com apps de setup rápido",ctr:"8–13%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  // DEVHUB
+  {id:43,product:"DevHub",icon:"⚙️",surface:"Console de Apps — 1º app publicado",who:"Builder",doing:"Publicando primeiro app na Store",intent:"Alta",pain:"Publiquei meu app. Como faço ele aparecer para mais produtores?",format:"Card: planos de Store Ads para novos Builders",ctr:"20–35%",model:"AutoConversão Builder → Anunciante",complexity:"Baixa",priority:"P1"},
+  {id:44,product:"DevHub",icon:"⚙️",surface:"Documentação — endpoint de alta demanda",who:"Builder",doing:"Integrando com API Eduzz",intent:"Média",pain:"Preciso de ajuda técnica para esta integração",format:"Banner lateral: contratar Partner certificado",ctr:"4–8%",model:"CPC / Marketplace fee",complexity:"Baixa",priority:"P3"},
+  // JORNADA ELITE
+  {id:45,product:"Jornada Elite",icon:"🏆",surface:"Dashboard Elite — faltam R$ X para próximo Belt",who:"Infoprodutor",doing:"Acompanhando progressão de Belt/Level",intent:"Alta",pain:"Estou a R$ 8k do próximo nível. Quero chegar rápido",format:"Card contextual: top 3 apps de escala por nível",ctr:"10–16%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:46,product:"Jornada Elite",icon:"🏆",surface:"Desbloqueio de Benefício — notificação de conquista de nível",who:"Infoprodutor",doing:"Celebrando avanço para novo Belt",intent:"Alta",pain:"Momento de euforia — máxima receptividade para novas ferramentas",format:"Modal de celebração com ferramenta exclusiva do nível",ctr:"18–28%",model:"Freemium Unlock / CPA",complexity:"Baixa",priority:"P1"},
+];
+
+const TOP10 = [
+  {rank:1,product:"Checkout Sun",surface:"Página de Obrigado — Pós-Venda",score:9.1,dimensions:{intent:10,scale:9,ease:7,revenue:10},insight:"Pico de dopamina do produtor. Janela de 90s de euforia e receptividade máxima. A recomendação é 'próximo passo natural', não interrupção.",mockup:`✅  Venda confirmada — R$ 297,00
+    João Silva · Curso de Copywriting
+
+┌─────────────────────────────────────────┐
+│ 💬  Fidelize esse aluno com WhatsApp   │
+│                                         │
+│  "Oi João! Obrigado pela compra.        │
+│   Seu acesso está pronto em..."         │
+│                                         │
+│  Umbler Talks · ⭐ 4.8 · 1.2k instal.  │
+│  [Ativar grátis por 14 dias →]         │
+│                             Patrocinado │
+└─────────────────────────────────────────┘`,copy:"Você acabou de vender. Agora fidelize: 78% dos alunos que recebem uma mensagem de WhatsApp nas primeiras 2h concluem o curso.",kpis:["CTR ≥ 8% (breakeven = 5%)","Instalações atribuídas ≥ 200/mês","Revenue share ≥ R$ 15.000/mês"]},
+  {rank:2,product:"Órbita",surface:"Ferramentas de Conversão — Order Bump (Empty State)",score:8.9,dimensions:{intent:9,scale:9,ease:8,revenue:9},insight:"Produtor em mindset de otimização de receita. Slot vazio que precisa ser preenchido. Recomendação preenche exatamente o vazio funcional da tela.",mockup:`Order Bump
+  ○ Produto do meu catálogo
+  ○ App da Store (recomendado) ← NOVO
+
+┌─────────────────────────────────────────┐
+│ 💡 Order bumps mais usados no seu nicho│
+│                                         │
+│  1. Transcrição PDF do curso  +18%      │
+│  2. Certificado Internacional +31%      │
+│  3. Acesso Vitalício Premium  +45%      │
+│                                         │
+│  [Ver todos na Store →]     Patrocinado │
+└─────────────────────────────────────────┘`,copy:"Produtores de [nicho] aumentam o ticket em média +27% com um order bump de alta conversão. Escolha um app pronto — sem criar novo produto.",kpis:["≥ 15% dos order bumps criados via Store","Instalações ≥ 300/mês","Ticket médio: delta ≥ 20% vs. controle"]},
+  {rank:3,product:"Orbit Pages",surface:"Biblioteca de Templates — sem integração de email",score:8.7,dimensions:{intent:9,scale:8,ease:9,revenue:8},insight:"Setup mindset: não está usando o produto, está configurando o produto. Recomendação é percebida como feature discovery, não ad. CTR naturalmente alto.",mockup:`Template selecionado: "Lançamento Perpétuo Pro"
+
+⚡ Complete sua página em 3 passos:
+
+✅ 1. Template escolhido
+○  2. Conecte captura de leads
+  ┌───────────────────────────────────┐
+  │  RD Station  ActiveCampaign  ...  │
+  │  [Conectar →]         Patrocinado │
+  └───────────────────────────────────┘
+○  3. Configure pixel de rastreamento`,copy:"Sua página fica 3x mais eficiente com captura de leads automática. Conecte sua ferramenta em 1 clique — ou instale uma nova gratuitamente por 30 dias.",kpis:["% com email configurado: de 23% → ≥ 40%","Instalações via checklist ≥ 250/mês","NPS da página: sem redução"]},
+  {rank:4,product:"Órbita",surface:"Notificação — Alerta de Abandono de Carrinho",score:8.6,dimensions:{intent:10,scale:8,ease:7,revenue:8},insight:"Perda financeira real e quantificada acontecendo agora. A recomendação é o 'bombeiro que chegou durante o incêndio'. Urgência monetária gera CTR excepcional.",mockup:`🔔  Notificações
+
+⚠️  R$ 890 em carrinhos abandonados hoje
+    14 compradores saíram sem finalizar
+
+┌─────────────────────────────────────────┐
+│  Recupere agora com WhatsApp automático │
+│                                         │
+│  CartPilot · ⭐ 4.9 · Taxa média: 23%   │
+│  "Oi [nome], vi que você quase ..."     │
+│                                         │
+│  [Ativar recovery →]  Grátis 7 dias    │
+│                             Patrocinado │
+└─────────────────────────────────────────┘`,copy:"R$ 890 saíram do seu checkout sem pagar. Com recovery por WhatsApp, 23% voltam em até 48h. Instale agora e tente recuperar esses carrinhos antes que esfriem.",kpis:["CTR ≥ 15% (urgência financeira)","Instalações de apps de recovery ≥ 180/mês","% que instalam na mesma sessão ≥ 60%"]},
+  {rank:5,product:"Nutror",surface:"Relatório de Engajamento — Abandono de Módulo",score:8.5,dimensions:{intent:10,scale:8,ease:6,revenue:9},insight:"Dado visual doloroso: N alunos abandonaram no módulo X. Produtor está em modo analítico com problema específico visível. Recomendação é resposta contextual direta ao dado.",mockup:`📊  Engajamento — Módulo 3
+
+████░░░░░░  38% concluíram  (↓ média 61%)
+
+Alunos que abandonaram:  47 alunos
+Ponto de abandono:       12min / 35min
+
+┌─────────────────────────────────────────┐
+│ 💡 Por que isso acontece e como resolve │
+│                                         │
+│  Aulas >20min têm 2x mais abandono.    │
+│  Apps de reengajamento recuperam 31%   │
+│  dos alunos em 48h.                    │
+│                                         │
+│  [Engajar os 47 inativos →] Patrocinado│
+└─────────────────────────────────────────┘`,copy:"47 alunos abandonaram exatamente neste módulo. 31% voltam se receberem uma mensagem de reengajamento em até 48h com o ponto exato onde pararam.",kpis:["CTR ≥ 12%","% com campanha de reengajamento ativada ≥ 25%","Taxa de reativação: medir e publicar como case"]},
+  {rank:6,product:"Órbita",surface:"Dashboard Principal — métricas abaixo da semana anterior",score:8.0,dimensions:{intent:7,scale:10,ease:8,revenue:7},insight:"Maior alcance do ecossistema — todo produtor acessa toda semana. Escala compensa intenção levemente menor. Volume de impressões sem precedente.",mockup:`Bom dia, Maria. Sua semana:
+
+Receita     R$ 4.200  ↓ 18% vs semana passada
+Conversão   2.1%      ↓ 0.4pp
+
+┌─────────────────────────────────────────┐
+│ 📉 Sua conversão caiu 18% esta semana  │
+│                                         │
+│  Produtoras no seu nicho com conversão  │
+│  2x maior usam checkout com recovery   │
+│  por WhatsApp. Saiba por que funciona → │
+│                             Patrocinado │
+└─────────────────────────────────────────┘`,copy:"Sua conversão caiu 18% esta semana. Produtoras do mesmo nicho com conversão 2x maior têm em comum: checkout com recovery automático configurado.",kpis:["CTR ≥ 4% (alto volume compensa)","≥ 500 instalações/mês pelo volume de usuários","Revenue por impressão: benchmark a estabelecer"]},
+  {rank:7,product:"Store Eduzz",surface:"Busca Interna — Resultados Patrocinados",score:7.9,dimensions:{intent:10,scale:6,ease:5,revenue:10},insight:"Intenção mais explícita de todo o ecossistema — usuário digitou ativamente o que precisa. Equivalente ao Google Search Ads. CTR naturalmente mais alto que qualquer outro formato.",mockup:`Busca: "recuperar carrinho whatsapp"
+
+🏆 [Patrocinado]
+CartPilot — Recovery automático por WhatsApp
+⭐ 4.9 · "Mais instalado para recovery" · 1.2k instal.
+Taxa média de recuperação: 23% em 48h
+[Ver app →]
+
+─────────────────────────────────────────
+Resultados orgânicos abaixo...`,copy:"[Snippet do ad] Taxa média de recuperação: 23% em 48h — mais instalado para recovery no ecossistema Eduzz.",kpis:["CTR ≥ 15% em queries de alta intenção","Share of voice nas top-10 keywords","Revenue por keyword: R$ 2,50–8,00/clique"]},
+  {rank:8,product:"Telescope",surface:"Funil de Conversão — Drop-off > 60% em etapa",score:7.9,dimensions:{intent:9,scale:7,ease:6,revenue:8},insight:"Produtor em modo diagnóstico com problema específico visível no gráfico. Recomendação ancorada diretamente no dado — percebida como solução, não interrupção.",mockup:`Funil de Conversão — Última semana
+
+Visitas      8.400   100%
+Checkout     1.680    20%
+Pagamento    ████░░   32% ← ⚠️ Drop alto aqui
+
+┌─────────────────────────────────────────┐
+│  Esse drop no checkout é resolvível    │
+│                                         │
+│  72% resolve com A/B test de checkout  │
+│  + WhatsApp de convite à compra.       │
+│  Apps com esse combo: [X, Y]           │
+│                             Patrocinado │
+└─────────────────────────────────────────┘`,copy:"Esse drop-off em checkout é o mais comum: 72% resolve com teste A/B da página de checkout + WhatsApp de abandono. Ative em 1 clique.",kpis:["CTR ≥ 10%","Tempo médio até instalação < 5 min","Conversão do funil: delta mensurável em 30 dias"]},
+  {rank:9,product:"AlpaClass",surface:"Dashboard da Escola — Alunos Inativos Visíveis",score:7.6,dimensions:{intent:9,scale:6,ease:6,revenue:8},insight:"Widget visível com contagem de alunos dormentes. Dor mensurável: cada aluno inativo é um potencial churn de renovação.",mockup:`Dashboard da Escola · Visão Geral
+
+Alunos ativos:      234
+Alunos inativos:     47  ← Sem acessar há 14+ dias
+
+┌─────────────────────────────────────────┐
+│ 47 alunos seus estão dormentes          │
+│                                         │
+│  Reative com sequência automática de   │
+│  WhatsApp + email. Taxa de retorno: 18% │
+│                                         │
+│  [Recuperar 47 alunos →]   Patrocinado │
+└─────────────────────────────────────────┘`,copy:"47 alunos estão pagando mas não acessam há 14+ dias. Se não reativar, eles cancelam na próxima renovação. Sequência automática de 3 mensagens tem taxa de retorno média de 18%.",kpis:["CTR ≥ 11%","% de alunos reativados com app vs. sem","Churn de renovação: delta antes/depois"]},
+  {rank:10,product:"Alumy",surface:"Dashboard MRR — Churn > 5% no Mês",score:7.6,dimensions:{intent:10,scale:5,ease:6,revenue:8},insight:"Dor mais aguda em modelo recorrente. Cada % de churn é dinheiro saindo todo mês, para sempre. Audiência menor mas propensão a pagar por solução é máxima.",mockup:`📊  MRR Dashboard — Maio 2026
+
+MRR atual:     R$ 28.400
+Churn mês:     7.2%  ⚠️ Crítico (ref: < 3%)
+MRR em risco:  R$ 2.044/mês
+
+┌─────────────────────────────────────────┐
+│ ⚠️  Churn de 7.2% vai custar           │
+│     R$ 24.528/ano se não reverter      │
+│                                         │
+│  Produtores que implementaram email de │
+│  cancelamento + downgrade automático   │
+│  reduziram churn para 3.2% em 45 dias  │
+│                             Patrocinado │
+└─────────────────────────────────────────┘`,copy:"Churn de 7.2% = R$ 24.528/ano que você vai perder se não agir. Produtores que implementaram email de cancelamento + oferta de downgrade automático reduziram churn para 3.2% em 45 dias.",kpis:["CTR ≥ 14%","% que instalam na mesma sessão ≥ 55%","Churn rate: delta mensurável em 45 dias"]},
+];
+
+const CHANNELS = [
+  {type:"plg",label:"PLG In-Product",desc:"Dentro do fluxo de uso",icon:"🔵",items:[
+    {product:"Checkout Sun",surface:"Order Bump (empty state)",intent:"Alta"},
+    {product:"Checkout Sun",surface:"Setup inicial de checkout",intent:"Alta"},
+    {product:"Nutror",surface:"Abandono de módulo",intent:"Alta"},
+    {product:"AlpaClass",surface:"Alunos inativos",intent:"Alta"},
+    {product:"Telescope",surface:"Drop-off no funil",intent:"Alta"},
+    {product:"Alumy",surface:"Dashboard MRR — churn",intent:"Altíssima"},
+    {product:"Store",surface:"Busca interna patrocinada",intent:"Altíssima"},
+    {product:"Store",surface:"Detalhe do app — cross-sell",intent:"Alta"},
+  ]},
+  {type:"setup",label:"Jornada de Setup",desc:"Onboarding e configuração",icon:"⚙️",items:[
+    {product:"Orbit Pages",surface:"Biblioteca de templates",intent:"Alta"},
+    {product:"Blinket",surface:"Criar primeiro evento",intent:"Alta"},
+    {product:"AlpaClass",surface:"Gamificação — 1º quiz",intent:"Alta"},
+    {product:"AlpaClass",surface:"Email — 0 campanhas",intent:"Alta"},
+    {product:"MyEduzz",surface:"Produto nunca acessado",intent:"Alta"},
+    {product:"DevHub",surface:"1º app publicado",intent:"Alta"},
+  ]},
+  {type:"pain",label:"Momentos de Dor",desc:"Problema visível na tela",icon:"🔴",items:[
+    {product:"Órbita",surface:"Alerta de abandono carrinho",intent:"Altíssima"},
+    {product:"Telescope",surface:"Queda súbita em tempo real",intent:"Altíssima"},
+    {product:"Alumy",surface:"Churn > 5% no mês",intent:"Altíssima"},
+    {product:"Nutror",surface:"Taxa de conclusão < 20%",intent:"Alta"},
+    {product:"SafeVideo",surface:"Retenção de vídeo < 40%",intent:"Alta"},
+    {product:"Órbita",surface:"Dashboard com métricas em queda",intent:"Média-Alta"},
+  ]},
+  {type:"celebration",label:"Celebração / Conversão",desc:"Pós-venda, pós-conquista",icon:"🏆",items:[
+    {product:"Checkout Sun",surface:"Página de Obrigado",intent:"Altíssima"},
+    {product:"Jornada Elite",surface:"Desbloqueio de Belt",intent:"Alta"},
+    {product:"AlpaClass",surface:"Certificado emitido (aluno)",intent:"Alta"},
+    {product:"Orbit Pages",surface:"Primeiro publish",intent:"Alta"},
+    {product:"Blinket",surface:"Check-in no evento",intent:"Alta"},
+  ]},
+  {type:"async",label:"Comunicação Assíncrona",desc:"Email, push, notificação",icon:"📧",items:[
+    {product:"Órbita",surface:"Email digest semanal — métricas",intent:"Média"},
+    {product:"Nutror",surface:"Push mobile — alunos inativos",intent:"Alta"},
+    {product:"AlpaClass",surface:"Email — aluno inativo 14d",intent:"Alta"},
+    {product:"Blinket",surface:"Push pré-evento 24h",intent:"Alta"},
+    {product:"Jornada Elite",surface:"Email de progressão de Belt",intent:"Alta"},
+  ]},
+  {type:"discovery",label:"Discovery / Vitrine",desc:"Store, busca, categorias",icon:"🛍️",items:[
+    {product:"Store",surface:"Homepage — Sponsored Listings",intent:"Alta"},
+    {product:"Store",surface:"Página de categoria — topo",intent:"Alta"},
+    {product:"MyEduzz",surface:"Menu de acesso — produtos",intent:"Alta"},
+    {product:"Órbita",surface:"Dashboard Elite — ferramentas",intent:"Alta"},
+    {product:"Jornada Elite",surface:"Top 3 apps por nível",intent:"Alta"},
+  ]},
+];
+
+/* ───── RENDER SURFACES ───── */
+function intentBadgeClass(intent){
+  const i = intent.toLowerCase().replace('-','');
+  if(i.includes('altíssima')) return 'badge-intent-altíssima';
+  if(i.includes('alta')) return 'badge-intent-alta';
+  if(i.includes('media-alta')||i.includes('médiaalta')) return 'badge-intent-media-alta';
+  if(i.includes('media')||i.includes('média')) return 'badge-intent-media';
+  return 'badge-intent-baixa';
+}
+
+function renderSurfaces(filter, priorityFilter){
+  const grid = document.getElementById('surfacesGrid');
+  grid.innerHTML = '';
+  const data = SURFACES.filter(s => {
+    const matchProd = !filter || s.product === filter;
+    const matchPrio = !priorityFilter || priorityFilter === 'all' || s.priority === priorityFilter;
+    return matchProd && matchPrio;
+  });
+  data.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'surface-card';
+    card.innerHTML = `
+      <div class="sc-header">
+        <div class="sc-product">
+          <span class="sc-product-icon">${s.icon}</span>
+          <span class="sc-product-name">${s.product}</span>
+        </div>
+        <span class="sc-priority ${s.priority.toLowerCase()}">${s.priority}</span>
+      </div>
+      <div class="sc-title">${s.surface}</div>
+      <div class="sc-pain">${s.pain}</div>
+      <div class="sc-meta">
+        <span class="badge ${intentBadgeClass(s.intent)}">⚡ ${s.intent}</span>
+        <span class="badge badge-format">📱 ${s.format.split(' ').slice(0,3).join(' ')}</span>
+        <span class="badge badge-ctr">📈 CTR ${s.ctr}</span>
+        <span class="badge badge-model">💰 ${s.model}</span>
+        <span class="badge badge-who">👤 ${s.who}</span>
+      </div>`;
+    grid.appendChild(card);
+  });
+  if(data.length === 0){
+    grid.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted);grid-column:1/-1">Nenhuma superfície encontrada para este filtro.</div>';
+  }
+}
+
+let currentProductFilter = null;
+let currentPriorityFilter = 'all';
+
+function filterProduct(prod, el){
+  const cards = document.querySelectorAll('.eco-card');
+  cards.forEach(c => c.classList.remove('active'));
+  if(currentProductFilter === prod){
+    currentProductFilter = null;
+  } else {
+    currentProductFilter = prod;
+    el.classList.add('active');
+  }
+  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter);
+  document.getElementById('superficies').scrollIntoView({behavior:'smooth'});
+}
+
+function filterPriority(prio, el){
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if(prio === 'reset'){
+    currentProductFilter = null;
+    currentPriorityFilter = 'all';
+    document.querySelectorAll('.eco-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.filter-pill')[0].classList.add('active');
+  } else {
+    el.classList.add('active');
+    currentPriorityFilter = prio;
+  }
+  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter);
+}
+
+/* ───── RENDER TOP 10 ───── */
+function renderTop10(){
+  const grid = document.getElementById('top10Grid');
+  TOP10.forEach((t,i) => {
+    const bubbleClass = i===0 ? '' : i===1 ? 'silver' : i===2 ? 'bronze' : 'rest';
+    const scoreWidth = Math.round((t.score/10)*100);
+    const card = document.createElement('div');
+    card.className = 'top-card';
+    card.innerHTML = `
+      <div class="top-card-header" onclick="toggleCard(this.parentElement)">
+        <div class="rank-bubble ${bubbleClass}">#${t.rank}</div>
+        <div>
+          <div class="tc-title">${t.surface}</div>
+          <div class="tc-subtitle">${t.product} · CTR estimado: ${SURFACES.find(s=>s.surface===t.surface)?.ctr||''}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="score-display">
+            <div class="score-num">${t.score}</div>
+            <div class="score-bar-outer"><div class="score-bar-inner" style="width:${scoreWidth}%"></div></div>
+            <div class="score-label">score</div>
+          </div>
+          <button class="expand-btn">▾</button>
+        </div>
+      </div>
+      <div class="top-card-body">
+        <div class="tcb-section">
+          <div class="tcb-label">Scores por dimensão</div>
+          <div class="dim-bars">
+            <div class="dim-row"><span class="dim-label">Intenção</span><div class="dim-track"><div class="dim-fill fill-intent" style="width:${t.dimensions.intent*10}%"></div></div><span class="dim-val">${t.dimensions.intent}</span></div>
+            <div class="dim-row"><span class="dim-label">Escala</span><div class="dim-track"><div class="dim-fill fill-scale" style="width:${t.dimensions.scale*10}%"></div></div><span class="dim-val">${t.dimensions.scale}</span></div>
+            <div class="dim-row"><span class="dim-label">Facilidade</span><div class="dim-track"><div class="dim-fill fill-ease" style="width:${t.dimensions.ease*10}%"></div></div><span class="dim-val">${t.dimensions.ease}</span></div>
+            <div class="dim-row"><span class="dim-label">Receita</span><div class="dim-track"><div class="dim-fill fill-revenue" style="width:${t.dimensions.revenue*10}%"></div></div><span class="dim-val">${t.dimensions.revenue}</span></div>
+          </div>
+          <div style="margin-top:16px">
+            <div class="tcb-label">Insight estratégico</div>
+            <div class="tcb-text">${t.insight}</div>
+          </div>
+        </div>
+        <div class="tcb-section">
+          <div class="tcb-label">Mockup visual do ad</div>
+          <div class="mockup-box">${t.mockup}</div>
+          <div style="margin-top:12px">
+            <div class="tcb-label">Copy sugerido</div>
+            <div class="tcb-text" style="font-style:italic;background:var(--cream);padding:10px 12px;border-radius:8px;border-left:3px solid var(--gold)">"${t.copy}"</div>
+          </div>
+        </div>
+        <div class="tcb-section">
+          <div class="tcb-label">KPIs do piloto 90 dias</div>
+          <div class="kpi-chips">${t.kpis.map(k=>`<div class="kpi-chip">→ <strong>${k}</strong></div>`).join('')}</div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function toggleCard(card){
+  card.classList.toggle('open');
+}
+
+/* ───── RENDER CHANNEL MAP ───── */
+function renderChannels(){
+  const map = document.getElementById('channelMap');
+  const intentColor = {Alta:'var(--green)',Altíssima:'var(--red)','Média-Alta':'var(--blue)',Média:'var(--muted)'};
+  CHANNELS.forEach(c => {
+    const bucket = document.createElement('div');
+    bucket.className = `channel-bucket bucket-${c.type}`;
+    bucket.innerHTML = `
+      <div class="bucket-header">
+        <div class="bucket-icon">${c.icon}</div>
+        <div><div class="bucket-title">${c.label}</div><div class="bucket-sub">${c.desc}</div></div>
+      </div>
+      <div class="bucket-body">
+        ${c.items.map(item=>`
+          <div class="channel-item">
+            <div class="ci-dot" style="background:${intentColor[item.intent]||'var(--muted)'}"></div>
+            <div class="ci-text"><strong>${item.product}</strong> · ${item.surface}</div>
+          </div>`).join('')}
+      </div>`;
+    map.appendChild(bucket);
+  });
+}
+
+/* ───── INIT ───── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderSurfaces(null, null);
+  renderTop10();
+  renderChannels();
+});
+</script>
+</body>
+</html>
