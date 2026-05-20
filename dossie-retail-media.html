@@ -284,6 +284,114 @@ footer{background:var(--navy);padding:48px 24px}
 .anti-table tr:hover td{background:var(--cream)}
 .anti-table td:first-child{font-weight:600;color:var(--navy)}
 .anti-icon{color:var(--red);margin-right:4px}
+
+/* ──────────────────────────────────────────── ATORES */
+.atores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+@media(max-width:768px){.atores-grid{grid-template-columns:1fr}}
+.ator-card{border-radius:20px;overflow:hidden;border:2px solid var(--border)}
+.ator-header{padding:28px 24px 20px;text-align:center}
+.ator-emoji{font-size:40px;display:block;margin-bottom:14px}
+.ator-title{font-size:22px;font-weight:900;line-height:1.1;margin-bottom:6px}
+.ator-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-top:6px}
+.ator-body{background:#fff;padding:20px 24px;display:flex;flex-direction:column;gap:12px}
+.ator-desc{font-size:13px;color:#374151;line-height:1.65}
+.ator-props{display:flex;flex-direction:column;gap:6px}
+.ator-prop{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#374151;line-height:1.4}
+.ator-prop::before{content:"→";color:var(--gold);font-weight:700;flex-shrink:0}
+.ator-infoprod .ator-header{background:var(--navy)}
+.ator-infoprod .ator-title{color:#fff}
+.ator-infoprod .ator-badge{background:rgba(245,184,0,.2);color:var(--gold);border:1px solid rgba(245,184,0,.4)}
+.ator-aluno .ator-header{background:#1D4ED8}
+.ator-aluno .ator-title{color:#fff}
+.ator-aluno .ator-badge{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.ator-builder .ator-header{background:#059669}
+.ator-builder .ator-title{color:#fff}
+.ator-builder .ator-badge{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.canal-flows{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.canal-flows{grid-template-columns:1fr}}
+.canal-flow{border-radius:16px;padding:24px;border:2px solid var(--border);display:flex;flex-direction:column;gap:14px}
+.flow-label{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.flow-title{font-size:18px;font-weight:900;line-height:1.2}
+.flow-actors{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.flow-actor{display:flex;flex-direction:column;align-items:center;gap:4px}
+.flow-actor-bubble{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid rgba(255,255,255,.3)}
+.flow-actor-name{font-size:10px;font-weight:700;text-align:center;line-height:1.2}
+.flow-arrow{font-size:22px;flex-shrink:0;font-weight:900;margin-top:-16px}
+.flow-desc{font-size:12px;line-height:1.6;opacity:.85}
+
+/* ──────────────────────────────────────────── EXEMPLOS */
+.exemplos-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.ex-tab{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:2px solid var(--border);color:var(--muted);transition:.15s;background:#fff}
+.ex-tab:hover{border-color:var(--navy);color:var(--navy)}
+.ex-tab.active-canal1{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.ex-tab.active-canal2{background:#1D4ED8;border-color:#1D4ED8;color:#fff}
+.ex-panel{display:none}
+.ex-panel.active{display:block}
+.mockups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:28px}
+@media(max-width:480px){.mockups-grid{grid-template-columns:1fr}}
+.mockup-frame{border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(13,27,62,.15);border:1.5px solid var(--border)}
+.browser-chrome{background:#E5E7EB;padding:10px 14px;display:flex;align-items:center;gap:8px}
+.browser-dots{display:flex;gap:5px}
+.browser-dot{width:10px;height:10px;border-radius:50%}
+.browser-url{flex:1;background:#fff;border-radius:20px;height:22px;display:flex;align-items:center;padding:0 12px;font-size:10px;color:#9CA3AF;font-family:monospace}
+.mockup-body{padding:0}
+.mockup-caption{padding:14px 16px;background:var(--cream);border-top:1px solid var(--border)}
+.mc-actor{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.mc-desc{font-size:12px;color:#374151;line-height:1.5}
+.mc-metrics{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.mc-metric{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
+
+/* ─ product UI mockup elements ─ */
+.pm-nav{display:flex;align-items:center;gap:12px;padding:10px 14px;font-size:11px;font-weight:700}
+.pm-nav-logo{font-size:14px;font-weight:900;color:var(--gold)}
+.pm-nav-links{display:flex;gap:10px}
+.pm-nav-link{font-size:10px;color:rgba(255,255,255,.55);padding:3px 8px;border-radius:4px}
+.pm-nav-link.active{color:#fff;background:rgba(255,255,255,.1)}
+.pm-content{padding:12px 14px}
+.pm-title{font-size:13px;font-weight:800;margin-bottom:8px}
+.pm-metrics-row{display:flex;gap:8px;margin-bottom:10px}
+.pm-metric-chip{background:var(--cream);border-radius:8px;padding:8px 10px;flex:1;text-align:center}
+.pm-metric-num{font-size:14px;font-weight:900;color:var(--navy)}
+.pm-metric-label{font-size:9px;color:var(--muted)}
+.pm-metric-delta{font-size:9px;font-weight:700}
+.pm-ad-card{border:2px solid var(--gold);border-radius:10px;padding:10px 12px;background:#FFFBEB;position:relative;margin-top:6px}
+.pm-ad-tag{position:absolute;top:-1px;right:8px;background:var(--gold);color:var(--navy);font-size:8px;font-weight:800;padding:1px 7px;border-radius:0 0 6px 6px;letter-spacing:.04em}
+.pm-ad-title{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:3px;margin-top:6px}
+.pm-ad-desc{font-size:10px;color:#374151;line-height:1.45;margin-bottom:8px}
+.pm-ad-footer{display:flex;align-items:center;justify-content:space-between}
+.pm-ad-rating{font-size:10px;color:#374151}
+.pm-ad-cta{background:var(--navy);color:var(--gold);font-size:10px;font-weight:800;padding:5px 12px;border-radius:6px}
+.pm-bar{height:6px;border-radius:3px;background:var(--cream2);overflow:hidden;margin-bottom:4px}
+.pm-bar-fill{height:100%;border-radius:3px;background:var(--green)}
+.pm-bar-fill-red{height:100%;border-radius:3px;background:var(--red)}
+.pm-thankyou{text-align:center;padding:14px 10px}
+.pm-check{font-size:28px;display:block;margin-bottom:6px}
+.pm-sale-title{font-size:13px;font-weight:900;color:var(--green);margin-bottom:2px}
+.pm-sale-val{font-size:17px;font-weight:900;color:var(--navy);margin-bottom:8px}
+.pm-sale-buyer{font-size:10px;color:var(--muted)}
+.pm-video-player{background:#111;display:flex;align-items:center;justify-content:center;height:90px;position:relative;overflow:hidden}
+.pm-video-player::after{content:'▶';color:rgba(255,255,255,.3);font-size:24px}
+.pm-end-card{background:rgba(0,0,0,.85);border:2px solid var(--gold);border-radius:8px;padding:10px 12px;margin:8px 14px 10px;position:relative}
+.pm-end-tag{position:absolute;top:-1px;left:10px;background:var(--gold);color:var(--navy);font-size:8px;font-weight:800;padding:1px 7px;border-radius:0 0 5px 5px}
+.pm-end-title{font-size:11px;font-weight:800;color:#fff;margin-top:6px;margin-bottom:3px}
+.pm-end-desc{font-size:9px;color:rgba(255,255,255,.7);line-height:1.4;margin-bottom:6px}
+.pm-end-cta{background:var(--gold);color:var(--navy);font-size:10px;font-weight:800;padding:5px 12px;border-radius:6px;display:inline-block}
+.pm-module-done{display:flex;align-items:center;gap:8px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:8px 10px;margin-bottom:8px}
+.pm-rec-card{background:var(--blue-bg);border:1.5px solid #BFDBFE;border-radius:10px;padding:10px 12px;position:relative}
+.pm-rec-tag{font-size:8px;font-weight:800;background:#1D4ED8;color:#fff;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:6px}
+.pm-rec-title{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:3px}
+.pm-rec-sub{font-size:10px;color:var(--muted);margin-bottom:6px}
+.pm-rec-cta{background:#1D4ED8;color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:6px;display:inline-block}
+.pm-cert{background:linear-gradient(135deg,#1D4ED8,#0D1B3E);border-radius:8px;padding:12px;text-align:center;margin-bottom:8px}
+.pm-cert-icon{font-size:22px;display:block;margin-bottom:4px}
+.pm-cert-title{font-size:11px;font-weight:800;color:#fff;margin-bottom:2px}
+.pm-cert-sub{font-size:9px;color:rgba(255,255,255,.55)}
+.pm-community-post{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:11px}
+.pm-post-header{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.pm-avatar{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--navy);flex-shrink:0}
+.pm-post-name{font-size:10px;font-weight:700;color:var(--navy)}
+.pm-post-badge{font-size:8px;background:#EEF2FF;color:#4F46E5;padding:1px 6px;border-radius:10px;font-weight:700}
+.pm-sponsored-post{background:#FFFBEB;border:1.5px solid var(--gold);border-radius:8px;padding:8px 10px;font-size:11px;position:relative}
 </style>
 </head>
 <body>
@@ -295,11 +403,13 @@ footer{background:var(--navy);padding:48px 24px}
       <div class="logo-e">E</div>
       <div class="logo-text"><p>Eduzz Store Ads</p><p>Retail Media</p></div>
     </div>
+    <a class="nav-a hide-mobile" href="#atores">3 Atores</a>
     <a class="nav-a hide-mobile" href="#ecossistema">Ecossistema</a>
     <a class="nav-a hide-mobile" href="#superficies">Superfícies</a>
     <a class="nav-a hide-mobile" href="#top10">Top 10</a>
     <a class="nav-a hide-mobile" href="#canais">Canais</a>
     <a class="nav-a hide-mobile" href="#dados">Dados</a>
+    <a class="nav-a hide-mobile" href="#exemplos">Exemplos ao Vivo</a>
     <a class="nav-a" href="#roadmap">Roadmap</a>
   </div>
 </nav>
@@ -398,6 +508,135 @@ footer{background:var(--navy);padding:48px 24px}
     </div>
   </div>
 </section>
+
+<!-- OS 3 ATORES -->
+<section id="atores" style="background:var(--navy);padding:72px 24px;color:#fff">
+  <div class="wrap">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Entendendo o Ecossistema</div>
+    <div style="font-size:clamp(22px,3vw,36px);font-weight:900;color:#fff;margin-bottom:10px;line-height:1.15">Os 3 atores do Retail Media Eduzz</div>
+    <p style="color:rgba(255,255,255,.55);font-size:15px;line-height:1.6;max-width:640px;margin-bottom:40px">Cada canal de publicidade existe em função de quem anuncia, quem vê o ad, e em qual superfície isso acontece. Entender os 3 atores é o fundamento de toda a estratégia.</p>
+    <div class="atores-grid">
+
+      <div class="ator-card ator-infoprod">
+        <div class="ator-header">
+          <span class="ator-emoji">🎓</span>
+          <div class="ator-title">Infoprodutor</div>
+          <div class="ator-badge">Nosso Cliente</div>
+        </div>
+        <div class="ator-body">
+          <div class="ator-desc">O <strong>cliente da Eduzz</strong>. Cria e vende educação digital, comunidades, mentorias e eventos. Usa os produtos do ecossistema Eduzz para gerir e escalar o negócio.</div>
+          <div class="ator-props">
+            <div class="ator-prop">Vende cursos, comunidades, mentorias, eventos</div>
+            <div class="ator-prop">Usa Órbita, Checkout Sun, Nutror, AlpaClass…</div>
+            <div class="ator-prop">Quer escalar vendas, reter alunos e crescer</div>
+            <div class="ator-prop">É o público-alvo do <strong>Canal 1</strong> (Builder anuncia para ele)</div>
+            <div class="ator-prop">É o anunciante do <strong>Canal 2</strong> (anuncia para alunos)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ator-card ator-aluno">
+        <div class="ator-header">
+          <span class="ator-emoji">📖</span>
+          <div class="ator-title">Aluno</div>
+          <div class="ator-badge">Cliente do Infoprodutor</div>
+        </div>
+        <div class="ator-body">
+          <div class="ator-desc">O <strong>cliente do Infoprodutor</strong>. Compra cursos, mentorias e ingressos para eventos. Acessa áreas de membros, assiste aulas, participa de comunidades.</div>
+          <div class="ator-props">
+            <div class="ator-prop">Compra produtos dos Infoprodutores</div>
+            <div class="ator-prop">Acessa Nutror, AlpaClass, SafeVideo, HeyCamp…</div>
+            <div class="ator-prop">Busca crescimento pessoal e profissional</div>
+            <div class="ator-prop">É o público-alvo do <strong>Canal 2</strong> (Infoprodutor anuncia para ele)</div>
+            <div class="ator-prop">Pode ser alcançado dentro da área de outro Infoprodutor</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ator-card ator-builder">
+        <div class="ator-header">
+          <span class="ator-emoji">🔨</span>
+          <div class="ator-title">Builder</div>
+          <div class="ator-badge">Nosso Parceiro</div>
+        </div>
+        <div class="ator-body">
+          <div class="ator-desc">O <strong>parceiro da Eduzz</strong> no programa de ecossistema. Cria soluções tecnológicas que resolvem problemas do negócio do Infoprodutor (ex.: ActiveSales, CartPilot, ferramentas de CRM).</div>
+          <div class="ator-props">
+            <div class="ator-prop">Cria apps e integrações para o Infoprodutor</div>
+            <div class="ator-prop">Publica na Store Eduzz via DevHub</div>
+            <div class="ator-prop">Quer alcançar Infoprodutores qualificados</div>
+            <div class="ator-prop">É o <strong>anunciante do Canal 1</strong> — compra mídia nas superfícies do Infoprodutor</div>
+            <div class="ator-prop">Cobra por instalação, assinatura ou revenue share</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Fluxo dos dois canais -->
+    <div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:20px">Como os atores se conectam nos dois canais</div>
+    <div class="canal-flows">
+
+      <div class="canal-flow" style="background:rgba(245,184,0,.07);border-color:rgba(245,184,0,.3)">
+        <div>
+          <div class="flow-label" style="color:var(--gold)">Canal 1 · B2B</div>
+          <div class="flow-title" style="color:#fff">Builder → Infoprodutor</div>
+        </div>
+        <div class="flow-actors">
+          <div class="flow-actor">
+            <div class="flow-actor-bubble" style="background:rgba(5,150,105,.2);border-color:#059669">🔨</div>
+            <div class="flow-actor-name" style="color:rgba(255,255,255,.7)">Builder<br>paga o ad</div>
+          </div>
+          <div class="flow-arrow" style="color:var(--gold)">→</div>
+          <div class="flow-actor">
+            <div class="flow-actor-bubble" style="background:rgba(245,184,0,.15);border-color:var(--gold)">🖥️</div>
+            <div class="flow-actor-name" style="color:rgba(255,255,255,.7)">Superfície<br>do Infoprodutor</div>
+          </div>
+          <div class="flow-arrow" style="color:var(--gold)">→</div>
+          <div class="flow-actor">
+            <div class="flow-actor-bubble" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)">🎓</div>
+            <div class="flow-actor-name" style="color:rgba(255,255,255,.7)">Infoprodutor<br>vê o ad</div>
+          </div>
+        </div>
+        <div class="flow-desc" style="color:rgba(255,255,255,.6)">O Builder paga para exibir sua solução nas telas que o Infoprodutor usa diariamente — dashboard, relatórios, checkout, setup — e o Infoprodutor instala o app na Store.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="background:rgba(245,184,0,.15);color:var(--gold);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(245,184,0,.3)">46 superfícies</span>
+          <span style="background:rgba(245,184,0,.15);color:var(--gold);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(245,184,0,.3)">CPC · CPA · Revenue Share</span>
+        </div>
+      </div>
+
+      <div class="canal-flow" style="background:rgba(29,78,216,.15);border-color:rgba(29,78,216,.4)">
+        <div>
+          <div class="flow-label" style="color:#93C5FD">Canal 2 · B2B2C</div>
+          <div class="flow-title" style="color:#fff">Infoprodutor X → Alunos de Y</div>
+        </div>
+        <div class="flow-actors">
+          <div class="flow-actor">
+            <div class="flow-actor-bubble" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)">🎓</div>
+            <div class="flow-actor-name" style="color:rgba(255,255,255,.7)">Infoprodutor X<br>paga o ad</div>
+          </div>
+          <div class="flow-arrow" style="color:#93C5FD">→</div>
+          <div class="flow-actor">
+            <div class="flow-actor-bubble" style="background:rgba(147,197,253,.1);border-color:#93C5FD">🖥️</div>
+            <div class="flow-actor-name" style="color:rgba(255,255,255,.7)">Superfície<br>do Aluno</div>
+          </div>
+          <div class="flow-arrow" style="color:#93C5FD">→</div>
+          <div class="flow-actor">
+            <div class="flow-actor-bubble" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)">📖</div>
+            <div class="flow-actor-name" style="color:rgba(255,255,255,.7)">Aluno de Y<br>vê o ad</div>
+          </div>
+        </div>
+        <div class="flow-desc" style="color:rgba(255,255,255,.6)">O Infoprodutor X paga para exibir seu produto dentro da área de membros, cursos ou comunidade de Infoprodutor Y. A venda é feita para o aluno de Y. Infoprodutor Y recebe 30–40% do revenue.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="background:rgba(147,197,253,.1);color:#93C5FD;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(147,197,253,.3)">8 superfícies</span>
+          <span style="background:rgba(147,197,253,.1);color:#93C5FD;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(147,197,253,.3)">CPA matrícula · CPM · CPC</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- ECOSSISTEMA -->
 <section id="ecossistema">
@@ -718,6 +957,264 @@ footer{background:var(--navy);padding:48px 24px}
     </div>
   </div>
 </section>
+
+<!-- EXEMPLOS AO VIVO -->
+<section id="exemplos" style="background:var(--cream);padding:72px 24px">
+  <div class="wrap">
+    <div class="sec-label">Visualização</div>
+    <div class="sec-title">Exemplos ao Vivo</div>
+    <p class="sec-sub">Como os anúncios aparecem na prática — dentro dos produtos reais do ecossistema. Cada mockup mostra o contexto, o ator que vê o ad e o que acontece depois.</p>
+
+    <div class="exemplos-tabs">
+      <div class="ex-tab active-canal1" id="tab-c1" onclick="switchTab('c1')">🔨 Canal 1 — Builder → Infoprodutor</div>
+      <div class="ex-tab" id="tab-c2" onclick="switchTab('c2')">🎓 Canal 2 — Infoprodutor → Aluno</div>
+    </div>
+
+    <!-- CANAL 1 -->
+    <div class="ex-panel active" id="panel-c1">
+      <div class="mockups-grid">
+
+        <!-- MOCKUP C1-1: Órbita Dashboard -->
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span class="badge-b2b">M1 · B2B</span> Órbita — Alerta de abandono de carrinho</div>
+          <div class="mockup-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><div class="browser-dot" style="background:#EF4444"></div><div class="browser-dot" style="background:#F59E0B"></div><div class="browser-dot" style="background:#10B981"></div></div>
+              <div class="browser-url">orbita.eduzz.com/dashboard</div>
+            </div>
+            <div class="mockup-body">
+              <div class="pm-nav" style="background:var(--navy)">
+                <div class="pm-nav-logo">Órbita</div>
+                <div class="pm-nav-links">
+                  <div class="pm-nav-link active">Dashboard</div>
+                  <div class="pm-nav-link">Produtos</div>
+                  <div class="pm-nav-link">Ferramentas</div>
+                </div>
+              </div>
+              <div class="pm-content" style="background:#fff">
+                <div class="pm-title" style="color:var(--navy)">Bom dia, Maria 👋</div>
+                <div class="pm-metrics-row">
+                  <div class="pm-metric-chip"><div class="pm-metric-num">R$4.2k</div><div class="pm-metric-label">Receita</div><div class="pm-metric-delta" style="color:var(--red)">↓18%</div></div>
+                  <div class="pm-metric-chip"><div class="pm-metric-num">2.1%</div><div class="pm-metric-label">Conversão</div><div class="pm-metric-delta" style="color:var(--red)">↓0.4pp</div></div>
+                  <div class="pm-metric-chip"><div class="pm-metric-num">14</div><div class="pm-metric-label">Abandonos</div><div class="pm-metric-delta" style="color:var(--orange)">R$890</div></div>
+                </div>
+                <div class="pm-ad-card">
+                  <div class="pm-ad-tag">PATROCINADO</div>
+                  <div class="pm-ad-title">⚠️ Recupere R$ 890 em carrinhos abandonados</div>
+                  <div class="pm-ad-desc">14 compradores saíram sem finalizar hoje. CartPilot envia WhatsApp automático e recupera 23% em 48h.</div>
+                  <div class="pm-ad-footer">
+                    <div class="pm-ad-rating">⭐ 4.9 · 1.2k instal.</div>
+                    <div class="pm-ad-cta">Ativar grátis →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">
+              <div class="mc-actor" style="color:var(--navy)">🔨 Builder anuncia · 🎓 Infoprodutor vê</div>
+              <div class="mc-desc">O Builder (CartPilot) paga para aparecer no momento exato em que o Infoprodutor vê carrinhos abandonados — intenção altíssima.</div>
+              <div class="mc-metrics"><span class="mc-metric" style="background:#FEF9C3;color:#92400E">CTR esperado: 15–25%</span><span class="mc-metric" style="background:#F0FDF4;color:#16A34A">Modelo: CPA instalação</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOCKUP C1-2: Checkout Sun pós-venda -->
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span class="badge-b2b">M1 · B2B</span> Checkout Sun — Página de obrigado</div>
+          <div class="mockup-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><div class="browser-dot" style="background:#EF4444"></div><div class="browser-dot" style="background:#F59E0B"></div><div class="browser-dot" style="background:#10B981"></div></div>
+              <div class="browser-url">checkout.eduzz.com/obrigado</div>
+            </div>
+            <div class="mockup-body">
+              <div class="pm-nav" style="background:#15803D">
+                <div class="pm-nav-logo" style="color:#fff">☀️ Checkout Sun</div>
+                <div class="pm-nav-links"><div class="pm-nav-link active">Confirmação</div></div>
+              </div>
+              <div class="pm-content" style="background:#fff">
+                <div class="pm-thankyou">
+                  <span class="pm-check">✅</span>
+                  <div class="pm-sale-title">Venda confirmada!</div>
+                  <div class="pm-sale-val">R$ 297,00</div>
+                  <div class="pm-sale-buyer">João Silva · Curso de Copywriting Pro</div>
+                </div>
+                <div class="pm-ad-card" style="background:#FFFBEB">
+                  <div class="pm-ad-tag">PATROCINADO</div>
+                  <div class="pm-ad-title">💬 Fidelize João com WhatsApp automático</div>
+                  <div class="pm-ad-desc">Alunos que recebem mensagem nas 2h após a compra têm 78% de conclusão do curso. Configure agora.</div>
+                  <div class="pm-ad-footer">
+                    <div class="pm-ad-rating">Umbler Talks · ⭐ 4.8</div>
+                    <div class="pm-ad-cta">Ativar 14 dias grátis →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">
+              <div class="mc-actor" style="color:var(--navy)">🔨 Builder anuncia · 🎓 Infoprodutor vê</div>
+              <div class="mc-desc">Pico de euforia do Infoprodutor após venda. Receptividade máxima para soluções de fidelização. O Builder aparece como "próximo passo natural".</div>
+              <div class="mc-metrics"><span class="mc-metric" style="background:#FEF9C3;color:#92400E">CTR esperado: 8–15%</span><span class="mc-metric" style="background:#F0FDF4;color:#16A34A">Modelo: CPA instalação</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOCKUP C1-3: Nutror relatório engajamento -->
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span class="badge-b2b">M1 · B2B</span> Nutror — Relatório de engajamento</div>
+          <div class="mockup-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><div class="browser-dot" style="background:#EF4444"></div><div class="browser-dot" style="background:#F59E0B"></div><div class="browser-dot" style="background:#10B981"></div></div>
+              <div class="browser-url">nutror.com/relatorio/engajamento</div>
+            </div>
+            <div class="mockup-body">
+              <div class="pm-nav" style="background:#1E3A5F">
+                <div class="pm-nav-logo">📚 Nutror</div>
+                <div class="pm-nav-links"><div class="pm-nav-link active">Engajamento</div><div class="pm-nav-link">Alunos</div><div class="pm-nav-link">Conteúdo</div></div>
+              </div>
+              <div class="pm-content" style="background:#fff">
+                <div class="pm-title" style="color:var(--navy);font-size:12px">📊 Módulo 3 — Taxa de conclusão</div>
+                <div style="margin-bottom:10px">
+                  <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:3px"><span>Concluíram</span><span style="color:var(--red);font-weight:700">38% ↓</span></div>
+                  <div class="pm-bar"><div class="pm-bar-fill" style="width:38%"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:3px"><span>Abandonaram no módulo 3</span><span style="font-weight:700">47 alunos</span></div>
+                  <div class="pm-bar"><div class="pm-bar-fill-red" style="width:62%"></div></div>
+                </div>
+                <div class="pm-ad-card">
+                  <div class="pm-ad-tag">PATROCINADO</div>
+                  <div class="pm-ad-title">💡 Reative os 47 alunos inativos</div>
+                  <div class="pm-ad-desc">Apps de reengajamento recuperam 31% dos alunos em 48h com sequência automática de WhatsApp + email.</div>
+                  <div class="pm-ad-footer">
+                    <div class="pm-ad-rating">EngageBot · ⭐ 4.7</div>
+                    <div class="pm-ad-cta">Ver app →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">
+              <div class="mc-actor" style="color:var(--navy)">🔨 Builder anuncia · 🎓 Infoprodutor vê</div>
+              <div class="mc-desc">O Infoprodutor está em modo analítico vendo um problema específico. O ad é ancorado diretamente no dado — percebido como solução, não interrupção.</div>
+              <div class="mc-metrics"><span class="mc-metric" style="background:#FEF9C3;color:#92400E">CTR esperado: 12–20%</span><span class="mc-metric" style="background:#F0FDF4;color:#16A34A">Modelo: CPC</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /mockups-grid -->
+    </div><!-- /panel-c1 -->
+
+    <!-- CANAL 2 -->
+    <div class="ex-panel" id="panel-c2">
+      <div class="mockups-grid">
+
+        <!-- MOCKUP C2-1: Nutror Área do Aluno pós-módulo -->
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span class="badge-b2b2c">M2 · B2B2C</span> Nutror — Área do aluno pós-módulo</div>
+          <div class="mockup-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><div class="browser-dot" style="background:#EF4444"></div><div class="browser-dot" style="background:#F59E0B"></div><div class="browser-dot" style="background:#10B981"></div></div>
+              <div class="browser-url">nutror.com/aluno/curso/modulo-3</div>
+            </div>
+            <div class="mockup-body">
+              <div class="pm-nav" style="background:#1E3A5F">
+                <div class="pm-nav-logo">📚 Nutror</div>
+                <div class="pm-nav-links"><div class="pm-nav-link active">Meu Curso</div><div class="pm-nav-link">Certificados</div></div>
+              </div>
+              <div class="pm-content" style="background:#fff">
+                <div class="pm-module-done">
+                  <span style="font-size:18px">✅</span>
+                  <div><div style="font-size:12px;font-weight:800;color:var(--green)">Módulo 3 concluído!</div><div style="font-size:10px;color:var(--muted)">Marketing Digital com IA · 35min</div></div>
+                </div>
+                <div class="pm-rec-card">
+                  <div class="pm-rec-tag">✨ PRÓXIMO PASSO RECOMENDADO</div>
+                  <div class="pm-rec-title">🚀 Tráfego Pago do Zero ao Avançado</div>
+                  <div class="pm-rec-sub">por Prof. Carlos Mendes · 4.9 ⭐ · 2.3k alunos</div>
+                  <div style="font-size:10px;color:#374151;line-height:1.4;margin-bottom:8px">Continue sua evolução em marketing digital com o módulo complementar mais assistido na plataforma.</div>
+                  <div class="pm-rec-cta">Ver curso →</div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">
+              <div class="mc-actor" style="color:#1D4ED8">🎓 Infoprodutor X anuncia · 📖 Aluno de Y vê</div>
+              <div class="mc-desc">O Infoprodutor X paga para aparecer imediatamente após um módulo concluído. O aluno de Y está em modo de aprendizado ativo — intenção de consumo altíssima.</div>
+              <div class="mc-metrics"><span class="mc-metric" style="background:#EFF6FF;color:#1D4ED8">CTR esperado: 5–10%</span><span class="mc-metric" style="background:#F0FDF4;color:#16A34A">Modelo: CPA matrícula</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOCKUP C2-2: SafeVideo End Card -->
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span class="badge-b2b2c">M2 · B2B2C</span> SafeVideo — End card pós-aula</div>
+          <div class="mockup-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><div class="browser-dot" style="background:#EF4444"></div><div class="browser-dot" style="background:#F59E0B"></div><div class="browser-dot" style="background:#10B981"></div></div>
+              <div class="browser-url">safevideo.com.br/player/aula-14</div>
+            </div>
+            <div class="mockup-body">
+              <div class="pm-nav" style="background:#0F172A">
+                <div class="pm-nav-logo" style="color:#F8FAFC">🎬 SafeVideo</div>
+                <div class="pm-nav-links"><div class="pm-nav-link active">Player</div></div>
+              </div>
+              <div style="background:#0F172A">
+                <div class="pm-video-player">
+                  <div style="position:absolute;top:8px;left:10px;font-size:9px;color:rgba(255,255,255,.5);font-weight:600">Aula 14 — Copywriting Persuasivo · FIM</div>
+                  <div style="position:absolute;bottom:8px;right:10px;font-size:9px;color:rgba(255,255,255,.4)">00:00 / 24:38</div>
+                </div>
+                <div class="pm-end-card">
+                  <div class="pm-end-tag">PARCEIRO DA PLATAFORMA</div>
+                  <div class="pm-end-title">📈 Aprenda a vender com tráfego pago</div>
+                  <div class="pm-end-desc">Você concluiu Copywriting — continue sua jornada com o curso complementar mais avaliado para criadores de conteúdo digital.</div>
+                  <div class="pm-end-cta">Conhecer curso →</div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">
+              <div class="mc-actor" style="color:#1D4ED8">🎓 Infoprodutor X anuncia · 📖 Aluno de Y vê</div>
+              <div class="mc-desc">O end card aparece ao terminar uma aula — o aluno está engajado e receptivo a mais conteúdo. É o formato de maior intenção de todo o Canal 2.</div>
+              <div class="mc-metrics"><span class="mc-metric" style="background:#EFF6FF;color:#1D4ED8">CTR esperado: 6–12%</span><span class="mc-metric" style="background:#F0FDF4;color:#16A34A">Modelo: CPC / CPA</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOCKUP C2-3: AlpaClass certificado -->
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span class="badge-b2b2c">M2 · B2B2C</span> AlpaClass — Email de certificado</div>
+          <div class="mockup-frame">
+            <div class="browser-chrome">
+              <div class="browser-dots"><div class="browser-dot" style="background:#EF4444"></div><div class="browser-dot" style="background:#F59E0B"></div><div class="browser-dot" style="background:#10B981"></div></div>
+              <div class="browser-url">alpaclass.com/aluno/certificados</div>
+            </div>
+            <div class="mockup-body">
+              <div class="pm-nav" style="background:#4F46E5">
+                <div class="pm-nav-logo">🎓 AlpaClass</div>
+                <div class="pm-nav-links"><div class="pm-nav-link active">Certificados</div><div class="pm-nav-link">Trilhas</div></div>
+              </div>
+              <div class="pm-content" style="background:#fff">
+                <div class="pm-cert">
+                  <span class="pm-cert-icon">🏅</span>
+                  <div class="pm-cert-title">Certificado Desbloqueado!</div>
+                  <div class="pm-cert-sub">Gestão de Tráfego Pago · 40h</div>
+                </div>
+                <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Continue evoluindo</div>
+                <div class="pm-rec-card" style="background:#F5F3FF;border-color:#DDD6FE">
+                  <div class="pm-rec-tag" style="background:#7C3AED">🎯 RECOMENDADO PARA VOCÊ</div>
+                  <div class="pm-rec-title">Funis de Alta Conversão</div>
+                  <div class="pm-rec-sub">por Ana Rodrigues · 4.8 ⭐ · Próximo nível natural</div>
+                  <div style="font-size:10px;color:#374151;line-height:1.4;margin-bottom:8px">Quem concluiu Gestão de Tráfego geralmente avança para funis de conversão como próximo passo.</div>
+                  <div class="pm-rec-cta" style="background:#7C3AED">Ver trilha →</div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">
+              <div class="mc-actor" style="color:#1D4ED8">🎓 Infoprodutor X anuncia · 📖 Aluno de Y vê</div>
+              <div class="mc-desc">Momento de conquista do aluno — alta receptividade emocional para continuar aprendendo. O Infoprodutor X aparece como "próxima etapa natural" da jornada.</div>
+              <div class="mc-metrics"><span class="mc-metric" style="background:#EFF6FF;color:#1D4ED8">CTR esperado: 8–14%</span><span class="mc-metric" style="background:#F0FDF4;color:#16A34A">Modelo: CPA matrícula</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /mockups-grid -->
+    </div><!-- /panel-c2 -->
+
+  </div>
+</section>
+
 
 <!-- PRINCÍPIOS -->
 <section id="principios">
@@ -1256,6 +1753,21 @@ function renderChannels(){
       </div>`;
     map.appendChild(bucket);
   });
+}
+
+
+/* ───── EXEMPLOS TABS ───── */
+function switchTab(canal){
+  document.getElementById('panel-c1').classList.remove('active');
+  document.getElementById('panel-c2').classList.remove('active');
+  document.getElementById('tab-c1').className = 'ex-tab';
+  document.getElementById('tab-c2').className = 'ex-tab';
+  document.getElementById('panel-'+canal).classList.add('active');
+  if(canal === 'c1'){
+    document.getElementById('tab-c1').classList.add('active-canal1');
+  } else {
+    document.getElementById('tab-c2').classList.add('active-canal2');
+  }
 }
 
 /* ───── INIT ───── */
