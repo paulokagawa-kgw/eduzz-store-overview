@@ -269,6 +269,13 @@ footer{background:var(--navy);padding:48px 24px}
   section{padding:48px 20px}
 }
 
+/* type badges */
+.badge-b2b{background:#0D1B3E;color:var(--gold);font-size:9px;font-weight:800;padding:2px 7px;border-radius:4px;letter-spacing:.04em}
+.badge-b2b2c{background:#1D4ED8;color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:4px;letter-spacing:.04em}
+.type-divider{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:8px 0 4px;margin-top:8px}
+.type-divider-line{flex:1;height:1px;background:var(--border)}
+.type-divider-label{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap}
+
 /* Highlight for anti-patterns table */
 .anti-table{width:100%;border-collapse:collapse;font-size:12px}
 .anti-table th{text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:10px 16px;background:var(--cream);border-bottom:1px solid var(--border)}
@@ -305,7 +312,7 @@ footer{background:var(--navy);padding:48px 24px}
     <h1>Mapeamento de Canais de<br><em>Retail Media</em> · Eduzz</h1>
     <p>Análise completa de oportunidades PLG em 14 produtos do ecossistema Eduzz. Cada superfície mapeada por intenção do usuário, formato de ad, modelo de precificação, viabilidade técnica e prioridade de implementação.</p>
     <div class="hero-stats">
-      <div class="stat-card"><div class="num">46</div><div class="lbl">Superfícies mapeadas</div><div class="sub">em 14 produtos</div></div>
+      <div class="stat-card"><div class="num">54</div><div class="lbl">Superfícies mapeadas</div><div class="sub">46 Modelo 1 · 8 Modelo 2</div></div>
       <div class="stat-card"><div class="num">12</div><div class="lbl">Slots de intenção alta</div><div class="sub">CTR esperado &gt; 10%</div></div>
       <div class="stat-card"><div class="num">4</div><div class="lbl">Fases de rollout</div><div class="sub">0 → 180 dias</div></div>
       <div class="stat-card"><div class="num">R$ 300k+</div><div class="lbl">Revenue potencial</div><div class="sub">estimativa mês 6</div></div>
@@ -314,12 +321,90 @@ footer{background:var(--navy);padding:48px 24px}
   </div>
 </div>
 
+<!-- DOIS MODELOS -->
+<section style="background:var(--cream);padding:56px 24px;border-bottom:2px solid var(--border)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Estrutura Estratégica</div>
+    <div style="font-size:clamp(22px,3vw,34px);font-weight:900;color:var(--navy);margin-bottom:8px">Dois modelos de Retail Media</div>
+    <div style="font-size:14px;color:var(--muted);margin-bottom:36px;max-width:640px">A plataforma opera dois canais distintos — cada um com atores, superfícies e modelos de receita diferentes. Entender a separação é fundamental para priorizar corretamente.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+
+      <!-- MODELO 1 -->
+      <div style="background:var(--navy);border-radius:20px;overflow:hidden">
+        <div style="padding:24px 28px 20px;border-bottom:1px solid rgba(255,255,255,.1)">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,184,0,.2);border:1px solid rgba(245,184,0,.4);border-radius:20px;padding:4px 12px;margin-bottom:14px">
+            <span style="color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">Modelo 1 · B2B</span>
+          </div>
+          <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px">Builder → Infoprodutor</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.6">O Builder (parceiro) paga para exibir sua solução ao <strong style="color:rgba(255,255,255,.85)">Infoprodutor</strong> dentro dos produtos Eduzz que ele já usa. O Infoprodutor instala a ferramenta e melhora seu negócio.</div>
+        </div>
+        <div style="padding:20px 28px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(245,184,0,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🔨</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Quem paga</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Builder (parceiro da Store)</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">👁️</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Quem vê o ad</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Infoprodutor — dentro de Órbita, Checkout Sun, Nutror…</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(59,130,246,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">⚡</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Ação esperada</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Instala app/solução do Builder na Store</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(245,184,0,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💰</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Modelo de receita</div><div style="font-size:11px;color:rgba(255,255,255,.5)">CPC · CPA instalação · Revenue share · Freemium unlock</div></div>
+          </div>
+          <div style="margin-top:4px;padding:12px 16px;background:rgba(245,184,0,.12);border-radius:10px;border:1px solid rgba(245,184,0,.25)">
+            <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:4px">38 superfícies mapeadas</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.45)">Órbita · Checkout Sun · Nutror · AlpaClass · SafeVideo · HeyCamp · Blinket · Orbit Pages · Telescope · Alumy · Store · MyEduzz · DevHub · Jornada Elite</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODELO 2 -->
+      <div style="background:#1D4ED8;border-radius:20px;overflow:hidden">
+        <div style="padding:24px 28px 20px;border-bottom:1px solid rgba(255,255,255,.1)">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 12px;margin-bottom:14px">
+            <span style="color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">Modelo 2 · B2B2C</span>
+          </div>
+          <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px">Infoprodutor X → Alunos de Y</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.6">Um <strong style="color:rgba(255,255,255,.85)">Infoprodutor X</strong> paga para promover seu produto dentro da área de membros, cursos ou comunidade de <strong style="color:rgba(255,255,255,.85)">Infoprodutor Y</strong>. A venda é feita para o <strong style="color:rgba(255,255,255,.85)">aluno</strong>.</div>
+        </div>
+        <div style="padding:20px 28px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎓</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Quem paga</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Infoprodutor X (quer alcançar nova audiência)</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">👁️</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Quem vê o ad</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Aluno de Infoprodutor Y — dentro da área de membros/curso</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">⚡</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Ação esperada</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Aluno compra/se matricula no produto de Infoprodutor X</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💰</div>
+            <div><div style="font-size:12px;font-weight:700;color:#fff">Modelo de receita</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Infoprodutor Y recebe 30–40% · Eduzz retém 60–70%</div></div>
+          </div>
+          <div style="margin-top:4px;padding:12px 16px;background:rgba(255,255,255,.1);border-radius:10px;border:1px solid rgba(255,255,255,.2)">
+            <div style="font-size:11px;font-weight:700;color:#93C5FD;margin-bottom:4px">8 superfícies mapeadas</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.45)">Nutror (área do aluno) · AlpaClass (trilhas + sidebar) · HeyCamp (feed) · SafeVideo (end card) · Blinket (página de ingresso) · Email de certificado</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ECOSSISTEMA -->
 <section id="ecossistema">
   <div class="wrap">
     <div class="sec-label">Parte 0 — Visão Geral</div>
     <div class="sec-title">Os 14 produtos do ecossistema</div>
-    <p class="sec-sub">Cada produto é uma superfície de retail media com oportunidades únicas de inserção contextual.</p>
+    <p class="sec-sub">Superfícies onde o <strong>Infoprodutor</strong> está presente e pode receber recomendações contextuais de soluções de Builders. Cada produto é um canal de retail media.</p>
     <div class="eco-grid" id="ecoGrid">
       <div class="eco-card" data-prod="Órbita" onclick="filterProduct('Órbita',this)">
         <div class="icon">🌐</div><div class="name">Órbita</div><div class="count">7 superfícies · P1</div>
@@ -375,12 +460,14 @@ footer{background:var(--navy);padding:48px 24px}
     <p class="sec-sub">Filtre por produto ou prioridade. Cada card mostra o contexto PLG, formato de ad sugerido e métricas esperadas.</p>
 
     <div class="filter-bar" id="filterBar">
-      <span style="font-size:11px;font-weight:700;color:var(--muted);margin-right:4px">Prioridade:</span>
-      <div class="filter-pill active" onclick="filterPriority('all',this)">Todas</div>
-      <div class="filter-pill" onclick="filterPriority('P1',this)" style="border-color:#DC2626;color:#DC2626">P1 Crítico</div>
-      <div class="filter-pill" onclick="filterPriority('P2',this)" style="border-color:#EA580C;color:#EA580C">P2 Alto</div>
-      <div class="filter-pill" onclick="filterPriority('P3',this)" style="border-color:#CA8A04;color:#CA8A04">P3 Médio</div>
-      <div class="filter-pill" onclick="filterPriority('reset',this)" style="margin-left:auto">← Limpar filtro</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted);margin-right:2px">Modelo:</span>
+      <div class="filter-pill active" onclick="filterType('all',this)" id="fp-all">Todos</div>
+      <div class="filter-pill" onclick="filterType('b2b',this)" style="border-color:#0D1B3E;color:#0D1B3E" id="fp-b2b">🔨 Modelo 1 — Builder → Infoprodutor</div>
+      <div class="filter-pill" onclick="filterType('b2b2c',this)" style="border-color:#1D4ED8;color:#1D4ED8" id="fp-b2b2c">🎓 Modelo 2 — Infoprodutor → Alunos</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted);margin-left:12px;margin-right:2px">Prioridade:</span>
+      <div class="filter-pill" onclick="filterPriority('P1',this)" style="border-color:#DC2626;color:#DC2626">P1</div>
+      <div class="filter-pill" onclick="filterPriority('P2',this)" style="border-color:#EA580C;color:#EA580C">P2</div>
+      <div class="filter-pill" onclick="filterPriority('reset',this)" style="margin-left:auto">← Limpar</div>
     </div>
 
     <div class="surfaces-grid" id="surfacesGrid"></div>
@@ -402,7 +489,7 @@ footer{background:var(--navy);padding:48px 24px}
   <div class="wrap">
     <div class="sec-label"><span class="part-number">3</span>Parte 3 — Taxonomia de Canais</div>
     <div class="sec-title">Mapa de canais por tipo de mídia</div>
-    <p class="sec-sub">6 categorias estratégicas que organizam todos os 46 slots por padrão de inserção e intenção do usuário.</p>
+    <p class="sec-sub">9 categorias organizadas em 2 modelos: <strong>Builder → Infoprodutor</strong> (6 categorias · 38 superfícies) e <strong>Infoprodutor X → Alunos de Y</strong> (3 categorias · 8 superfícies).</p>
     <div class="channel-map" id="channelMap"></div>
   </div>
 </section>
@@ -705,66 +792,77 @@ footer{background:var(--navy);padding:48px 24px}
 <script>
 /* ───── DATA ───── */
 const SURFACES = [
+  // ── MODELO 1: Builder → Infoprodutor ──────────────────────────────────────
   // ÓRBITA
-  {id:1,product:"Órbita",icon:"🌐",surface:"Dashboard Principal — métricas em queda",who:"Infoprodutor",doing:"Monitorando negócio",intent:"Média-Alta",pain:"Minha conversão caiu. O que fazer?",format:"Card nativo contextual",ctr:"4–7%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:2,product:"Órbita",icon:"🌐",surface:"Gestão de Produtos — Novo Produto (empty state)",who:"Infoprodutor",doing:"Configurando produto do zero",intent:"Alta",pain:"Preciso de checkout, área de membros, entrega — por onde começo?",format:"Banner inline de setup-wizard",ctr:"10–18%",model:"CPC",complexity:"Baixa",priority:"P1"},
-  {id:3,product:"Órbita",icon:"🌐",surface:"Gestão de Afiliados — sem afiliados ativos",who:"Infoprodutor",doing:"Ativando canal de afiliados",intent:"Alta",pain:"Não sei como recrutar afiliados. Onde encontro profissionais?",format:"Card de recomendação inline",ctr:"7–12%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:4,product:"Órbita",icon:"🌐",surface:"Ferramentas de Conversão — Order Bump (vazio)",who:"Infoprodutor",doing:"Otimizando checkout para mais receita",intent:"Alta",pain:"O que ofereço como order bump? Não sei o que funciona",format:"Sugestão contextual inline com ranking",ctr:"12–20%",model:"CPA instalação",complexity:"Baixa",priority:"P1"},
-  {id:5,product:"Órbita",icon:"🌐",surface:"Configurações Avançadas — Webhooks/API",who:"Infoprodutor",doing:"Configurando integração com ferramenta externa",intent:"Alta",pain:"Preciso conectar [CRM/WhatsApp] ao Eduzz sem código",format:"Card 'Integre sem código via Store'",ctr:"8–14%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:6,product:"Órbita",icon:"🌐",surface:"Dashboard Elite — faltam R$ X para próximo Belt",who:"Infoprodutor",doing:"Acompanhando progressão de fidelidade",intent:"Alta",pain:"Quero subir de nível. Como faturar mais rápido?",format:"Card contextual de ferramentas por Belt",ctr:"6–10%",model:"CPC / Revenue Share",complexity:"Média",priority:"P2"},
-  {id:7,product:"Órbita",icon:"🌐",surface:"Notificação — Alerta de Abandono de Carrinho",who:"Infoprodutor",doing:"Recebendo alerta de perda de venda em tempo real",intent:"Altíssima",pain:"Estou perdendo R$ X agora. Preciso de recovery urgente",format:"Toast enriquecido com app de recovery",ctr:"15–25%",model:"CPA / instalação",complexity:"Baixa",priority:"P1"},
+  {id:1,type:"b2b",product:"Órbita",icon:"🌐",surface:"Dashboard Principal — métricas em queda",who:"Infoprodutor",doing:"Monitorando negócio",intent:"Média-Alta",pain:"Minha conversão caiu. O que fazer?",format:"Card nativo contextual",ctr:"4–7%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:2,type:"b2b",product:"Órbita",icon:"🌐",surface:"Gestão de Produtos — Novo Produto (empty state)",who:"Infoprodutor",doing:"Configurando produto do zero",intent:"Alta",pain:"Preciso de checkout, área de membros, entrega — por onde começo?",format:"Banner inline de setup-wizard",ctr:"10–18%",model:"CPC",complexity:"Baixa",priority:"P1"},
+  {id:3,type:"b2b",product:"Órbita",icon:"🌐",surface:"Gestão de Afiliados — sem afiliados ativos",who:"Infoprodutor",doing:"Ativando canal de afiliados",intent:"Alta",pain:"Não sei como recrutar afiliados. Onde encontro profissionais?",format:"Card de recomendação inline",ctr:"7–12%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:4,type:"b2b",product:"Órbita",icon:"🌐",surface:"Ferramentas de Conversão — Order Bump (vazio)",who:"Infoprodutor",doing:"Otimizando checkout para mais receita",intent:"Alta",pain:"O que ofereço como order bump? Não sei o que funciona",format:"Sugestão contextual inline com ranking",ctr:"12–20%",model:"CPA instalação",complexity:"Baixa",priority:"P1"},
+  {id:5,type:"b2b",product:"Órbita",icon:"🌐",surface:"Configurações Avançadas — Webhooks/API",who:"Infoprodutor",doing:"Configurando integração com ferramenta externa",intent:"Alta",pain:"Preciso conectar [CRM/WhatsApp] ao Eduzz sem código",format:"Card 'Integre sem código via Store'",ctr:"8–14%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:6,type:"b2b",product:"Órbita",icon:"🌐",surface:"Dashboard Elite — faltam R$ X para próximo Belt",who:"Infoprodutor",doing:"Acompanhando progressão de fidelidade",intent:"Alta",pain:"Quero subir de nível. Como faturar mais rápido?",format:"Card contextual de ferramentas por Belt",ctr:"6–10%",model:"CPC / Revenue Share",complexity:"Média",priority:"P2"},
+  {id:7,type:"b2b",product:"Órbita",icon:"🌐",surface:"Notificação — Alerta de Abandono de Carrinho",who:"Infoprodutor",doing:"Recebendo alerta de perda de venda em tempo real",intent:"Altíssima",pain:"Estou perdendo R$ X agora. Preciso de recovery urgente",format:"Toast enriquecido com app de recovery",ctr:"15–25%",model:"CPA / instalação",complexity:"Baixa",priority:"P1"},
   // CHECKOUT SUN
-  {id:8,product:"Checkout Sun",icon:"☀️",surface:"Configuração de Checkout — setup inicial",who:"Infoprodutor",doing:"Configurando primeiro checkout",intent:"Alta",pain:"Meu checkout precisa de WhatsApp, pixel, cupom — como configuro tudo?",format:"Checklist de setup com apps por etapa",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:9,product:"Checkout Sun",icon:"☀️",surface:"Página de Obrigado — pós-venda",who:"Infoprodutor",doing:"Recebendo confirmação de venda",intent:"Altíssima",pain:"Acabei de vender! Como fidelizo esse aluno agora?",format:"Card nativo de celebração pós-venda",ctr:"8–15%",model:"CPA instalação",complexity:"Baixa",priority:"P1"},
-  {id:10,product:"Checkout Sun",icon:"☀️",surface:"Configuração de Order Bump — slot vazio",who:"Infoprodutor",doing:"Otimizando ticket médio no checkout",intent:"Alta",pain:"Preciso de uma oferta complementar que converta bem",format:"Dropdown nativo 'App da Store' + 3 sugestões",ctr:"10–18%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:11,product:"Checkout Sun",icon:"☀️",surface:"Recovery de Carrinho Abandonado — configuração",who:"Infoprodutor",doing:"Recuperando receita perdida",intent:"Alta",pain:"Como mando mensagem automática para quem abandonou?",format:"Banner inline de configuração de recovery",ctr:"10–16%",model:"CPA",complexity:"Média",priority:"P2"},
-  {id:12,product:"Checkout Sun",icon:"☀️",surface:"Upsell Pós-Compra — slot vazio",who:"Infoprodutor",doing:"Maximizando LTV do cliente",intent:"Alta",pain:"Quero oferecer mais após a compra, mas não sei o fluxo",format:"Card contextual com apps de upsell",ctr:"8–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:8,type:"b2b",product:"Checkout Sun",icon:"☀️",surface:"Configuração de Checkout — setup inicial",who:"Infoprodutor",doing:"Configurando primeiro checkout",intent:"Alta",pain:"Meu checkout precisa de WhatsApp, pixel, cupom — como configuro tudo?",format:"Checklist de setup com apps por etapa",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:9,type:"b2b",product:"Checkout Sun",icon:"☀️",surface:"Página de Obrigado — pós-venda",who:"Infoprodutor",doing:"Recebendo confirmação de venda",intent:"Altíssima",pain:"Acabei de vender! Como fidelizo esse aluno agora?",format:"Card nativo de celebração pós-venda",ctr:"8–15%",model:"CPA instalação",complexity:"Baixa",priority:"P1"},
+  {id:10,type:"b2b",product:"Checkout Sun",icon:"☀️",surface:"Configuração de Order Bump — slot vazio",who:"Infoprodutor",doing:"Otimizando ticket médio no checkout",intent:"Alta",pain:"Preciso de uma oferta complementar que converta bem",format:"Dropdown nativo 'App da Store' + 3 sugestões",ctr:"10–18%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:11,type:"b2b",product:"Checkout Sun",icon:"☀️",surface:"Recovery de Carrinho Abandonado — configuração",who:"Infoprodutor",doing:"Recuperando receita perdida",intent:"Alta",pain:"Como mando mensagem automática para quem abandonou?",format:"Banner inline de configuração de recovery",ctr:"10–16%",model:"CPA",complexity:"Média",priority:"P2"},
+  {id:12,type:"b2b",product:"Checkout Sun",icon:"☀️",surface:"Upsell Pós-Compra — slot vazio",who:"Infoprodutor",doing:"Maximizando LTV do cliente",intent:"Alta",pain:"Quero oferecer mais após a compra, mas não sei o fluxo",format:"Card contextual com apps de upsell",ctr:"8–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
   // NUTROR
-  {id:13,product:"Nutror",icon:"📚",surface:"Relatório de Engajamento — abandono de módulo",who:"Infoprodutor",doing:"Analisando progresso dos alunos",intent:"Alta",pain:"40% dos alunos abandonaram o módulo 3. Preciso reengajar",format:"Banner contextual abaixo do gráfico de abandono",ctr:"12–20%",model:"CPC",complexity:"Baixa",priority:"P1"},
-  {id:14,product:"Nutror",icon:"📚",surface:"Dashboard — onboarding de novo curso",who:"Infoprodutor",doing:"Lançando primeiro curso EAD",intent:"Alta",pain:"Tenho o curso criado mas não sei como engajar e manter alunos",format:"Setup-assistant inline com apps por etapa",ctr:"13–19%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:15,product:"Nutror",icon:"📚",surface:"App Mobile — push para alunos inativos",who:"Infoprodutor",doing:"Recebendo alerta no celular sobre alunos sumidos",intent:"Alta",pain:"Meus alunos pararam de assistir. Como ativo de volta?",format:"Push enriched com app de reengajamento",ctr:"8–12%",model:"CPA",complexity:"Média",priority:"P2"},
-  {id:16,product:"Nutror",icon:"📚",surface:"Relatório — taxa de conclusão abaixo de 20%",who:"Infoprodutor",doing:"Analisando retenção de alunos",intent:"Alta",pain:"Poucos alunos terminam meu curso. Isso afeta minhas avaliações",format:"Card de recomendação de gamificação",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:13,type:"b2b",product:"Nutror",icon:"📚",surface:"Relatório de Engajamento — abandono de módulo",who:"Infoprodutor",doing:"Analisando progresso dos alunos",intent:"Alta",pain:"40% dos alunos abandonaram o módulo 3. Preciso reengajar",format:"Banner contextual abaixo do gráfico de abandono",ctr:"12–20%",model:"CPC",complexity:"Baixa",priority:"P1"},
+  {id:14,type:"b2b",product:"Nutror",icon:"📚",surface:"Dashboard — onboarding de novo curso",who:"Infoprodutor",doing:"Lançando primeiro curso EAD",intent:"Alta",pain:"Tenho o curso criado mas não sei como engajar e manter alunos",format:"Setup-assistant inline com apps por etapa",ctr:"13–19%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:15,type:"b2b",product:"Nutror",icon:"📚",surface:"App Mobile — Infoprodutor recebe alerta de alunos inativos",who:"Infoprodutor",doing:"Recebendo notificação no celular: X alunos sumiram",intent:"Alta",pain:"Meus alunos pararam de assistir. Como ativo de volta?",format:"Push ao Infoprodutor com app de reengajamento",ctr:"8–12%",model:"CPA",complexity:"Média",priority:"P2"},
+  {id:16,type:"b2b",product:"Nutror",icon:"📚",surface:"Relatório — taxa de conclusão abaixo de 20%",who:"Infoprodutor",doing:"Analisando retenção de alunos",intent:"Alta",pain:"Poucos alunos terminam meu curso. Isso afeta minhas avaliações",format:"Card de recomendação de gamificação",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
   // ALPACLASS
-  {id:17,product:"AlpaClass",icon:"🎓",surface:"Dashboard da Escola — alunos inativos visíveis",who:"Infoprodutor",doing:"Gerenciando escola digital",intent:"Alta",pain:"Paguei para esses alunos entrarem e eles sumiram. Vou perder renovação",format:"Card contextual: reengajamento automático",ctr:"11–17%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:18,product:"AlpaClass",icon:"🎓",surface:"Gamificação — configurar primeiro quiz (empty state)",who:"Infoprodutor",doing:"Ativando gamificação da escola",intent:"Alta",pain:"Não sei o que colocar de recompensa. Preciso de ideias e ferramentas",format:"Sugestão de conteúdo + app de quiz",ctr:"9–15%",model:"CPA",complexity:"Baixa",priority:"P2"},
-  {id:19,product:"AlpaClass",icon:"🎓",surface:"Comunidade Interna — sem posts há 7 dias",who:"Infoprodutor",doing:"Vendo comunidade inativa",intent:"Alta",pain:"Minha comunidade está morta. Como ativo os membros?",format:"Banner com app de engajamento + automação",ctr:"7–12%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:20,product:"AlpaClass",icon:"🎓",surface:"Campanhas de Email — zero campanhas enviadas",who:"Infoprodutor",doing:"Configurando comunicação com alunos",intent:"Alta",pain:"Nunca mandei email para meus alunos. Não sei começar",format:"Setup-card: conecte email marketing em 1 clique",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:17,type:"b2b",product:"AlpaClass",icon:"🎓",surface:"Dashboard da Escola — alunos inativos visíveis",who:"Infoprodutor",doing:"Gerenciando escola digital",intent:"Alta",pain:"Paguei para esses alunos entrarem e eles sumiram. Vou perder renovação",format:"Card contextual: reengajamento automático",ctr:"11–17%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:18,type:"b2b",product:"AlpaClass",icon:"🎓",surface:"Gamificação — configurar primeiro quiz (empty state)",who:"Infoprodutor",doing:"Ativando gamificação da escola",intent:"Alta",pain:"Não sei o que colocar de recompensa. Preciso de ideias e ferramentas",format:"Sugestão de conteúdo + app de quiz",ctr:"9–15%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:19,type:"b2b",product:"AlpaClass",icon:"🎓",surface:"Comunidade Interna — sem posts há 7 dias",who:"Infoprodutor",doing:"Vendo comunidade inativa",intent:"Alta",pain:"Minha comunidade está morta. Como ativo os membros?",format:"Banner com app de engajamento + automação",ctr:"7–12%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:20,type:"b2b",product:"AlpaClass",icon:"🎓",surface:"Campanhas de Email — zero campanhas enviadas",who:"Infoprodutor",doing:"Configurando comunicação com alunos",intent:"Alta",pain:"Nunca mandei email para meus alunos. Não sei começar",format:"Setup-card: conecte email marketing em 1 clique",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
   // SAFEVIDEO
-  {id:21,product:"SafeVideo",icon:"🎬",surface:"Dashboard de Estatísticas — retenção de vídeo < 40%",who:"Infoprodutor",doing:"Analisando performance de vídeos",intent:"Alta",pain:"Meus alunos abandonam o vídeo nos primeiros minutos",format:"Banner contextual: app de produção/roteiro",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:22,product:"SafeVideo",icon:"🎬",surface:"Biblioteca de Mídias — grande acervo (50+ vídeos)",who:"Infoprodutor",doing:"Gerenciando biblioteca de conteúdo",intent:"Média",pain:"Tenho muitos vídeos. Preciso organizar e adicionar SEO",format:"Card de apps de transcrição e legendas",ctr:"4–7%",model:"CPC",complexity:"Baixa",priority:"P3"},
+  {id:21,type:"b2b",product:"SafeVideo",icon:"🎬",surface:"Dashboard de Estatísticas — retenção de vídeo < 40%",who:"Infoprodutor",doing:"Analisando performance de vídeos",intent:"Alta",pain:"Meus alunos abandonam o vídeo nos primeiros minutos",format:"Banner contextual: app de produção/roteiro",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:22,type:"b2b",product:"SafeVideo",icon:"🎬",surface:"Biblioteca de Mídias — grande acervo (50+ vídeos)",who:"Infoprodutor",doing:"Gerenciando biblioteca de conteúdo",intent:"Média",pain:"Tenho muitos vídeos. Preciso organizar e adicionar SEO",format:"Card de apps de transcrição e legendas",ctr:"4–7%",model:"CPC",complexity:"Baixa",priority:"P3"},
   // HEYCAMP
-  {id:23,product:"HeyCamp",icon:"💬",surface:"Feed da Comunidade — primeiro post (onboarding)",who:"Infoprodutor",doing:"Ativando comunidade pela primeira vez",intent:"Alta",pain:"Acabei de criar a comunidade. Como faço crescer e engajar?",format:"Setup-assistant: automação de boas-vindas + posts",ctr:"11–17%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:24,product:"HeyCamp",icon:"💬",surface:"Espaços/Grupos — grupo sem interação há 1 semana",who:"Infoprodutor",doing:"Vendo grupo temático parado",intent:"Alta",pain:"Esse grupo parou. O que faço para ativar?",format:"Card: enquetes automáticas + desafios semanais",ctr:"7–11%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:25,product:"HeyCamp",icon:"💬",surface:"Moderação — tickets em aberto acumulando",who:"Infoprodutor",doing:"Moderando comunidade manualmente",intent:"Média",pain:"Não consigo moderar tudo manualmente",format:"Toast: app de IA moderação",ctr:"5–9%",model:"CPC",complexity:"Baixa",priority:"P3"},
+  {id:23,type:"b2b",product:"HeyCamp",icon:"💬",surface:"Feed da Comunidade — primeiro post (onboarding)",who:"Infoprodutor",doing:"Ativando comunidade pela primeira vez",intent:"Alta",pain:"Acabei de criar a comunidade. Como faço crescer e engajar?",format:"Setup-assistant: automação de boas-vindas + posts",ctr:"11–17%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:24,type:"b2b",product:"HeyCamp",icon:"💬",surface:"Espaços/Grupos — grupo sem interação há 1 semana",who:"Infoprodutor",doing:"Vendo grupo temático parado",intent:"Alta",pain:"Esse grupo parou. O que faço para ativar?",format:"Card: enquetes automáticas + desafios semanais",ctr:"7–11%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:25,type:"b2b",product:"HeyCamp",icon:"💬",surface:"Moderação — tickets em aberto acumulando",who:"Infoprodutor",doing:"Moderando comunidade manualmente",intent:"Média",pain:"Não consigo moderar tudo manualmente",format:"Toast: app de IA moderação",ctr:"5–9%",model:"CPC",complexity:"Baixa",priority:"P3"},
   // BLINKET
-  {id:26,product:"Blinket",icon:"🎟️",surface:"Criar Evento — setup inicial (1º evento)",who:"Infoprodutor",doing:"Configurando primeiro evento digital",intent:"Alta",pain:"Nunca fiz evento. Preciso de página, confirmação e WhatsApp",format:"Checklist de setup com apps por etapa do evento",ctr:"13–20%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:27,product:"Blinket",icon:"🎟️",surface:"Dashboard do Evento — vendas < 20% da meta",who:"Infoprodutor",doing:"Acompanhando vendas de ingressos",intent:"Alta",pain:"Meu evento não está vendendo. Como promovo?",format:"Banner: apps de tráfego + WhatsApp de convite",ctr:"9–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
-  {id:28,product:"Blinket",icon:"🎟️",surface:"Comunicação com Participantes — 0 mensagens pré-evento",who:"Infoprodutor",doing:"Preparando engajamento pré-evento",intent:"Alta",pain:"Não sei como manter os inscritos aquecidos até o dia",format:"Card: sequência automática WhatsApp pré-evento",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:26,type:"b2b",product:"Blinket",icon:"🎟️",surface:"Criar Evento — setup inicial (1º evento)",who:"Infoprodutor",doing:"Configurando primeiro evento digital",intent:"Alta",pain:"Nunca fiz evento. Preciso de página, confirmação e WhatsApp",format:"Checklist de setup com apps por etapa do evento",ctr:"13–20%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:27,type:"b2b",product:"Blinket",icon:"🎟️",surface:"Dashboard do Evento — vendas < 20% da meta",who:"Infoprodutor",doing:"Acompanhando vendas de ingressos",intent:"Alta",pain:"Meu evento não está vendendo. Como promovo?",format:"Banner: apps de tráfego + WhatsApp de convite",ctr:"9–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:28,type:"b2b",product:"Blinket",icon:"🎟️",surface:"Comunicação com Participantes — 0 mensagens pré-evento",who:"Infoprodutor",doing:"Preparando engajamento pré-evento",intent:"Alta",pain:"Não sei como manter os inscritos aquecidos até o dia",format:"Card: sequência automática WhatsApp pré-evento",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
   // ORBIT PAGES
-  {id:29,product:"Orbit Pages",icon:"🖼️",surface:"Biblioteca de Templates — sem integração de email",who:"Infoprodutor",doing:"Escolhendo template de página de vendas",intent:"Alta",pain:"Vou lançar uma página mas não tenho ferramenta de email",format:"Checklist contextual de setup na seleção de template",ctr:"12–20%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:30,product:"Orbit Pages",icon:"🖼️",surface:"Editor — seção de Depoimentos (sem social proof)",who:"Infoprodutor",doing:"Construindo página de vendas",intent:"Alta",pain:"Não tenho depoimentos suficientes. Minha página converte pouco",format:"Inline suggestion: app de coleta de depoimentos",ctr:"8–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
-  {id:31,product:"Orbit Pages",icon:"🖼️",surface:"Publicação — primeiro publish (preview antes de publicar)",who:"Infoprodutor",doing:"Finalizando e publicando página",intent:"Alta",pain:"Minha página está no ar mas não sei se vai converter",format:"Modal pós-publicação: app de heatmap + A/B test",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:29,type:"b2b",product:"Orbit Pages",icon:"🖼️",surface:"Biblioteca de Templates — sem integração de email",who:"Infoprodutor",doing:"Escolhendo template de página de vendas",intent:"Alta",pain:"Vou lançar uma página mas não tenho ferramenta de email",format:"Checklist contextual de setup na seleção de template",ctr:"12–20%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:30,type:"b2b",product:"Orbit Pages",icon:"🖼️",surface:"Editor — seção de Depoimentos (sem social proof)",who:"Infoprodutor",doing:"Construindo página de vendas",intent:"Alta",pain:"Não tenho depoimentos suficientes. Minha página converte pouco",format:"Inline suggestion: app de coleta de depoimentos",ctr:"8–14%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:31,type:"b2b",product:"Orbit Pages",icon:"🖼️",surface:"Publicação — primeiro publish (preview antes de publicar)",who:"Infoprodutor",doing:"Finalizando e publicando página",intent:"Alta",pain:"Minha página está no ar mas não sei se vai converter",format:"Modal pós-publicação: app de heatmap + A/B test",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
   // TELESCOPE
-  {id:32,product:"Telescope",icon:"🔭",surface:"Funil de Conversão — drop-off > 60% em etapa",who:"Infoprodutor",doing:"Diagnosticando perda de conversão",intent:"Alta",pain:"Meu funil está quebrado aqui. Preciso resolver agora",format:"Banner contextual abaixo do gráfico de funil",ctr:"12–18%",model:"CPC",complexity:"Baixa",priority:"P1"},
-  {id:33,product:"Telescope",icon:"🔭",surface:"Análise por Fonte — ROAS < 1 em tráfego pago",who:"Infoprodutor",doing:"Analisando ROI de campanhas pagas",intent:"Alta",pain:"Estou gastando em tráfego mas não retorna. Algo está errado",format:"Card: apps que resolvem drop-off por etapa",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:34,product:"Telescope",icon:"🔭",surface:"Dashboard — queda súbita de conversão em tempo real",who:"Infoprodutor",doing:"Monitorando métricas ao vivo",intent:"Altíssima",pain:"Algo quebrou. Estou perdendo vendas agora mesmo",format:"Alert banner com ação imediata: recovery + monitoramento",ctr:"18–30%",model:"CPA urgente",complexity:"Média",priority:"P1"},
+  {id:32,type:"b2b",product:"Telescope",icon:"🔭",surface:"Funil de Conversão — drop-off > 60% em etapa",who:"Infoprodutor",doing:"Diagnosticando perda de conversão",intent:"Alta",pain:"Meu funil está quebrado aqui. Preciso resolver agora",format:"Banner contextual abaixo do gráfico de funil",ctr:"12–18%",model:"CPC",complexity:"Baixa",priority:"P1"},
+  {id:33,type:"b2b",product:"Telescope",icon:"🔭",surface:"Análise por Fonte — ROAS < 1 em tráfego pago",who:"Infoprodutor",doing:"Analisando ROI de campanhas pagas",intent:"Alta",pain:"Estou gastando em tráfego mas não retorna. Algo está errado",format:"Card: apps que resolvem drop-off por etapa",ctr:"8–13%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:34,type:"b2b",product:"Telescope",icon:"🔭",surface:"Dashboard — queda súbita de conversão em tempo real",who:"Infoprodutor",doing:"Monitorando métricas ao vivo",intent:"Altíssima",pain:"Algo quebrou. Estou perdendo vendas agora mesmo",format:"Alert banner com ação imediata: recovery + monitoramento",ctr:"18–30%",model:"CPA urgente",complexity:"Média",priority:"P1"},
   // ALUMY
-  {id:35,product:"Alumy",icon:"♻️",surface:"Dashboard MRR — churn > 5% no mês",who:"Infoprodutor",doing:"Analisando saúde do clube de assinatura",intent:"Altíssima",pain:"Estou perdendo assinantes. Se não reverter, meu MRR colapsa",format:"Card contextual de urgência: app de retenção de churn",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
-  {id:36,product:"Alumy",icon:"♻️",surface:"Gestão de Assinantes — zombie subscribers (30+ dias inativos)",who:"Infoprodutor",doing:"Gerenciando base de assinantes",intent:"Alta",pain:"Esses assinantes estão pagando mas não usam. Vão cancelar",format:"Card: sequência de reativação automática",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:35,type:"b2b",product:"Alumy",icon:"♻️",surface:"Dashboard MRR — churn > 5% no mês",who:"Infoprodutor",doing:"Analisando saúde do clube de assinatura",intent:"Altíssima",pain:"Estou perdendo assinantes. Se não reverter, meu MRR colapsa",format:"Card contextual de urgência: app de retenção de churn",ctr:"14–22%",model:"CPA",complexity:"Baixa",priority:"P1"},
+  {id:36,type:"b2b",product:"Alumy",icon:"♻️",surface:"Gestão de Assinantes — zombie subscribers (30+ dias inativos)",who:"Infoprodutor",doing:"Gerenciando base de assinantes",intent:"Alta",pain:"Esses assinantes estão pagando mas não usam. Vão cancelar",format:"Card: sequência de reativação automática",ctr:"10–16%",model:"CPA",complexity:"Baixa",priority:"P2"},
   // STORE EDUZZ
-  {id:37,product:"Store Eduzz",icon:"🛍️",surface:"Homepage — Destaques (Sponsored Listings)",who:"Infoprodutor",doing:"Explorando apps disponíveis",intent:"Alta",pain:"Preciso de uma solução mas não sei o que existe",format:"Card patrocinado entre orgânicos com badge 'Destaque'",ctr:"5–9%",model:"CPM + CPC",complexity:"Média",priority:"P2"},
-  {id:38,product:"Store Eduzz",icon:"🛍️",surface:"Busca Interna — Resultados Patrocinados",who:"Infoprodutor",doing:"Buscando ativamente uma solução específica",intent:"Altíssima",pain:"Intent explícita: busca por 'WhatsApp checkout', 'recuperar carrinho'",format:"Resultado #1 com badge 'Patrocinado' + snippet de benefício",ctr:"15–25%",model:"CPC leiloado",complexity:"Média",priority:"P1"},
-  {id:39,product:"Store Eduzz",icon:"🛍️",surface:"Páginas de Categoria — topo do listing",who:"Infoprodutor",doing:"Navegando por categoria específica de apps",intent:"Alta",pain:"Está em categoria 'WhatsApp' ou 'CRM' — intenção definida",format:"Card fixo de destaque no topo da categoria",ctr:"8–14%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:40,product:"Store Eduzz",icon:"🛍️",surface:"Detalhe do App — 'Você também pode gostar'",who:"Infoprodutor",doing:"Avaliando um app específico",intent:"Alta",pain:"Esse app resolve X, mas também preciso de Y",format:"Cross-sell nativo: 3 apps complementares",ctr:"6–11%",model:"CPC / Bundle Revenue",complexity:"Baixa",priority:"P2"},
+  {id:37,type:"b2b",product:"Store Eduzz",icon:"🛍️",surface:"Homepage — Destaques (Sponsored Listings)",who:"Infoprodutor",doing:"Explorando apps disponíveis",intent:"Alta",pain:"Preciso de uma solução mas não sei o que existe",format:"Card patrocinado entre orgânicos com badge 'Destaque'",ctr:"5–9%",model:"CPM + CPC",complexity:"Média",priority:"P2"},
+  {id:38,type:"b2b",product:"Store Eduzz",icon:"🛍️",surface:"Busca Interna — Resultados Patrocinados",who:"Infoprodutor",doing:"Buscando ativamente uma solução específica",intent:"Altíssima",pain:"Intent explícita: busca por 'WhatsApp checkout', 'recuperar carrinho'",format:"Resultado #1 com badge 'Patrocinado' + snippet de benefício",ctr:"15–25%",model:"CPC leiloado",complexity:"Média",priority:"P1"},
+  {id:39,type:"b2b",product:"Store Eduzz",icon:"🛍️",surface:"Páginas de Categoria — topo do listing",who:"Infoprodutor",doing:"Navegando por categoria específica de apps",intent:"Alta",pain:"Está em categoria 'WhatsApp' ou 'CRM' — intenção definida",format:"Card fixo de destaque no topo da categoria",ctr:"8–14%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:40,type:"b2b",product:"Store Eduzz",icon:"🛍️",surface:"Detalhe do App — 'Você também pode gostar'",who:"Infoprodutor",doing:"Avaliando um app específico",intent:"Alta",pain:"Esse app resolve X, mas também preciso de Y",format:"Cross-sell nativo: 3 apps complementares",ctr:"6–11%",model:"CPC / Bundle Revenue",complexity:"Baixa",priority:"P2"},
   // MYEDUZZ
-  {id:41,product:"MyEduzz",icon:"💳",surface:"Dashboard Financeiro — saldo baixo com antecipação",who:"Infoprodutor",doing:"Gerenciando fluxo de caixa",intent:"Alta",pain:"Estou sem capital para investir em ferramentas e tráfego",format:"Card: antecipe e invista em crescimento",ctr:"6–10%",model:"CPC / Revenue Share",complexity:"Média",priority:"P3"},
-  {id:42,product:"MyEduzz",icon:"💳",surface:"Menu de Acesso — produto nunca acessado",who:"Infoprodutor",doing:"Navegando pelo ecossistema de produtos",intent:"Alta",pain:"Pago o ecossistema mas não uso metade das ferramentas",format:"Recomendação de ativação com apps de setup rápido",ctr:"8–13%",model:"CPA",complexity:"Baixa",priority:"P2"},
+  {id:41,type:"b2b",product:"MyEduzz",icon:"💳",surface:"Dashboard Financeiro — saldo baixo com antecipação",who:"Infoprodutor",doing:"Gerenciando fluxo de caixa",intent:"Alta",pain:"Estou sem capital para investir em ferramentas e tráfego",format:"Card: antecipe e invista em crescimento",ctr:"6–10%",model:"CPC / Revenue Share",complexity:"Média",priority:"P3"},
+  {id:42,type:"b2b",product:"MyEduzz",icon:"💳",surface:"Menu de Acesso — produto nunca acessado",who:"Infoprodutor",doing:"Navegando pelo ecossistema de produtos",intent:"Alta",pain:"Pago o ecossistema mas não uso metade das ferramentas",format:"Recomendação de ativação com apps de setup rápido",ctr:"8–13%",model:"CPA",complexity:"Baixa",priority:"P2"},
   // DEVHUB
-  {id:43,product:"DevHub",icon:"⚙️",surface:"Console de Apps — 1º app publicado",who:"Builder",doing:"Publicando primeiro app na Store",intent:"Alta",pain:"Publiquei meu app. Como faço ele aparecer para mais produtores?",format:"Card: planos de Store Ads para novos Builders",ctr:"20–35%",model:"AutoConversão Builder → Anunciante",complexity:"Baixa",priority:"P1"},
-  {id:44,product:"DevHub",icon:"⚙️",surface:"Documentação — endpoint de alta demanda",who:"Builder",doing:"Integrando com API Eduzz",intent:"Média",pain:"Preciso de ajuda técnica para esta integração",format:"Banner lateral: contratar Partner certificado",ctr:"4–8%",model:"CPC / Marketplace fee",complexity:"Baixa",priority:"P3"},
+  {id:43,type:"b2b",product:"DevHub",icon:"⚙️",surface:"Console de Apps — 1º app publicado",who:"Builder",doing:"Publicando primeiro app na Store",intent:"Alta",pain:"Publiquei meu app. Como faço ele aparecer para mais produtores?",format:"Card: planos de Store Ads para novos Builders",ctr:"20–35%",model:"AutoConversão Builder → Anunciante",complexity:"Baixa",priority:"P1"},
+  {id:44,type:"b2b",product:"DevHub",icon:"⚙️",surface:"Documentação — endpoint de alta demanda",who:"Builder",doing:"Integrando com API Eduzz",intent:"Média",pain:"Preciso de ajuda técnica para esta integração",format:"Banner lateral: contratar Partner certificado",ctr:"4–8%",model:"CPC / Marketplace fee",complexity:"Baixa",priority:"P3"},
   // JORNADA ELITE
-  {id:45,product:"Jornada Elite",icon:"🏆",surface:"Dashboard Elite — faltam R$ X para próximo Belt",who:"Infoprodutor",doing:"Acompanhando progressão de Belt/Level",intent:"Alta",pain:"Estou a R$ 8k do próximo nível. Quero chegar rápido",format:"Card contextual: top 3 apps de escala por nível",ctr:"10–16%",model:"CPC",complexity:"Baixa",priority:"P2"},
-  {id:46,product:"Jornada Elite",icon:"🏆",surface:"Desbloqueio de Benefício — notificação de conquista de nível",who:"Infoprodutor",doing:"Celebrando avanço para novo Belt",intent:"Alta",pain:"Momento de euforia — máxima receptividade para novas ferramentas",format:"Modal de celebração com ferramenta exclusiva do nível",ctr:"18–28%",model:"Freemium Unlock / CPA",complexity:"Baixa",priority:"P1"},
+  {id:45,type:"b2b",product:"Jornada Elite",icon:"🏆",surface:"Dashboard Elite — faltam R$ X para próximo Belt",who:"Infoprodutor",doing:"Acompanhando progressão de Belt/Level",intent:"Alta",pain:"Estou a R$ 8k do próximo nível. Quero chegar rápido",format:"Card contextual: top 3 apps de escala por nível",ctr:"10–16%",model:"CPC",complexity:"Baixa",priority:"P2"},
+  {id:46,type:"b2b",product:"Jornada Elite",icon:"🏆",surface:"Desbloqueio de Benefício — notificação de conquista de nível",who:"Infoprodutor",doing:"Celebrando avanço para novo Belt",intent:"Alta",pain:"Momento de euforia — máxima receptividade para novas ferramentas",format:"Modal de celebração com ferramenta exclusiva do nível",ctr:"18–28%",model:"Freemium Unlock / CPA",complexity:"Baixa",priority:"P1"},
+
+  // ── MODELO 2: Infoprodutor X → Alunos de Infoprodutor Y ───────────────────
+  {id:47,type:"b2b2c",product:"Nutror",icon:"📚",surface:"Área do Aluno — Pós-módulo concluído",who:"Aluno (de Infoprodutor Y)",doing:"Acabou de assistir uma aula/módulo",intent:"Alta",pain:"Quero aprender mais sobre este tema. O que estudo a seguir?",format:"Card 'Próximo passo recomendado' — curso de Infoprodutor X",ctr:"5–10%",model:"CPA matrícula",complexity:"Baixa",priority:"P1"},
+  {id:48,type:"b2b2c",product:"AlpaClass",icon:"🎓",surface:"Trilhas — Ao completar um curso (próximo nível)",who:"Aluno (de Infoprodutor Y)",doing:"Concluiu curso e decide o que estudar a seguir",intent:"Alta",pain:"Terminei este curso. Qual o próximo passo para minha carreira?",format:"Card de 'Continue evoluindo' com curso de Infoprodutor X",ctr:"8–15%",model:"CPA matrícula",complexity:"Baixa",priority:"P1"},
+  {id:49,type:"b2b2c",product:"AlpaClass",icon:"🎓",surface:"Email de Certificado — Próximos passos",who:"Aluno (de Infoprodutor Y)",doing:"Recebendo certificado de conclusão por email",intent:"Alta",pain:"Conclui este curso. Qual o próximo passo para minha carreira?",format:"Email transacional com recomendação de Infoprodutor X no rodapé",ctr:"8–14%",model:"CPA matrícula",complexity:"Baixa",priority:"P1"},
+  {id:50,type:"b2b2c",product:"SafeVideo",icon:"🎬",surface:"Player de Vídeo — End card pós-aula",who:"Aluno (de Infoprodutor Y)",doing:"Acabou de assistir uma aula",intent:"Alta",pain:"A aula terminou. Estou engajado no tema e quero mais conteúdo",format:"End card com curso complementar de Infoprodutor X",ctr:"6–12%",model:"CPC / CPA",complexity:"Média",priority:"P1"},
+  {id:51,type:"b2b2c",product:"HeyCamp",icon:"💬",surface:"Feed da Comunidade — Post patrocinado nativo",who:"Aluno/Membro (de Infoprodutor Y)",doing:"Consumindo conteúdo e discussões na comunidade",intent:"Média",pain:"Estou interessado no tema desta comunidade. Busco mais recursos",format:"Post patrocinado nativo no feed com badge 'Parceiro da comunidade'",ctr:"3–7%",model:"CPM + CPC",complexity:"Média",priority:"P2"},
+  {id:52,type:"b2b2c",product:"Nutror",icon:"📚",surface:"App Mobile — Push para alunos com conteúdo complementar",who:"Aluno (de Infoprodutor Y)",doing:"Está inativo no app há 3+ dias",intent:"Média-Alta",pain:"Parei de estudar. Um lembrete com novo conteúdo relevante pode me reativar",format:"Push notification: evento/curso de Infoprodutor X relevante ao nicho",ctr:"4–8%",model:"CPC",complexity:"Média",priority:"P2"},
+  {id:53,type:"b2b2c",product:"Blinket",icon:"🎟️",surface:"Página de Ingresso — Evento relacionado",who:"Aluno/Participante (comprando ingresso de Infoprodutor Y)",doing:"Comprando ingresso para evento de Infoprodutor Y",intent:"Alta",pain:"Estou interessado neste tema — receptivo a conteúdo complementar",format:"Card de evento/curso relacionado de Infoprodutor X",ctr:"5–9%",model:"CPA ingresso",complexity:"Baixa",priority:"P2"},
+  {id:54,type:"b2b2c",product:"AlpaClass",icon:"🎓",surface:"Área do Aluno — Sidebar 'Recomendados para você'",who:"Aluno (de Infoprodutor Y)",doing:"Navegando pela área de membros",intent:"Média",pain:"Busco mais cursos e especializações no meu nicho",format:"Sidebar com 3 cursos patrocinados de Infoprodutor X",ctr:"4–7%",model:"CPC",complexity:"Média",priority:"P2"},
 ];
 
 const TOP10 = [
@@ -903,52 +1001,62 @@ MRR em risco:  R$ 2.044/mês
 ];
 
 const CHANNELS = [
-  {type:"plg",label:"PLG In-Product",desc:"Dentro do fluxo de uso",icon:"🔵",items:[
+  // ── MODELO 1: Builder → Infoprodutor ─────────────────────────────────────
+  {model:"b2b",type:"plg",label:"PLG In-Product",desc:"Dentro do fluxo do Infoprodutor",icon:"🔵",items:[
     {product:"Checkout Sun",surface:"Order Bump (empty state)",intent:"Alta"},
     {product:"Checkout Sun",surface:"Setup inicial de checkout",intent:"Alta"},
-    {product:"Nutror",surface:"Abandono de módulo",intent:"Alta"},
-    {product:"AlpaClass",surface:"Alunos inativos",intent:"Alta"},
-    {product:"Telescope",surface:"Drop-off no funil",intent:"Alta"},
-    {product:"Alumy",surface:"Dashboard MRR — churn",intent:"Altíssima"},
+    {product:"Nutror",surface:"Relatório de abandono de módulo",intent:"Alta"},
+    {product:"AlpaClass",surface:"Widget alunos inativos do produtor",intent:"Alta"},
+    {product:"Telescope",surface:"Drop-off no funil de conversão",intent:"Alta"},
+    {product:"Alumy",surface:"Dashboard MRR — churn alto",intent:"Altíssima"},
     {product:"Store",surface:"Busca interna patrocinada",intent:"Altíssima"},
-    {product:"Store",surface:"Detalhe do app — cross-sell",intent:"Alta"},
   ]},
-  {type:"setup",label:"Jornada de Setup",desc:"Onboarding e configuração",icon:"⚙️",items:[
+  {model:"b2b",type:"setup",label:"Jornada de Setup",desc:"Onboarding do Infoprodutor",icon:"⚙️",items:[
     {product:"Orbit Pages",surface:"Biblioteca de templates",intent:"Alta"},
     {product:"Blinket",surface:"Criar primeiro evento",intent:"Alta"},
-    {product:"AlpaClass",surface:"Gamificação — 1º quiz",intent:"Alta"},
-    {product:"AlpaClass",surface:"Email — 0 campanhas",intent:"Alta"},
+    {product:"AlpaClass",surface:"Gamificação — 1º quiz (empty state)",intent:"Alta"},
     {product:"MyEduzz",surface:"Produto nunca acessado",intent:"Alta"},
-    {product:"DevHub",surface:"1º app publicado",intent:"Alta"},
+    {product:"DevHub",surface:"1º app publicado → vira anunciante",intent:"Alta"},
   ]},
-  {type:"pain",label:"Momentos de Dor",desc:"Problema visível na tela",icon:"🔴",items:[
-    {product:"Órbita",surface:"Alerta de abandono carrinho",intent:"Altíssima"},
-    {product:"Telescope",surface:"Queda súbita em tempo real",intent:"Altíssima"},
+  {model:"b2b",type:"pain",label:"Momentos de Dor",desc:"Problema visível para o Infoprodutor",icon:"🔴",items:[
+    {product:"Órbita",surface:"Alerta de abandono de carrinho",intent:"Altíssima"},
+    {product:"Telescope",surface:"Queda súbita de conversão em tempo real",intent:"Altíssima"},
     {product:"Alumy",surface:"Churn > 5% no mês",intent:"Altíssima"},
-    {product:"Nutror",surface:"Taxa de conclusão < 20%",intent:"Alta"},
     {product:"SafeVideo",surface:"Retenção de vídeo < 40%",intent:"Alta"},
     {product:"Órbita",surface:"Dashboard com métricas em queda",intent:"Média-Alta"},
   ]},
-  {type:"celebration",label:"Celebração / Conversão",desc:"Pós-venda, pós-conquista",icon:"🏆",items:[
-    {product:"Checkout Sun",surface:"Página de Obrigado",intent:"Altíssima"},
-    {product:"Jornada Elite",surface:"Desbloqueio de Belt",intent:"Alta"},
-    {product:"AlpaClass",surface:"Certificado emitido (aluno)",intent:"Alta"},
-    {product:"Orbit Pages",surface:"Primeiro publish",intent:"Alta"},
-    {product:"Blinket",surface:"Check-in no evento",intent:"Alta"},
+  {model:"b2b",type:"celebration",label:"Celebração do Infoprodutor",desc:"Pós-venda, pós-conquista",icon:"🏆",items:[
+    {product:"Checkout Sun",surface:"Infoprodutor recebe confirmação de venda",intent:"Altíssima"},
+    {product:"Jornada Elite",surface:"Desbloqueio de novo Belt",intent:"Alta"},
+    {product:"AlpaClass",surface:"Infoprodutor vê alta conclusão de turma",intent:"Alta"},
+    {product:"Orbit Pages",surface:"Primeiro publish de página",intent:"Alta"},
   ]},
-  {type:"async",label:"Comunicação Assíncrona",desc:"Email, push, notificação",icon:"📧",items:[
-    {product:"Órbita",surface:"Email digest semanal — métricas",intent:"Média"},
-    {product:"Nutror",surface:"Push mobile — alunos inativos",intent:"Alta"},
-    {product:"AlpaClass",surface:"Email — aluno inativo 14d",intent:"Alta"},
-    {product:"Blinket",surface:"Push pré-evento 24h",intent:"Alta"},
+  {model:"b2b",type:"async_b2b",label:"Comunicação ao Infoprodutor",desc:"Email, push, notificação",icon:"📧",items:[
+    {product:"Órbita",surface:"Email digest semanal de métricas do negócio",intent:"Média"},
+    {product:"Nutror",surface:"Push ao Infoprodutor: X alunos inativos",intent:"Alta"},
+    {product:"AlpaClass",surface:"Resumo ao Infoprodutor: alunos sem acesso",intent:"Alta"},
     {product:"Jornada Elite",surface:"Email de progressão de Belt",intent:"Alta"},
   ]},
-  {type:"discovery",label:"Discovery / Vitrine",desc:"Store, busca, categorias",icon:"🛍️",items:[
+  {model:"b2b",type:"discovery",label:"Discovery / Store Vitrine",desc:"Store, busca, categorias",icon:"🛍️",items:[
     {product:"Store",surface:"Homepage — Sponsored Listings",intent:"Alta"},
     {product:"Store",surface:"Página de categoria — topo",intent:"Alta"},
-    {product:"MyEduzz",surface:"Menu de acesso — produtos",intent:"Alta"},
-    {product:"Órbita",surface:"Dashboard Elite — ferramentas",intent:"Alta"},
-    {product:"Jornada Elite",surface:"Top 3 apps por nível",intent:"Alta"},
+    {product:"Store",surface:"Detalhe do app — cross-sell",intent:"Alta"},
+    {product:"Jornada Elite",surface:"Top 3 apps por nível de Belt",intent:"Alta"},
+  ]},
+  // ── MODELO 2: Infoprodutor X → Alunos de Y ────────────────────────────────
+  {model:"b2b2c",type:"member_area",label:"Área de Membros / Cursos",desc:"Dentro da jornada de aprendizado",icon:"🎓",items:[
+    {product:"Nutror",surface:"Pós-módulo — próximo curso recomendado",intent:"Alta"},
+    {product:"AlpaClass",surface:"Trilhas — ao completar um curso",intent:"Alta"},
+    {product:"AlpaClass",surface:"Sidebar recomendados para você",intent:"Média"},
+    {product:"SafeVideo",surface:"End card pós-aula no player",intent:"Alta"},
+  ]},
+  {model:"b2b2c",type:"email_b2b2c",label:"Email / Certificados ao Aluno",desc:"Comunicação transacional",icon:"📜",items:[
+    {product:"AlpaClass",surface:"Email de certificado — próximos passos",intent:"Alta"},
+    {product:"Nutror",surface:"Push mobile ao aluno — conteúdo complementar",intent:"Média-Alta"},
+  ]},
+  {model:"b2b2c",type:"community_event",label:"Comunidade / Eventos",desc:"Contexto social e presencial",icon:"💬",items:[
+    {product:"HeyCamp",surface:"Feed da comunidade — post patrocinado nativo",intent:"Média"},
+    {product:"Blinket",surface:"Página de ingresso — evento relacionado",intent:"Alta"},
   ]},
 ];
 
@@ -962,22 +1070,42 @@ function intentBadgeClass(intent){
   return 'badge-intent-baixa';
 }
 
-function renderSurfaces(filter, priorityFilter){
+function renderSurfaces(filter, priorityFilter, typeFilter){
   const grid = document.getElementById('surfacesGrid');
   grid.innerHTML = '';
   const data = SURFACES.filter(s => {
     const matchProd = !filter || s.product === filter;
     const matchPrio = !priorityFilter || priorityFilter === 'all' || s.priority === priorityFilter;
-    return matchProd && matchPrio;
+    const matchType = !typeFilter || typeFilter === 'all' || s.type === typeFilter;
+    return matchProd && matchPrio && matchType;
   });
+
+  // If showing all, insert dividers between model 1 and model 2
+  const showDividers = !typeFilter || typeFilter === 'all';
+  let lastType = null;
   data.forEach(s => {
+    if(showDividers && s.type !== lastType){
+      const div = document.createElement('div');
+      div.className = 'type-divider';
+      if(s.type === 'b2b'){
+        div.innerHTML = `<div class="type-divider-line"></div><span class="type-divider-label" style="background:#0D1B3E;color:var(--gold)">🔨 Modelo 1 — Builder → Infoprodutor (38 superfícies)</span><div class="type-divider-line"></div>`;
+      } else {
+        div.innerHTML = `<div class="type-divider-line"></div><span class="type-divider-label" style="background:#1D4ED8;color:#fff">🎓 Modelo 2 — Infoprodutor X → Alunos de Y (8 superfícies)</span><div class="type-divider-line"></div>`;
+      }
+      grid.appendChild(div);
+      lastType = s.type;
+    }
     const card = document.createElement('div');
     card.className = 'surface-card';
+    const typeBadge = s.type === 'b2b'
+      ? `<span class="badge-b2b">M1 · B2B</span>`
+      : `<span class="badge-b2b2c">M2 · B2B2C</span>`;
     card.innerHTML = `
       <div class="sc-header">
         <div class="sc-product">
           <span class="sc-product-icon">${s.icon}</span>
           <span class="sc-product-name">${s.product}</span>
+          ${typeBadge}
         </div>
         <span class="sc-priority ${s.priority.toLowerCase()}">${s.priority}</span>
       </div>
@@ -999,6 +1127,7 @@ function renderSurfaces(filter, priorityFilter){
 
 let currentProductFilter = null;
 let currentPriorityFilter = 'all';
+let currentTypeFilter = 'all';
 
 function filterProduct(prod, el){
   const cards = document.querySelectorAll('.eco-card');
@@ -1009,22 +1138,30 @@ function filterProduct(prod, el){
     currentProductFilter = prod;
     el.classList.add('active');
   }
-  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter);
+  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter, currentTypeFilter === 'all' ? null : currentTypeFilter);
   document.getElementById('superficies').scrollIntoView({behavior:'smooth'});
 }
 
+function filterType(type, el){
+  document.querySelectorAll('#fp-all,#fp-b2b,#fp-b2b2c').forEach(p => p.classList.remove('active'));
+  currentTypeFilter = type;
+  el.classList.add('active');
+  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter, type === 'all' ? null : type);
+}
+
 function filterPriority(prio, el){
-  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
   if(prio === 'reset'){
     currentProductFilter = null;
     currentPriorityFilter = 'all';
+    currentTypeFilter = 'all';
     document.querySelectorAll('.eco-card').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.filter-pill')[0].classList.add('active');
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    document.getElementById('fp-all').classList.add('active');
   } else {
     el.classList.add('active');
     currentPriorityFilter = prio;
   }
-  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter);
+  renderSurfaces(currentProductFilter, currentPriorityFilter === 'all' ? null : currentPriorityFilter, currentTypeFilter === 'all' ? null : currentTypeFilter);
 }
 
 /* ───── RENDER TOP 10 ───── */
@@ -1090,11 +1227,23 @@ function toggleCard(card){
 function renderChannels(){
   const map = document.getElementById('channelMap');
   const intentColor = {Alta:'var(--green)',Altíssima:'var(--red)','Média-Alta':'var(--blue)',Média:'var(--muted)'};
+  let lastModel = null;
   CHANNELS.forEach(c => {
+    if(c.model !== lastModel){
+      const div = document.createElement('div');
+      div.style.cssText = 'grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:8px 0 4px;margin-top:'+(lastModel?'20px':'0');
+      if(c.model === 'b2b'){
+        div.innerHTML = '<div style="flex:1;height:2px;background:var(--navy);border-radius:1px;opacity:.15"></div><span style="background:var(--navy);color:var(--gold);font-size:11px;font-weight:800;padding:6px 16px;border-radius:20px;white-space:nowrap">🔨 Modelo 1 — Builder → Infoprodutor · 38 superfícies</span><div style="flex:1;height:2px;background:var(--navy);border-radius:1px;opacity:.15"></div>';
+      } else {
+        div.innerHTML = '<div style="flex:1;height:2px;background:#1D4ED8;border-radius:1px;opacity:.3"></div><span style="background:#1D4ED8;color:#fff;font-size:11px;font-weight:800;padding:6px 16px;border-radius:20px;white-space:nowrap">🎓 Modelo 2 — Infoprodutor X → Alunos de Y · 8 superfícies</span><div style="flex:1;height:2px;background:#1D4ED8;border-radius:1px;opacity:.3"></div>';
+      }
+      map.appendChild(div);
+      lastModel = c.model;
+    }
     const bucket = document.createElement('div');
     bucket.className = `channel-bucket bucket-${c.type}`;
-    bucket.innerHTML = `
-      <div class="bucket-header">
+    const headerBg = c.model==='b2b2c' ? '#1D4ED8' : null;
+    bucket.innerHTML = `<div class="bucket-header" ${headerBg?`style="background:${headerBg}"`:''}>
         <div class="bucket-icon">${c.icon}</div>
         <div><div class="bucket-title">${c.label}</div><div class="bucket-sub">${c.desc}</div></div>
       </div>
@@ -1111,7 +1260,7 @@ function renderChannels(){
 
 /* ───── INIT ───── */
 document.addEventListener('DOMContentLoaded', () => {
-  renderSurfaces(null, null);
+  renderSurfaces(null, null, null);
   renderTop10();
   renderChannels();
 });
